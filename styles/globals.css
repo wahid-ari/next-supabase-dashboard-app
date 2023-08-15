@@ -10,3 +10,35 @@ html {
   /* setting for specific target */
   /* <section id='section-books' className='scroll-mt-20 scroll-pt-20'> */
 }
+
+.scrollbar-track-rounded::-webkit-scrollbar-track {
+  border-radius: 999px;
+}
+
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+}
+
+/* Footer Link Hover Animation */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  transform-origin: bottom center;
+  transition: transform 0.3s ease-out;
+  @apply bg-neutral-500 dark:bg-neutral-300;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}
