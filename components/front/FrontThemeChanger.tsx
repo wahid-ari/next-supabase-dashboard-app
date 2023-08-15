@@ -1,7 +1,7 @@
-import { useTheme } from 'next-themes';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
+import { cn } from '@/lib/utils';
 import { useMounted } from '@/hooks/useMounted';
 
 export default function FrontThemeChanger({ variant = 'icon', ...props }: { variant?: string; [props: string]: any }) {

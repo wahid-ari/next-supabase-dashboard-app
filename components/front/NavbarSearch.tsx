@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { cn } from '@/lib/utils';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+
+import { cn } from '@/lib/utils';
 
 export default function NavbarSearch({ ...props }: { [props: string]: any }) {
   const query = useRef('');

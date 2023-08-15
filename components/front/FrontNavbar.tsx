@@ -1,16 +1,17 @@
 'use client';
 
-import { useState, Fragment, ReactNode } from 'react';
-import Link from 'next/link';
+import { Fragment, ReactNode, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import {
+  Bars3Icon,
   ChevronDownIcon,
   ChevronRightIcon,
-  Bars3Icon,
-  XMarkIcon,
   MagnifyingGlassIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
+
 import { cn } from '@/lib/utils';
 // import nookies from 'nookies';
 // import { useSession } from 'next-auth/react';
@@ -138,7 +139,12 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                         leaveFrom='opacity-100 scale-100'
                         leaveTo='opacity-0 scale-95'
                       >
-                        <Popover.Panel className='absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded border border-transparent bg-white p-2 shadow dark:border-neutral-800 dark:bg-[#1a1a1a]'>
+                        <Popover.Panel
+                          className={cn(
+                            'absolute left-1/2 top-16 z-10 w-96 -translate-x-1/2 space-y-2.5 rounded p-2 shadow',
+                            'border border-transparent bg-white dark:border-neutral-800 dark:bg-[#1a1a1a]',
+                          )}
+                        >
                           <NavbarSearch />
                         </Popover.Panel>
                       </Transition>
@@ -250,7 +256,12 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <Menu>
                   {({ open }) => (
                     <>
-                      <Menu.Button className='w-full rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:bg-neutral-800'>
+                      <Menu.Button
+                        className={cn(
+                          'w-full rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 dark:text-neutral-200',
+                          'dark:hover:bg-neutral-800 focus-visible:outline-none hover:bg-gray-100 focus-visible:ring-2 focus-visible:ring-sky-500',
+                        )}
+                      >
                         <div className='flex items-center justify-between'>
                           <span>More</span>
                           <ChevronRightIcon
@@ -262,7 +273,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           />
                         </div>
                       </Menu.Button>
-                      <Menu.Items className='space-y-1 px-3'>
+                      <Menu.Items className='space-y-1 px-3 focus-visible:outline-none focus-visible:ring-0'>
                         <Menu.Item>
                           <ActiveLink activeClassName='!text-sky-500 dark:text-sky-500' href='/#' className={activeCn}>
                             Studios

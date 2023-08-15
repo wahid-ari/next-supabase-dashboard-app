@@ -1,8 +1,7 @@
 import { cn } from '@/lib/utils';
-
-import FrontNavbar from '@/components/front/FrontNavbar';
 import BackToTop from '@/components/front/BackToTop';
 import Footer from '@/components/front/Footer';
+import FrontNavbar from '@/components/front/FrontNavbar';
 
 type Props = {
   children: React.ReactNode;

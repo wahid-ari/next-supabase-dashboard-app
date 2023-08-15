@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronUpIcon } from '@heroicons/react/24/outline';
+
 import { cn } from '@/lib/utils';
 
 export default function BackToTop({ className, ...props }: { className?: string; [props: string]: any }) {
