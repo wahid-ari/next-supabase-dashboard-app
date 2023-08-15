@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
-import { ThemeProvider } from '@/components/layout/Providers';
+import { GlobalProvider } from '@/context/GlobalContext';
+import { ThemeProvider } from '@/context/ThemeProviders';
 
 import '@/styles/globals.css';
 
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <GlobalProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </GlobalProvider>
       </body>
     </html>
   );
