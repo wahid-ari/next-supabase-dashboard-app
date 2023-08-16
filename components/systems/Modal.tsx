@@ -1,7 +1,8 @@
 import { Fragment, ReactNode } from 'react';
-import Button from '@components/systems/Button';
 import { Dialog, Transition } from '@headlessui/react';
-import { ExclamationIcon, InformationCircleIcon } from '@heroicons/react/outline';
+import { AlertTriangleIcon, InfoIcon } from 'lucide-react';
+
+import Button from '@/components/systems/Button';
 
 type Props = {
   children: ReactNode;
@@ -29,6 +30,7 @@ export default function Modal({
 }: Props) {
   return (
     <Transition.Root show={open} as={Fragment}>
+      {/* @ts-ignore */}
       <Dialog as='div' className='fixed inset-0 z-50 overflow-y-auto' open={open} onClose={onClose}>
         {/* This element is to trick the browser into centering the modal contents horizontally. */}
         <div className='px-4 pt-4 text-center sm:block sm:p-0'>
@@ -65,11 +67,11 @@ export default function Modal({
                 {showIcon ? (
                   isDanger ? (
                     <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100'>
-                      <ExclamationIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
+                      <AlertTriangleIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
                     </div>
                   ) : (
                     <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100'>
-                      <InformationCircleIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
+                      <InfoIcon className='h-6 w-6 text-blue-600' aria-hidden='true' />
                     </div>
                   )
                 ) : null}

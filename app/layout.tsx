@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 
 import { GlobalProvider } from '@/context/GlobalContext';
 
 import '@/styles/globals.css';
+import '@/styles/prism.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,7 +21,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
-        <GlobalProvider>{children}</GlobalProvider>
+        <GlobalProvider>
+          <Toaster
+            gutter={4}
+            toastOptions={{
+              style: {
+                maxWidth: 380,
+                padding: '2px 4px',
+              },
+            }}
+          />
+          {children}
+        </GlobalProvider>
       </body>
     </html>
   );

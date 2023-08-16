@@ -6,6 +6,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   activeClassName?: string;
+  [props: string]: any;
 };
 
 export default function ActiveLink({ children, className, activeClassName, ...props }: Props) {

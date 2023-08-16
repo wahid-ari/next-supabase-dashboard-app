@@ -6,9 +6,9 @@ type Props = {
   className?: string;
   type?: 'submit' | 'reset' | 'button';
   value?: string | ReadonlyArray<string> | number;
-  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
+  // onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
   // onClick?: (e: any) => Promise<void>;
-  // onClick?: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 };
 

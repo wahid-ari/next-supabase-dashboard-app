@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
-import { EyeIcon, EyeOffIcon } from '@heroicons/react/outline';
+'use client';
+
+import { useState } from 'react';
+import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -11,6 +13,7 @@ type Props = {
   placeholder?: string;
   value?: string | string[];
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  [props: string]: any;
 };
 
 export default function LabeledInput({

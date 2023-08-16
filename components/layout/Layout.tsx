@@ -4,10 +4,9 @@ import { twMerge } from 'tailwind-merge';
 // import nookies from 'nookies';
 // import { useSession } from 'next-auth/react';
 
-// import { useMounted } from '@hooks/useMounted';
-
+// import { useMounted } from '@/hooks/useMounted';
 import Breadcrumb from '@/components/layout/Breadcrumb';
-// import Menu from '@/components/layout/Menu';
+import Menu from '@/components/layout/Menu';
 import Navbar from '@/components/layout/Navbar';
 import Sidebar from '@/components/layout/Sidebar';
 
@@ -54,6 +53,7 @@ export default function Layout({ children, demo, ...props }: Props) {
           <Breadcrumb />
 
           {/* {mounted && session?.name ? <Menu /> : null} */}
+          <Menu />
         </div>
 
         <div className='px-5 py-5'>{children}</div>

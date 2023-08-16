@@ -3,9 +3,10 @@
 import { useContext } from 'react';
 import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
+
 // import nookies from 'nookies';
 // import { useSession } from 'next-auth/react';
-import { twMerge } from 'tailwind-merge';
 
 import { GlobalContext } from '@/context/GlobalContext';
 import { useMounted } from '@/hooks/useMounted';
@@ -16,7 +17,7 @@ export default function Navbar({ className, ...props }: { className?: string }) 
   const { setShowNav } = useContext(GlobalContext);
   // const admin = nookies.get(null, 'name');
   // const { data: session }: { data: any; status: any } = useSession();
-  // const mounted = useMounted();
+  const mounted = useMounted();
 
   return (
     <nav
@@ -57,6 +58,7 @@ export default function Navbar({ className, ...props }: { className?: string }) 
         </div>
 
         {/* {mounted && session?.name ? <Menu className='lg:hidden' /> : null} */}
+        {mounted && <Menu className='lg:hidden' />}
       </div>
     </nav>
   );

@@ -1,17 +1,20 @@
+'use client';
+
 import { useEffect, useState } from 'react';
-import { ClipboardIcon, DocumentDuplicateIcon } from '@heroicons/react/outline';
-import { useMounted } from '@hooks/useMounted';
+import { ClipboardCopyIcon, ClipboardPasteIcon } from 'lucide-react';
 import Prism from 'prismjs';
 import { twMerge } from 'tailwind-merge';
 
+import { useMounted } from '@/hooks/useMounted';
+
 type Props = {
+  className?: string;
   name?: string;
   code: string;
-  className?: string;
   lang?: string;
 };
 
-export default function Code({ name = 'Code', code, className, lang = 'javascript', ...props }: Props) {
+export default function Code({ className, name = 'Code', code, lang = 'javascript', ...props }: Props) {
   const mounted = useMounted();
   useEffect(() => {
     Prism.highlightAll();
@@ -44,11 +47,11 @@ export default function Code({ name = 'Code', code, className, lang = 'javascrip
         >
           {copy ? (
             <div className='flex items-center'>
-              <ClipboardIcon className='h-5 w-5 transition-all dark:text-gray-400 dark:hover:text-gray-300' />
+              <ClipboardPasteIcon className='h-5 w-5 transition-all dark:text-gray-400 dark:hover:text-gray-300' />
               <span className='pl-1 text-xs text-neutral-600 dark:text-gray-300'>Copied !</span>
             </div>
           ) : (
-            <DocumentDuplicateIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-600 dark:text-gray-400 dark:hover:text-gray-300' />
+            <ClipboardCopyIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-600 dark:text-gray-400 dark:hover:text-gray-300' />
           )}
         </button>
         <pre className='line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-700 dark:scrollbar-thumb-neutral-700'>
