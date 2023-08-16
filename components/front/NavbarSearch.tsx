@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { SearchIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-export default function NavbarSearch({ ...props }: { [props: string]: any }) {
+export default function NavbarSearch({ ...props }) {
   const query = useRef('');
   const router = useRouter();
 
@@ -24,7 +24,7 @@ export default function NavbarSearch({ ...props }: { [props: string]: any }) {
       </label>
       <div className='relative'>
         <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-2'>
-          <MagnifyingGlassIcon className='h-5 w-5 text-gray-500 dark:text-gray-400' />
+          <SearchIcon className='h-5 w-5 text-gray-500 dark:text-gray-400' />
         </div>
         <input
           onChange={(e) => (query.current = e.target.value)}

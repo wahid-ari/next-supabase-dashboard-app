@@ -1,9 +1,9 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { useMounted } from '@/hooks/useMounted';
 
-export default function ThemeChanger({ ...props }: { [props: string]: any }) {
+export default function ThemeChanger({ ...props }) {
   const { theme, setTheme } = useTheme();
   const mounted = useMounted();
   if (!mounted) return null;

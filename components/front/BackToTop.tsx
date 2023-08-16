@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ChevronUpIcon } from '@heroicons/react/24/outline';
+import { ChevronUpIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-export default function BackToTop({ className, ...props }: { className?: string; [props: string]: any }) {
+export default function BackToTop({ className, ...props }: { className?: string }) {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {

@@ -14,7 +14,6 @@ import Sidebar from '@/components/layout/Sidebar';
 type Props = {
   children: ReactNode;
   demo?: boolean;
-  [props: string]: any;
 };
 
 export default function Layout({ children, demo, ...props }: Props) {
@@ -23,7 +22,7 @@ export default function Layout({ children, demo, ...props }: Props) {
   // const mounted = useMounted();
 
   return (
-    <div
+    <main
       {...props}
       className='min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
       style={{ gridTemplateColumns: 'auto 1fr' }}
@@ -59,6 +58,6 @@ export default function Layout({ children, demo, ...props }: Props) {
 
         <div className='px-5 py-5'>{children}</div>
       </div>
-    </div>
+    </main>
   );
 }

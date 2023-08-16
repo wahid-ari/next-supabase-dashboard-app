@@ -6,7 +6,6 @@ import FrontNavbar from '@/components/front/FrontNavbar';
 type Props = {
   children: React.ReactNode;
   className?: string;
-  [props: string]: any;
 };
 
 export default function FrontLayout({ children, className, ...props }: Props) {

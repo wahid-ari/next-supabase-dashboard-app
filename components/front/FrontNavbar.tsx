@@ -4,13 +4,7 @@ import { Fragment, ReactNode, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
-import {
-  Bars3Icon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-  MagnifyingGlassIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 // import nookies from 'nookies';
@@ -44,7 +38,7 @@ const activeCn = cn(
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
 );
 
-export default function FrontNavbar({ className, ...props }: { className?: string; [props: string]: any }) {
+export default function FrontNavbar({ className, ...props }: { className?: string }) {
   // const admin = nookies.get(null, 'name');
   // const { data: session, status }: { data: any; status: any } = useSession();
   // const mounted = useMounted();
@@ -53,12 +47,12 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
   return (
     <Popover
       {...props}
-      as='nav'
+      as='header'
       className={cn('sticky top-0 z-10 border-b border-b-neutral-200/70 dark:border-b-neutral-800', className)}
     >
       <>
         <div className='mx-auto max-w-7xl px-4 py-3'>
-          <div className='flex items-center justify-between'>
+          <nav className='flex items-center justify-between'>
             {/* web logo  */}
             <Link
               href='/'
@@ -128,7 +122,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                         )}
                       >
-                        <MagnifyingGlassIcon className='h-5 w-5' />
+                        <SearchIcon className='h-5 w-5' />
                       </Popover.Button>
                       <Transition
                         as={Fragment}
@@ -198,11 +192,11 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 )}
               >
                 <span className='sr-only'>Open main menu</span>
-                <Bars3Icon className='h-6 w-6' aria-hidden='true' />
+                <MenuIcon className='h-6 w-6' aria-hidden='true' />
               </Popover.Button>
             </div>
             {/* End Mobile menu button */}
-          </div>
+          </nav>
         </div>
 
         {/* Mobile menu panel */}
@@ -241,7 +235,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     )}
                   >
                     <span className='sr-only'>Close main menu</span>
-                    <XMarkIcon className='h-5 w-5' aria-hidden='true' />
+                    <XIcon className='h-5 w-5' aria-hidden='true' />
                   </Popover.Button>
                 </div>
                 {/* EndCLose Mobile Menu Button  */}

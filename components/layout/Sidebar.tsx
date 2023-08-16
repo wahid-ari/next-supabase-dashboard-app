@@ -2,27 +2,26 @@
 
 import { useContext, useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
-// import Badge from '@/components/systems/Badge';
-// import Modal from '@/components/systems/Modal';
 import {
-  ArchiveBoxArrowDownIcon,
-  ArrowLeftOnRectangleIcon,
-  ArrowRightOnRectangleIcon,
-  // ArrowRightIcon,
-  BookmarkSquareIcon,
-  BookOpenIcon,
-  ClipboardIcon,
-  Cog6ToothIcon,
-  DocumentTextIcon,
-  MagnifyingGlassIcon,
-  Squares2X2Icon,
-  SquaresPlusIcon,
-  SwatchIcon,
-  TableCellsIcon,
-  UserGroupIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
-import { ArrowRightIcon } from '@heroicons/react/24/solid';
+  BookIcon,
+  ComputerIcon,
+  ContainerIcon,
+  ExternalLinkIcon,
+  GanttChartSquareIcon,
+  LayersIcon,
+  LayoutDashboardIcon,
+  LayoutGridIcon,
+  LayoutListIcon,
+  LayoutPanelLeftIcon,
+  ListTodoIcon,
+  ListTreeIcon,
+  LogOutIcon,
+  SearchIcon,
+  SettingsIcon,
+  SheetIcon,
+  UsersIcon,
+  XIcon,
+} from 'lucide-react';
 // import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
@@ -32,8 +31,11 @@ import NavAccordion from '@/components/layout/NavAccordion';
 
 import NavLink from '@/components/layout/NavLink';
 import ThemeChanger from '@/components/layout/ThemeChanger';
+import Badge from '@/components/systems/Badge';
 
-export default function Sidebar({ className, ...props }: { className?: string; [props: string]: any }) {
+// import Modal from '@/components/systems/Modal';
+
+export default function Sidebar({ className, ...props }: { className?: string }) {
   const router = useRouter();
   const pathname = usePathname();
   const [openModal, setOpenModal] = useState(false);
@@ -78,7 +80,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             id='closemenu'
             aria-label='Close Menu'
           >
-            <XMarkIcon className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200' />
+            <XIcon className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200' />
           </button>
           <p className='py-2.5 text-left text-base font-semibold tracking-wide text-neutral-800 dark:text-neutral-100'>
             MyBook
@@ -94,23 +96,23 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800',
           )}
         >
-          <NavLink isHome href='/dashboard' icon={<BookmarkSquareIcon className='h-5 w-5' />}>
+          <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-5 w-5' />}>
             Dashboard
           </NavLink>
 
-          <NavLink href='/search' icon={<MagnifyingGlassIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-1'>
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UserGroupIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/author' icon={<UsersIcon className='h-5 w-5' />} className='mt-1'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookOpenIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/book' icon={<BookIcon className='h-5 w-5' />} className='mt-1'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<SwatchIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/genre' icon={<LayoutListIcon className='h-5 w-5' />} className='mt-1'>
             Genre
           </NavLink>
 
@@ -118,25 +120,25 @@ export default function Sidebar({ className, ...props }: { className?: string; [
             title='Activity'
             routeName='activity'
             className='mt-1'
-            icon={<ClipboardIcon className='h-5 w-5' />}
+            icon={<GanttChartSquareIcon className='h-5 w-5' />}
           >
-            <NavLink href='/activity' icon={<DocumentTextIcon className='h-5 w-5' />}>
+            <NavLink href='/activity' icon={<ListTreeIcon className='h-5 w-5' />}>
               Log
             </NavLink>
 
-            <NavLink href='/activity/session' icon={<TableCellsIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/activity/session' icon={<SheetIcon className='h-5 w-5' />} className='mt-1.5'>
               Session
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<Squares2X2Icon className='h-5 w-5' />}>
-            <NavLink href='/design' icon={<SquaresPlusIcon className='h-5 w-5' />}>
+          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-5 w-5' />}>
+            <NavLink href='/design' icon={<LayersIcon className='h-5 w-5' />}>
               Component
             </NavLink>
             <NavLink
               href='/design/layout'
               className='relative mt-1.5'
-              icon={<ArchiveBoxArrowDownIcon className='h-5 w-5' />}
+              icon={<LayoutDashboardIcon className='h-5 w-5' />}
             >
               Layout
               <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
@@ -144,27 +146,27 @@ export default function Sidebar({ className, ...props }: { className?: string; [
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
               </span>
             </NavLink>
-            <NavLink href='/design/ui' icon={<SquaresPlusIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/ui' icon={<ContainerIcon className='h-5 w-5' />} className='mt-1.5'>
               UI
-              {/* <Badge>New</Badge> */}
+              <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/form' icon={<SquaresPlusIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/form' icon={<ListTodoIcon className='h-5 w-5' />} className='mt-1.5'>
               Form
-              {/* <Badge>New</Badge> */}
+              <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/example' icon={<SquaresPlusIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/example' icon={<ComputerIcon className='h-5 w-5' />} className='mt-1.5'>
               Example
-              {/* <Badge>New</Badge> */}
+              <Badge>New</Badge>
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<Cog6ToothIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/settings' icon={<SettingsIcon className='h-5 w-5' />} className='mt-1'>
             Settings
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
-            icon={<ArrowRightIcon className='h-4 w-4' />}
+            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
             className='mt-1'
           >
             Docs
@@ -186,7 +188,7 @@ export default function Sidebar({ className, ...props }: { className?: string; [
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
             )}
           >
-            <ArrowLeftOnRectangleIcon className='h-5 w-5' />
+            <LogOutIcon className='h-5 w-5' />
             Logout
           </button>
           {/* ) : (

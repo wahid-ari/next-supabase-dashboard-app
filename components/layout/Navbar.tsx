@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import Link from 'next/link';
-import { Bars3Icon } from '@heroicons/react/24/outline';
+import { MenuIcon } from 'lucide-react';
 // import nookies from 'nookies';
 // import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
@@ -12,7 +12,7 @@ import { useMounted } from '@/hooks/useMounted';
 import Menu from '@/components/layout/Menu';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 
-export default function Navbar({ className, ...props }: { className?: string; [props: string]: any }) {
+export default function Navbar({ className, ...props }: { className?: string }) {
   const { setShowNav } = useContext(GlobalContext);
   // const admin = nookies.get(null, 'name');
   // const { data: session }: { data: any; status: any } = useSession();
@@ -35,7 +35,7 @@ export default function Navbar({ className, ...props }: { className?: string; [p
           id='menu'
           aria-label='Menu'
         >
-          <Bars3Icon
+          <MenuIcon
             className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200'
             onClick={() => setShowNav(true)}
           />

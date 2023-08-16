@@ -11,7 +11,6 @@ type Props = {
   href: string;
   icon?: ReactNode;
   isHome?: boolean;
-  [props: string]: any;
 };
 
 export default function NavLink({ children, className, href, icon, isHome, ...props }: Props) {
@@ -84,7 +83,6 @@ type Other = {
   className?: string;
   href: string;
   icon?: ReactNode;
-  [props: string]: any;
 };
 
 NavLink.external = ({ children, className, href, icon, ...props }: Other) => {

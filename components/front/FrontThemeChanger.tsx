@@ -1,10 +1,10 @@
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { cn } from '@/lib/utils';
 import { useMounted } from '@/hooks/useMounted';
 
-export default function FrontThemeChanger({ variant = 'icon', ...props }: { variant?: string; [props: string]: any }) {
+export default function FrontThemeChanger({ variant = 'icon', ...props }: { variant?: string }) {
   const { theme, setTheme } = useTheme();
   const mounted = useMounted();
 
@@ -40,13 +40,13 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
           className='absolute inset-0 rotate-90 transform text-black transition duration-500 motion-reduce:duration-0 dark:rotate-0 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
-          <MoonIcon />
+          <MoonIcon className='h-5 w-5' />
         </span>
         <span
           className='absolute inset-0 rotate-0 transform text-black transition duration-500 motion-reduce:duration-0 dark:-rotate-90 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
-          <SunIcon />
+          <SunIcon className='h-5 w-5' />
         </span>
       </div>
       <span className={cn('ml-3 text-black dark:text-white', variant === 'icon' && 'sr-only')}>

@@ -11,7 +11,6 @@ import { twMerge } from 'tailwind-merge';
 
 type Props = {
   className?: string;
-  [props: string]: any;
 };
 
 export default function Akun({ className, ...props }: Props) {

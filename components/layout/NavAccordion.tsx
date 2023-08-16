@@ -1,9 +1,9 @@
 'use client';
 
 import { ReactNode, useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Disclosure, Transition } from '@headlessui/react';
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ChevronRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -12,13 +12,11 @@ type Props = {
   routeName: string;
   className?: string;
   icon?: ReactNode;
-  [props: string]: any;
 };
 
 export default function NavAccordion({ children, title, routeName, className, icon, ...props }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [cek, setCek] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -38,7 +36,7 @@ export default function NavAccordion({ children, title, routeName, className, ic
             <Disclosure.Button
               {...props}
               className={twMerge(
-                'flex w-full items-center justify-start gap-2 rounded py-2 pl-2.5 pr-2 text-gray-700 outline-none transition-all',
+                'flex w-full items-center justify-start gap-2 rounded py-2 pl-[10.5px] pr-2 text-gray-700 outline-none transition-all',
                 'hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                 'dark:text-neutral-300 dark:hover:text-sky-500',
                 'hover:bg-gray-100 dark:hover:bg-neutral-800',

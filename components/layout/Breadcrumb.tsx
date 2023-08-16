@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ChevronRightIcon } from '@heroicons/react/24/solid';
+import { ChevronRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
-export default function Breadcrumb({ ...props }: { [props: string]: any }) {
+export default function Breadcrumb({ ...props }) {
   const pathname = usePathname();
   // dont show breadcrumb item in detail page
   const paths = pathname
@@ -35,7 +35,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
     <nav className='flex w-full text-sm' aria-label='Breadcrumb'>
       <ul {...props} className='inline-flex flex-nowrap items-center space-x-1 whitespace-nowrap md:space-x-1'>
         <li className='-ml-0.5 inline-flex items-center'>
-          <ChevronRightIcon className='mr-1 h-5 w-5 text-gray-400' />
+          <ChevronRightIcon className='mr-1 h-[18px] w-5 text-gray-400' />
           <Link
             href='/'
             passHref
@@ -53,7 +53,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             if (index === paths.length - 1) {
               return (
                 <li aria-current='page' key={index} className='flex items-center'>
-                  <ChevronRightIcon className='h-5 w-5 text-gray-500 dark:text-neutral-400' />
+                  <ChevronRightIcon className='h-[18px] w-5 text-gray-500 dark:text-neutral-400' />
                   <span className='ml-1 mr-4 font-medium text-sky-600 dark:text-sky-500'>
                     {capitalizeFirstLetter(path)}
                   </span>
@@ -63,7 +63,7 @@ export default function Breadcrumb({ ...props }: { [props: string]: any }) {
             return (
               <li key={index}>
                 <div className='flex items-center'>
-                  <ChevronRightIcon className='h-5 w-5 text-gray-400' />
+                  <ChevronRightIcon className='h-[18px] w-5 text-gray-400' />
                   <Link
                     href={(index !== 0 ? '/' : '') + paths.slice(0, index).join('/') + '/' + path}
                     className={twMerge(
