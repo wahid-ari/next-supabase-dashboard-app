@@ -43,11 +43,9 @@ export default function NavAccordion({ children, title, routeName, className, ic
                 className,
               )}
             >
-              <div className='flex-grow text-left text-sm'>
-                <div className='flex items-center gap-2'>
-                  {icon}
-                  <span>{title}</span>
-                </div>
+              <div className='flex-grow text-left text-sm flex items-center gap-2'>
+                {icon}
+                <span>{title}</span>
               </div>
               <ChevronRightIcon
                 className={`h-5 w-5 text-gray-500 transition-all duration-300 dark:text-neutral-400 ${

@@ -131,7 +131,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-5 w-5' />}>
+          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[19px] w-[19px]' />}>
             <NavLink href='/design' icon={<LayersIcon className='h-5 w-5' />}>
               Component
             </NavLink>
