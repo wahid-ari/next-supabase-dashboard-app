@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import Badge from '@components/systems/Badge';
-import Heading from '@components/systems/Heading';
-import { ExternalLinkIcon } from '@heroicons/react/outline';
+import { ExternalLinkIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
+
+import Badge from '@/components/systems/Badge';
+import Heading from '@/components/systems/Heading';
 
 type Props = {
   children?: ReactNode;
