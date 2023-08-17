@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { validateFormObject } from '@/validations/zod';
 import * as yup from 'yup';
+import { z } from 'zod';
 
 import useToast from '@/hooks/useToast';
 import Layout from '@/components/layout/Layout';
@@ -79,6 +81,121 @@ export default function Design() {
       }
     } catch (e) {
       console.error(e);
+    }
+  }
+
+  const zodSchema = z
+    .object({
+      usernamee: z
+        .string()
+        .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' })
+        .min(1, { message: 'Username is required' }),
+      emaill: z.string().min(1, { message: 'Email is required' }).email({ message: 'Invalid email address' }),
+      age: z
+        .number({
+          required_error: 'Age is required',
+          invalid_type_error: 'Age is required',
+        })
+        .positive({ message: 'Age must be a positive number' })
+        .gt(17, { message: 'Age must be a greater than 17' })
+        .int({ message: 'Age must be an integer' }),
+      password: z
+        .string()
+        .nonempty({
+          message: 'Password is required',
+        })
+        .min(8, { message: 'Password length minimal is 8' }),
+      confirmPassword: z.string().nonempty({
+        message: 'Confirm Password is required',
+      }),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: 'Oops! Password doesnt match',
+    });
+  const [admin, setAdmin] = useState({
+    usernamee: '',
+    emaill: '',
+    age: '',
+    password: '',
+    confirmPassword: '',
+  });
+  function handleAdminChange(e: any) {
+    let valueNumber = e.target.name == 'age' ? Number(e.target.value) : e.target.value;
+    setAdmin({
+      ...admin,
+      // [e.target.name]: e.target.value,
+      [e.target.name]: valueNumber,
+    });
+  }
+  async function checkValidZod(e: any) {
+    e.preventDefault();
+    try {
+      const validZod = zodSchema.safeParse(admin);
+      if (validZod.success === false) {
+        dismissToast();
+        // console.log(validZod.error);
+        // console.log(validZod.error.issues);
+        validZod.error.issues.forEach((el) => {
+          pushToast({ message: el.message, isError: true });
+        });
+      } else {
+        const toastId = pushToast({
+          message: 'Posting ZOD Data',
+          isLoading: true,
+        });
+        setTimeout(() => {
+          updateToast({ toastId, message: 'Success Posting ZOD Data', isError: false });
+        }, 2000);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const [userZod, setUserZod] = useState({
+    username_object: '',
+    email_object: '',
+    age_object: '',
+    password_object: '',
+    confirmPassword_object: '',
+  });
+  const [errorsZod, setErrorsZod] = useState({
+    username_object: '',
+    email_object: '',
+    age_object: '',
+    password_object: '',
+    confirmPassword_object: '',
+  });
+  function handleUserZodChange(e: any) {
+    let valueNumber = e.target.name == 'age_object' ? Number(e.target.value) : e.target.value;
+    setUserZod({
+      ...userZod,
+      // [e.target.name]: e.target.value,
+      [e.target.name]: valueNumber,
+    });
+  }
+  async function checkValidZodObject(e: any) {
+    e.preventDefault();
+    const { valid, errors } = await validateFormObject(userZod);
+    if (valid) {
+      const toastId = pushToast({
+        message: 'Posting ZOD Object Data',
+        isLoading: true,
+      });
+      setTimeout(() => {
+        updateToast({ toastId, message: 'Success Posting ZOD Object Data', isError: false });
+      }, 2000);
+      setErrorsZod({
+        username_object: '',
+        email_object: '',
+        age_object: '',
+        password_object: '',
+        confirmPassword_object: '',
+      });
+    } else {
+      // @ts-ignore
+      setErrorsZod(errors);
+      return;
     }
   }
 
@@ -354,6 +471,143 @@ export default function Design() {
           onChange={handleUserChange}
         />
         <Button onClick={checkValid}>Submit Yup</Button>
+      </Wrapper>
+
+      <Wrapper id='validation-zod' name='Validation (zod)' noChildren noClassName noProps>
+        <form onSubmit={checkValidZod}>
+          <LabeledInput
+            data-testid='username-zod'
+            label='Username'
+            name='usernamee'
+            value={admin.usernamee}
+            placeholder='Username'
+            onChange={handleAdminChange}
+          />
+          <LabeledInput
+            data-testid='email-zod'
+            label='Email'
+            name='emaill'
+            type='email'
+            value={admin.emaill}
+            placeholder='Email'
+            onChange={handleAdminChange}
+          />
+          <LabeledInput
+            data-testid='age-zod'
+            type='number'
+            label='Age'
+            name='age'
+            value={admin.age}
+            placeholder='Number'
+            onChange={handleAdminChange}
+          />
+          <LabeledInput
+            data-testid='password-zod'
+            type='password'
+            label='Password'
+            name='password'
+            value={admin.password}
+            placeholder='Password'
+            onChange={handleAdminChange}
+          />
+          <LabeledInput
+            data-testid='confirmPassword-zod'
+            type='password'
+            label='Confirm Password'
+            name='confirmPassword'
+            value={admin.confirmPassword}
+            placeholder='Confirm Password'
+            onChange={handleAdminChange}
+          />
+          <Button type='submit'>Submit Zod</Button>
+        </form>
+      </Wrapper>
+
+      <Wrapper id='validation-zod-object' name='Validation (zod object)' noChildren noClassName noProps>
+        <form onSubmit={checkValidZodObject}>
+          <LabeledInput
+            data-testid='username-object'
+            label='Username'
+            name='username_object'
+            value={userZod.username_object}
+            placeholder='Username'
+            onChange={handleUserZodChange}
+          />
+          {errorsZod?.username_object && (
+            <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.username_object}</span>
+          )}
+          <LabeledInput
+            data-testid='email-object'
+            label='Email'
+            name='email_object'
+            type='email'
+            value={userZod.email_object}
+            placeholder='Email'
+            onChange={handleUserZodChange}
+          />
+          {errorsZod?.email_object && <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.email_object}</span>}
+          <LabeledInput
+            data-testid='age-object'
+            type='number'
+            label='Age'
+            name='age_object'
+            value={userZod.age_object}
+            placeholder='Number'
+            onChange={handleUserZodChange}
+            min={0}
+            onKeyPress={(e: any) => !/[0-9]/.test(e.key) && e.preventDefault()}
+          />
+          {errorsZod?.age_object && <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.age_object}</span>}
+
+          <LabeledInput
+            data-testid='password-object'
+            type='password'
+            label='Password'
+            name='password_object'
+            value={userZod.password_object}
+            placeholder='Password'
+            onChange={handleUserZodChange}
+          />
+          {errorsZod?.password_object && (
+            <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.password_object}</span>
+          )}
+          <LabeledInput
+            data-testid='confirmPassword-object'
+            type='password'
+            label='Confirm Password'
+            name='confirmPassword_object'
+            value={userZod.confirmPassword_object}
+            placeholder='Confirm Password'
+            onChange={handleUserZodChange}
+          />
+          {errorsZod?.confirmPassword_object && (
+            <span className='-mt-2 mb-4 block text-red-500'>{errorsZod?.confirmPassword_object}</span>
+          )}
+          <Button type='submit'>Submit Zod Object</Button>
+        </form>
+        <p className='mt-4 flex flex-col'>
+          Ref
+          <span>
+            <a
+              href='https://next-form-validation.vercel.app/example/zod-object'
+              target='_blank'
+              rel='noreferrer'
+              className='text-sky-500 transition-all hover:text-sky-600'
+            >
+              Zod Object
+            </a>
+          </span>
+        </p>
+        <p>
+          <a
+            href='https://next-form-validation.vercel.app/example/zod-object-validation'
+            target='_blank'
+            rel='noreferrer'
+            className='text-sky-500 transition-all hover:text-sky-600'
+          >
+            Zod Object Validation
+          </a>
+        </p>
       </Wrapper>
 
       <Wrapper id='code' name='Code' noChildren props={['name', 'code', 'lang']}>

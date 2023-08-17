@@ -34,7 +34,7 @@ export const validateJabatan = async (data: any) => {
   try {
     await jabatanSchema.validate(data, { abortEarly: false });
     return { valid: true, errors: [] };
-  } catch (err) {
+  } catch (err: any) {
     return { valid: false, errors: err.errors };
   }
 };
@@ -43,7 +43,7 @@ export const validateStruktur = async (data: any) => {
   try {
     await strukturSchema.validate(data, { abortEarly: false });
     return { valid: true, errors: [] };
-  } catch (err) {
+  } catch (err: any) {
     return { valid: false, errors: err.errors };
   }
 };

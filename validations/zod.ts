@@ -38,6 +38,7 @@ function transformZodErrorsIntoObject(errors: any) {
   const validationErrors = {};
   errors.forEach((error: any) => {
     if (error.path !== undefined) {
+      // @ts-ignore
       validationErrors[error.path] = error.message;
     }
   });
@@ -48,7 +49,7 @@ export async function validateFormObject(data: any) {
   try {
     await formSchema.parseAsync(data);
     return { valid: true, errors: [] };
-  } catch (err) {
+  } catch (err: any) {
     const validationErrors = transformZodErrorsIntoObject(err.errors);
     return { valid: false, errors: validationErrors };
   }

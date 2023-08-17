@@ -14,7 +14,7 @@ export async function validateRegister(data: any) {
   try {
     await registerSchema.validate(data, { abortEarly: false });
     return { valid: true, errors: [] };
-  } catch (err) {
+  } catch (err: any) {
     return { valid: false, errors: err.errors };
   }
 }

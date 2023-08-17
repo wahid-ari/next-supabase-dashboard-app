@@ -16,8 +16,8 @@ const colors = [
 
 // Populate Data for ChartJS
 function populateData(param: any, type?: string) {
-  let labels = [];
-  let totals = [];
+  let labels: any[] = [];
+  let totals: any[] = [];
   let bgColor = [];
   let borderColor = [];
   let labelName = '';
@@ -126,7 +126,7 @@ function optionsHorizontalBarChart(theme?: string, windowWidth?: number) {
       y: {
         ticks: {
           color: '#888',
-          autoSkip: windowWidth > 500 ? false : true,
+          autoSkip: windowWidth ? (windowWidth > 500 ? false : true) : false,
           // autoSkip: false,
           font: {
             size: 11,
