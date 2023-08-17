@@ -4,6 +4,7 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
   children: ReactNode;
   className?: string;
+  [props: string]: any;
 };
 
 export default function Text({ children, className, ...props }: Props) {

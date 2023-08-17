@@ -9,6 +9,7 @@ type Props = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
   defaultChecked?: boolean;
+  [props: string]: any;
 };
 
 export default function Radio({
@@ -51,6 +52,7 @@ type DisabledProps = {
   className?: string;
   name: string;
   defaultChecked?: boolean;
+  [props: string]: any;
 };
 
 Radio.disabled = ({ label, className, name, defaultChecked, ...props }: DisabledProps) => {

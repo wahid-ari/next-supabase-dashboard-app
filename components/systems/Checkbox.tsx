@@ -7,6 +7,7 @@ type Props = {
   value?: string | number;
   onChange?: () => void;
   defaultChecked?: boolean;
+  [props: string]: any;
 };
 
 export default function Checkbox({ label, className, name, value, onChange, defaultChecked, ...props }: Props) {
@@ -39,6 +40,7 @@ type DisabledProps = {
   className?: string;
   name?: string;
   defaultChecked?: boolean;
+  [props: string]: any;
 };
 
 Checkbox.disabled = ({ label, className, name, defaultChecked, ...props }: DisabledProps) => {

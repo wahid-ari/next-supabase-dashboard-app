@@ -6,6 +6,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   href: string;
+  [props: string]: any;
 };
 
 export default function LinkButton({ children, className, href, ...props }: Props) {

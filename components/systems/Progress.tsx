@@ -3,6 +3,7 @@ import { twMerge } from 'tailwind-merge';
 type Props = {
   className?: string;
   percent: number;
+  [props: string]: any;
 };
 
 export default function Progress({ className, percent, ...props }: Props) {

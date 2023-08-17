@@ -26,6 +26,7 @@ import {
 import { twMerge } from 'tailwind-merge';
 
 import { GlobalContext } from '@/context/GlobalContext';
+
 import NavAccordion from '@/components/layout/NavAccordion';
 // import { useMounted } from '@/hooks/useMounted';
 

@@ -8,6 +8,7 @@ type Props = {
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   height?: number;
+  [props: string]: any;
 };
 
 export default function TextArea({ label, className, name, placeholder, value, onChange, height, ...props }: Props) {

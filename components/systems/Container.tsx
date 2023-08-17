@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   small?: boolean;
+  [props: string]: any;
 };
 
 export default function Container({ children, className, small, ...props }: Props) {

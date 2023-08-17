@@ -11,6 +11,7 @@ type Props = {
   className?: string;
   wrapperClassName?: string;
   debounce?: number;
+  [props: string]: any;
 };
 
 export default function InputDebounce({

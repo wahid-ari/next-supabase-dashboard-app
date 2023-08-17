@@ -7,6 +7,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   items: string[];
+  [props: string]: any;
 };
 
 export default function Tabs({ children, className, items, ...props }: Props) {
@@ -57,6 +58,7 @@ export default function Tabs({ children, className, items, ...props }: Props) {
 type PanelProps = {
   children: ReactNode;
   className?: string;
+  [props: string]: any;
 };
 
 Tabs.panel = ({ children, className, ...props }: PanelProps) => {

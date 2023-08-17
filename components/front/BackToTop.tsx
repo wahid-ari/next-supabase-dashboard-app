@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { ChevronUpIcon } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/libs/utils';
 
 export default function BackToTop({ className, ...props }: { className?: string }) {
   const [showBackToTop, setShowBackToTop] = useState(false);

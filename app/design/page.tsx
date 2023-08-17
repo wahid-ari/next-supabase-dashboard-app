@@ -1,17 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { validateFormObject } from '@/validations/zod';
+import { faker } from '@faker-js/faker';
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronDownIcon, MoreHorizontal } from 'lucide-react';
+import ReactSelect from 'react-select';
+import { twMerge } from 'tailwind-merge';
 import * as yup from 'yup';
 import { z } from 'zod';
 
+import { tabledata } from '@/utils/tableData';
+import { validateFormObject } from '@/validations/zod';
+import { useMounted } from '@/hooks/useMounted';
 import useToast from '@/hooks/useToast';
+
+import { Button as ButtonUi } from '@/components/ui/Button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/DropdownMenu';
+
 import Layout from '@/components/layout/Layout';
 import Button from '@/components/systems/Button';
 import Code from '@/components/systems/Code';
+import Dialog from '@/components/systems/Dialog';
+import InputDebounce from '@/components/systems/InputDebounce';
+import Label from '@/components/systems/Label';
 import LabeledInput from '@/components/systems/LabeledInput';
+import Modal from '@/components/systems/Modal';
+import ReactTable from '@/components/systems/ReactTable';
+import SearchBox from '@/components/systems/SearchBox';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
@@ -23,7 +47,14 @@ export const metadata: Metadata = {
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
 export default function Design() {
+  const mounted = useMounted();
   const { updateToast, pushToast, dismissToast } = useToast();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openDangerDialog, setOpenDangerDialog] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [openDangerModal, setOpenDangerModal] = useState(false);
+  const [inputDebounceValue, setInputDebounceValue] = useState();
+
   let userSchema = yup.object().shape({
     username: yup
       .string()
@@ -198,6 +229,173 @@ export default function Design() {
       return;
     }
   }
+
+  const searchBoxData = [
+    {
+      id: 1,
+      name: 'Option 1',
+    },
+    {
+      id: 2,
+      name: 'Option 2',
+    },
+    {
+      id: 3,
+      name: 'Option 3',
+    },
+  ];
+  const [selectedSearchBox, setSelectedSearchBox] = useState();
+  const [querySearchBox, setQuerySearchBox] = useState('');
+  const filteredSearchBox =
+    querySearchBox === ''
+      ? searchBoxData
+      : searchBoxData.filter((item) =>
+          item.name.toLowerCase().replace(/\s+/g, '').includes(querySearchBox.toLowerCase().replace(/\s+/g, '')),
+        );
+
+  const reactSelectData = [
+    {
+      value: 1,
+      label: 'Romance',
+    },
+    {
+      value: 2,
+      label: 'Comedy',
+    },
+    {
+      value: 3,
+      label: 'History',
+    },
+  ];
+  const [reactSelect, setReactSelect] = useState();
+
+  const column = useMemo(
+    () => [
+      {
+        Header: 'No',
+        accessor: 'id',
+        width: 300,
+        Cell: (row: any) => {
+          return row.cell.row.index + 1;
+        },
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+        width: 300,
+        Cell: (row: any) => {
+          const { values, original } = row.cell.row;
+          return (
+            <Link
+              href={`#`}
+              className='rounded text-sm font-medium text-sky-500 hover:text-sky-600 focus:border-sky-500 
+            focus:outline-none focus:ring-2 focus:ring-sky-500'
+            >
+              {values.name}
+            </Link>
+          );
+        },
+      },
+      {
+        Header: 'Email',
+        accessor: 'email',
+        width: 300,
+      },
+      {
+        Header: 'Action',
+        disableSortBy: true,
+        width: 300,
+        Cell: (row: any) => {
+          const { values, original } = row.cell.row;
+          // console.log(`${values.id} - ${values.name} - ${original.cover} - ${original.artists.id} - ${original.artists.name}`)
+          return (
+            <div>
+              <Link
+                href={`#`}
+                className='mr-2 rounded bg-sky-600 px-[6px] py-[3px] text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400'
+              >
+                Edit
+              </Link>
+              <Button.danger
+                className='!px-[6px] !py-[2px]'
+                // onClick={() => handleShowDeleteModal(values.id, values.name)}
+              >
+                Delete
+              </Button.danger>
+            </div>
+          );
+        },
+      },
+    ],
+    [],
+  );
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'No',
+        accessor: 'id',
+        width: 300,
+        Cell: (row: any) => {
+          return row.cell.row.index + 1;
+        },
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+        width: 300,
+      },
+      {
+        Header: 'Email',
+        accessor: 'email',
+        width: 300,
+      },
+      {
+        Header: 'Actions',
+        accessor: 'actions',
+        width: 10,
+        disableSortBy: true,
+        Cell: ({ row }: { row: any }) => {
+          const data = row.original;
+          return (
+            <div className='relative'>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <ButtonUi variant='ghost' className='h-8 w-8 p-0'>
+                    <span className='sr-only'>Open menu</span>
+                    <MoreHorizontal className='h-4 w-4' />
+                  </ButtonUi>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align='end'>
+                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                  <DropdownMenuItem onClick={() => navigator.clipboard.writeText(data.name)}>
+                    Copy Name
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>View customer</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          );
+        },
+      },
+    ],
+    [],
+  );
+  function createUser() {
+    return {
+      name: faker.person.fullName(),
+      email: faker.internet.email(),
+    };
+  }
+  const fakerUsers = useMemo(() => faker.helpers.multiple(createUser, { count: 50 }), []);
+  const tableInstance = useRef<any>(null);
+  const [inputDebounceValues, setInputDebounceValues] = useState('');
+  const tableInstances = useRef<any>(null);
+  const [filteredLength, setFilteredLength] = useState(0);
+  useEffect(() => {
+    setFilteredLength(tableInstances?.current?.rows?.length);
+  }, [inputDebounceValues]);
 
   return (
     <Layout>
@@ -608,6 +806,277 @@ export default function Design() {
             Zod Object Validation
           </a>
         </p>
+      </Wrapper>
+
+      <Wrapper
+        id='dialog'
+        name='Dialog (Radix)'
+        noClassName
+        noProps
+        props={['open', 'setOpen', 'title', 'children', 'isDanger', 'onClose', 'onConfirm', 'showIcon']}
+      >
+        <Button onClick={() => setOpenDialog(true)}>Open Dialog</Button>
+        <br />
+        <br />
+
+        <Dialog
+          data-testid='dialog'
+          title='Confirmation'
+          open={openDialog}
+          showIcon
+          setOpen={setOpenDialog}
+          onClose={() => setOpenDialog(false)}
+          onConfirm={() => setOpenDialog(false)}
+        >
+          Mollit incididunt ex exercitation sunt incididunt culpa reprehenderit esse magna laborum. Do velit ipsum
+          consectetur aliquip mollit nisi irure quis Lorem eu non sit.
+        </Dialog>
+
+        <Button.danger onClick={() => setOpenDangerDialog(true)}>Open Danger Dialog</Button.danger>
+
+        <Dialog
+          data-testid='dialog-danger'
+          title='Delete Confirmation'
+          open={openDangerDialog}
+          showIcon
+          isDanger
+          setOpen={setOpenDangerDialog}
+          onClose={() => setOpenDangerDialog(false)}
+          onConfirm={() => setOpenDangerDialog(false)}
+        >
+          Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.
+        </Dialog>
+      </Wrapper>
+
+      <Wrapper
+        id='modal'
+        name='Modal (HeadlessUI)'
+        noClassName
+        noProps
+        props={['open', 'title', 'children', 'isDanger', 'onClose', 'onConfirm', 'showIcon', 'confirmText']}
+      >
+        <Button onClick={() => setOpenModal(true)}>Open Modal</Button>
+        <br />
+        <br />
+
+        <Modal
+          data-testid='modal'
+          title='Confirmation'
+          open={openModal}
+          showIcon
+          onClose={() => setOpenModal(false)}
+          onConfirm={() => setOpenModal(false)}
+        >
+          Mollit incididunt ex exercitation sunt incididunt culpa reprehenderit esse magna laborum. Do velit ipsum
+          consectetur aliquip mollit nisi irure quis Lorem eu non sit.
+        </Modal>
+
+        <Button.danger onClick={() => setOpenDangerModal(true)}>Open Danger Modal</Button.danger>
+
+        <Modal
+          data-testid='modal-danger'
+          title='Delete Confirmation'
+          open={openDangerModal}
+          showIcon
+          isDanger
+          onClose={() => setOpenDangerModal(false)}
+          onConfirm={() => setOpenDangerModal(false)}
+        >
+          Danger Content Fugiat consectetur nulla qui veniam. Aliquip ipsum dolore eiusmod Lorem ipsum fugiat.
+        </Modal>
+      </Wrapper>
+
+      <Wrapper
+        id='searchbox'
+        name='SearchBox'
+        noClassName
+        noProps
+        noChildren
+        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
+      >
+        <SearchBox
+          data-testid='searchbox'
+          label='Search Box'
+          value={selectedSearchBox}
+          placeholder='Search or Select'
+          onChange={setSelectedSearchBox}
+          onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
+          afterLeave={() => setQuerySearchBox('')}
+          filtered={filteredSearchBox}
+          query={querySearchBox}
+        />
+      </Wrapper>
+
+      <Wrapper
+        id='reactselect'
+        name='ReactSelect'
+        noChildren
+        props={[
+          'instanceId',
+          'options',
+          'isMulti',
+          'noOptionsMessage',
+          'value',
+          'onChange',
+          'placeholder',
+          'name',
+          'classNamePrefix',
+          'theme',
+        ]}
+      >
+        <Label htmlFor='reactselect' className='mb-2'>
+          Category
+        </Label>
+        <ReactSelect
+          id='reactselect'
+          instanceId='reactselect'
+          aria-label='React Select'
+          // @ts-ignore
+          options={reactSelectData}
+          isMulti
+          noOptionsMessage={() => 'Not Found'}
+          value={reactSelect}
+          // @ts-ignore
+          onChange={setReactSelect}
+          placeholder='Search or Select'
+          name='reactselect'
+          classNames={{
+            option: (option) => (option.isSelected ? '!border-red-600' : '!border-grey-300'),
+          }}
+          classNamePrefix='react-select'
+          theme={(theme) => ({
+            ...theme,
+            colors: {
+              ...theme.colors,
+              primary: `#0ea5e9`,
+              primary25: `#0ea5e9`,
+              primary50: `#0ea5e9`,
+              neutral40: `#EF4444`,
+            },
+          })}
+        />
+      </Wrapper>
+
+      <Wrapper
+        id='reacttable'
+        name='React Table'
+        props={['columns', 'data', 'page_size', 'bordered', 'itemPerPage', 'keyword', 'showInfo', 'filteredLength']}
+        noProps
+        noWrap
+      >
+        <LabeledInput
+          label='Search Data'
+          id='caridata'
+          name='caridata'
+          placeholder='Keyword'
+          onChange={(e) => {
+            tableInstance?.current?.setGlobalFilter(e.target.value);
+          }}
+        />
+        <ReactTable data-testid='reacttable' columns={column} data={tabledata} ref={tableInstance} page_size={5} />
+        <br />
+        <InputDebounce
+          label='Search'
+          id='inputdebounces'
+          name='inputdebounces'
+          placeholder='Search'
+          value={inputDebounceValues}
+          onChange={(value) => {
+            setInputDebounceValues(value);
+            tableInstances?.current?.setGlobalFilter(value);
+          }}
+        />
+        {mounted ? (
+          <ReactTable
+            columns={columns}
+            data={fakerUsers}
+            ref={tableInstances}
+            page_size={10}
+            itemPerPage={[10, 20, 50, 100]}
+            keyword={inputDebounceValues}
+            showInfo
+            filteredLength={filteredLength}
+          />
+        ) : null}
+      </Wrapper>
+
+      <Wrapper id='dropdownmenu' name='DropdownMenu' noChildren noClassName noProps>
+        <Menu as='div' className='relative'>
+          {({ open }) => (
+            <>
+              <Menu.Button
+                className={twMerge(
+                  'flex items-center rounded font-medium text-gray-600 transition-all hover:text-gray-900',
+                  'focus:outline-none dark:text-neutral-300 dark:hover:text-neutral-100',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                )}
+              >
+                Menu
+                <ChevronDownIcon
+                  className={twMerge('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
+                  aria-hidden='true'
+                />
+              </Menu.Button>
+              <Transition
+                enter='transition ease-in-out duration-300'
+                enterFrom='transform opacity-0 scale-95'
+                enterTo='transform opacity-100 scale-100'
+                leave='transition ease-in-out duration-100'
+                leaveFrom='transform opacity-100 scale-100'
+                leaveTo='transform opacity-0 scale-95'
+              >
+                <Menu.Items className='absolute z-50 mt-2 w-32 origin-top-right rounded-md border bg-white shadow-md focus:outline-none dark:border-neutral-700 dark:bg-neutral-900'>
+                  <div className='space-y-1 px-2 py-2'>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href='/settings'
+                          className={twMerge(
+                            'flex w-full rounded px-2 py-1.5 text-sm',
+                            active
+                              ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                              : 'text-gray-700 dark:text-neutral-300',
+                          )}
+                        >
+                          Setting
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link
+                          href='/design/ui'
+                          className={twMerge(
+                            'flex w-full rounded px-2 py-1.5 text-sm',
+                            active
+                              ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                              : 'text-gray-700 dark:text-neutral-300',
+                          )}
+                        >
+                          UI
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={twMerge(
+                            'flex w-full rounded px-2 py-1.5 text-sm',
+                            active
+                              ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                              : 'text-gray-700 dark:text-neutral-300',
+                          )}
+                        >
+                          Logout
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </div>
+                </Menu.Items>
+              </Transition>
+            </>
+          )}
+        </Menu>
       </Wrapper>
 
       <Wrapper id='code' name='Code' noChildren props={['name', 'code', 'lang']}>

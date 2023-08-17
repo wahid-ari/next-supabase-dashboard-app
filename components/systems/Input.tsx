@@ -7,6 +7,7 @@ type Props = {
   placeholder?: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  [props: string]: any;
 };
 
 export default function Input({ className, type, name, placeholder, value, onChange, ...props }: Props) {
@@ -37,6 +38,7 @@ type DisabledProps = {
   name: string;
   placeholder?: string;
   defaultValue?: string;
+  [props: string]: any;
 };
 
 Input.disabled = ({ className, type, name, placeholder, defaultValue, ...props }: DisabledProps) => {

@@ -12,6 +12,7 @@ type Props = {
   name?: string;
   code: string;
   lang?: string;
+  [props: string]: any;
 };
 
 export default function Code({ className, name = 'Code', code, lang = 'javascript', ...props }: Props) {

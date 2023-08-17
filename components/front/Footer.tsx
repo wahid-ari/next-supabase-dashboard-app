@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { GithubIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/libs/utils';
 
 const linkClassName = cn(
   'hover-underline-animation rounded text-[15px] hover:text-neutral-900 px-0.5',

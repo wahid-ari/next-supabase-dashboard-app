@@ -14,6 +14,7 @@ type Props = {
   showIcon?: boolean;
   confirmText?: string;
   confirmTestId?: string;
+  [props: string]: any;
 };
 
 export default function Modal({

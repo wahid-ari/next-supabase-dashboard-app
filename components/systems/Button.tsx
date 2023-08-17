@@ -10,6 +10,7 @@ type Props = {
   // onClick?: (e: any) => Promise<void>;
   onClick?: () => void;
   disabled?: boolean;
+  [props: string]: any;
 };
 
 export default function Button({ children, className, type, value, onClick, disabled, ...props }: Props) {

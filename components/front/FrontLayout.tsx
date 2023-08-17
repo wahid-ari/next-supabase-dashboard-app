@@ -1,4 +1,5 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/libs/utils';
+
 import BackToTop from '@/components/front/BackToTop';
 import Footer from '@/components/front/Footer';
 import FrontNavbar from '@/components/front/FrontNavbar';

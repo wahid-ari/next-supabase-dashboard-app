@@ -75,6 +75,7 @@ type DisabledProps = {
   name: string;
   placeholder?: string;
   defaultValue?: string;
+  [props: string]: any;
 };
 
 LabeledInput.disabled = ({

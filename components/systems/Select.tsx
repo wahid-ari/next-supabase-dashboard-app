@@ -8,6 +8,7 @@ type Props = {
   name: string;
   defaultValue?: any;
   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  [props: string]: any;
 };
 
 export default function Select({ children, className, label, name, defaultValue, onChange, ...props }: Props) {
@@ -40,6 +41,7 @@ export default function Select({ children, className, label, name, defaultValue,
 type OptionProps = {
   children: ReactNode;
   value: any;
+  [props: string]: any;
 };
 
 Select.option = ({ children, value, ...props }: OptionProps) => {

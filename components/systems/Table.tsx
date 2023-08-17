@@ -14,6 +14,7 @@ type Props = {
   prev?: () => void;
   rowPerPage?: number;
   noPagination?: boolean;
+  [props: string]: any;
 };
 
 export default function Table({
@@ -102,6 +103,7 @@ export default function Table({
 type TrProps = {
   children: ReactNode;
   className?: string;
+  [props: string]: any;
 };
 
 Table.tr = ({ children, className, ...props }: TrProps) => {
@@ -122,6 +124,7 @@ type TdProps = {
   children: ReactNode;
   className?: string;
   shrink?: boolean;
+  [props: string]: any;
 };
 
 Table.td = ({ children, className, shrink, ...props }: TdProps) => {

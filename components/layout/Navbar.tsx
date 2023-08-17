@@ -10,6 +10,7 @@ import { twMerge } from 'tailwind-merge';
 
 import { GlobalContext } from '@/context/GlobalContext';
 import { useMounted } from '@/hooks/useMounted';
+
 import Menu from '@/components/layout/Menu';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 

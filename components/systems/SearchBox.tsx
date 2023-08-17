@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import { CheckIcon, ChevronDownIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -12,6 +12,7 @@ type Props = {
   onChangeQuery?: (e: any) => void;
   afterLeave?: () => void;
   filtered: any;
+  [props: string]: any;
 };
 
 export default function SearchBox({
@@ -33,7 +34,10 @@ export default function SearchBox({
         <div className='relative my-2 w-full cursor-default overflow-hidden rounded-md border border-neutral-300 p-[1px] text-left text-sm dark:border-neutral-600'>
           <Combobox.Input
             {...props}
-            className='w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900 focus:border-sky-500 focus:ring-2 focus:ring-sky-500 dark:bg-neutral-900 dark:text-white'
+            className={twMerge(
+              'w-full rounded-md border border-transparent py-2 pl-3 pr-10 text-sm font-medium text-neutral-900 dark:text-white',
+              'focus-visible:border-sky-500 focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-neutral-900 focus-visible:outline-none',
+            )}
             displayValue={(data: any) => data?.name}
             placeholder={placeholder}
             onChange={onChangeQuery}

@@ -6,6 +6,7 @@ type Props = {
   className?: string;
   medium?: boolean;
   large?: boolean;
+  [props: string]: any;
 };
 
 export default function LoadingDots({ className, medium, large, ...props }: Props) {

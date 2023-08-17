@@ -9,6 +9,7 @@ type Props = {
   name: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  [props: string]: any;
 };
 
 export default function FileInput({ className, label, name, value, onChange, ...props }: Props) {

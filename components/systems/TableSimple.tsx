@@ -8,6 +8,7 @@ type Props = {
   head?: ReactNode;
   bordered?: boolean;
   caption?: string;
+  [props: string]: any;
 };
 
 export default function TableSimple({
@@ -48,6 +49,7 @@ export default function TableSimple({
 type TrProps = {
   children: ReactNode;
   className?: string;
+  [props: string]: any;
 };
 
 TableSimple.tr = ({ children, className, ...props }: TrProps) => {
@@ -69,6 +71,7 @@ type TdProps = {
   className?: string;
   shrink?: boolean;
   bordered?: boolean;
+  [props: string]: any;
 };
 
 TableSimple.td = ({ children, className, shrink, bordered, ...props }: TdProps) => {

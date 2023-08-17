@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   isLarge?: boolean;
+  [props: string]: any;
 };
 
 export default function Badge({ children, className, isLarge, ...props }: Props) {

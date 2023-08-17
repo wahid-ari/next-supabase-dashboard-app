@@ -17,6 +17,7 @@ type Props = {
   noChildren?: boolean;
   noProps?: boolean;
   noWrap?: boolean;
+  [props: string]: any;
 };
 
 export default function Wrapper({

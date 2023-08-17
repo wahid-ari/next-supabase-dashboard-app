@@ -6,6 +6,7 @@ type Props = {
   children: string;
   className?: string;
   count?: number;
+  [props: string]: any;
 };
 
 export default function ShowMore({ children, className, count = 200, ...props }: Props) {

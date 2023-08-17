@@ -7,6 +7,7 @@ type Props = {
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
+  [props: string]: any;
 };
 
 export default function Heading({ children, className, h1, h2, h3, ...props }: Props) {

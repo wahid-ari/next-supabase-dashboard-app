@@ -6,7 +6,8 @@ import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/libs/utils';
+
 // import nookies from 'nookies';
 // import { useSession } from 'next-auth/react';
 
