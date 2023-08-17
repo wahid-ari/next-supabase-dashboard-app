@@ -7,6 +7,7 @@ import {
   ChevronsRightIcon,
   ChevronUpIcon,
 } from 'lucide-react';
+// @ts-ignore
 import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
 import { twMerge } from 'tailwind-merge';
 
@@ -119,68 +120,80 @@ export const ReactTable = forwardRef(
             className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300'
           >
             <thead>
-              {headerGroups.map((headerGroup: any, i: number) => (
-                <tr
-                  key={i + 1}
-                  {...headerGroup.getHeaderGroupProps()}
-                  className='border-b bg-gray-50 text-left text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'
-                >
-                  {headerGroup.headers.map((column: any, i: number) => (
-                    <th
-                      key={i + 1}
-                      {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className={`p-3 font-semibold first:w-1 ${column.Header == 'Action' && 'w-1'}
-                    ${bordered ? 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800' : ''}`}
-                    >
-                      <span className='flex items-center gap-1.5'>
-                        {column.render('Header')}
-                        {!column.disableSortBy ? (
-                          column.isSorted ? (
-                            column.isSortedDesc ? (
-                              <ChevronDownIcon className='h-4 w-4 text-neutral-400' />
-                            ) : (
-                              <ChevronUpIcon className='h-4 w-4 text-neutral-400' />
-                            )
-                          ) : (
-                            <svg
-                              xmlns='http://www.w3.org/2000/svg'
-                              fill='none'
-                              viewBox='0 0 25 25'
-                              strokeWidth={1.5}
-                              stroke='currentColor'
-                              className='h-[20px] w-5 text-neutral-500'
-                            >
-                              <path
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                                d='M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9'
-                              />
-                            </svg>
-                          )
-                        ) : null}
-                      </span>
-                    </th>
-                  ))}
-                </tr>
-              ))}
+              {headerGroups.map((headerGroup: any, i: number) => {
+                const { key, ...restHeaderProps } = headerGroup.getHeaderGroupProps();
+                return (
+                  <tr
+                    key={i + 1}
+                    {...restHeaderProps}
+                    className='border-b bg-gray-50 text-left text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'
+                  >
+                    {headerGroup.headers.map((column: any, i: number) => {
+                      const { key, ...restHeaderGroupProps } = column.getHeaderProps(column.getSortByToggleProps());
+                      return (
+                        <th
+                          key={i + 1}
+                          {...restHeaderGroupProps}
+                          className={twMerge(
+                            'p-3 font-semibold first:w-1',
+                            column.Header == 'Action' && 'w-1',
+                            bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800',
+                          )}
+                        >
+                          <span className='flex items-center gap-1.5'>
+                            {column.render('Header')}
+                            {!column.disableSortBy ? (
+                              column.isSorted ? (
+                                column.isSortedDesc ? (
+                                  <ChevronDownIcon className='h-4 w-4 text-neutral-400' />
+                                ) : (
+                                  <ChevronUpIcon className='h-4 w-4 text-neutral-400' />
+                                )
+                              ) : (
+                                <svg
+                                  xmlns='http://www.w3.org/2000/svg'
+                                  fill='none'
+                                  viewBox='0 0 25 25'
+                                  strokeWidth={1.5}
+                                  stroke='currentColor'
+                                  className='h-[20px] w-5 text-neutral-500'
+                                >
+                                  <path
+                                    strokeLinecap='round'
+                                    strokeLinejoin='round'
+                                    d='M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9'
+                                  />
+                                </svg>
+                              )
+                            ) : null}
+                          </span>
+                        </th>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
             </thead>
             <tbody {...getTableBodyProps()}>
               {page.map((row: any, i: number) => {
                 prepareRow(row);
+                const { key, ...restRowProps } = row.getRowProps();
                 return (
                   <tr
                     key={i + 1}
-                    {...row.getRowProps()}
+                    {...restRowProps}
                     className='border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200'
                   >
                     {row.cells.map((cell: any, i: number) => {
+                      const { key, ...restCellProps } = cell.getCellProps();
                       return (
                         <td
                           key={i + 1}
-                          {...cell.getCellProps()}
-                          className={`p-3 ${
-                            bordered ? 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800' : ''
-                          }`}
+                          {...restCellProps}
+                          className={twMerge(
+                            'p-3',
+                            bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800',
+                          )}
                         >
                           {cell.render('Cell')}
                         </td>
