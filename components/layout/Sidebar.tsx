@@ -33,8 +33,7 @@ import NavAccordion from '@/components/layout/NavAccordion';
 import NavLink from '@/components/layout/NavLink';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 import Badge from '@/components/systems/Badge';
-
-// import Modal from '@/components/systems/Modal';
+import Modal from '@/components/systems/Modal';
 
 export default function Sidebar({ className, ...props }: { className?: string }) {
   const router = useRouter();
@@ -200,7 +199,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
           ) : null} */}
         </div>
       </aside>
-      {/* <Modal
+      <Modal
         title='Logout'
         open={openModal}
         showIcon
@@ -211,7 +210,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
         confirmTestId='confirm-logout'
       >
         Are you sure want to logout?
-      </Modal> */}
+      </Modal>
     </>
   );
 }

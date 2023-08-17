@@ -13,7 +13,7 @@ const linkIconClassName = cn(
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-white',
 );
 
-export default function Footer({ className, ...props }: { className?: string }) {
+export default function Footer({ className, ...props }: { className?: string; [props: string]: any }) {
   return (
     <footer {...props} className={cn('border-t dark:border-neutral-800', className)}>
       <div className='mx-auto max-w-7xl px-4 pb-6 pt-10 '>
