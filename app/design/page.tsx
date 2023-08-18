@@ -12,9 +12,11 @@ import DemoModal from './DemoModal';
 import DemoReactSelect from './DemoReactSelect';
 import DemoReactTable from './DemoReactTable';
 import DemoSearchbox from './DemoSearchbox';
+import DemoUseToast from './DemoUseToast';
 import DemoValidation from './DemoValidation';
 import DemoValidationZod from './DemoValidationZod';
 import DemoValidationZodObject from './DemoValidationZodObject';
+import DesignPage from './design-page';
 
 export const metadata: Metadata = {
   title: 'Design System - NextJS',
@@ -376,6 +378,12 @@ function toastAsync() {
 };`}
         />
       </Wrapper>
+
+      <Wrapper id='usetoast' name='useToast (hook)' noProps noChildren noClassName>
+        <DemoUseToast />
+      </Wrapper>
+
+      <DesignPage />
     </Layout>
   );
 }

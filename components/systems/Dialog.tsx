@@ -1,3 +1,5 @@
+'use client';
+
 import { Dispatch, Fragment, ReactNode, SetStateAction } from 'react';
 import { Transition } from '@headlessui/react';
 import * as DialogRadix from '@radix-ui/react-dialog';

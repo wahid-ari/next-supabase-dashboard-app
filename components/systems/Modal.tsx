@@ -1,3 +1,5 @@
+'use client';
+
 import { Fragment, ReactNode } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { AlertTriangleIcon, InfoIcon } from 'lucide-react';

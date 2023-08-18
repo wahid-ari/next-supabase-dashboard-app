@@ -1,3 +1,5 @@
+'use client';
+
 import { Fragment } from 'react';
 import { Combobox, Transition } from '@headlessui/react';
 import { CheckIcon, ChevronDownIcon } from 'lucide-react';

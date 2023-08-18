@@ -1,3 +1,5 @@
+'use client';
+
 import { ReactNode } from 'react';
 import { Tab } from '@headlessui/react';
 import { motion } from 'framer-motion';

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { ChevronDownIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
