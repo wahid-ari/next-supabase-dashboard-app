@@ -6,22 +6,21 @@ import Code from '@/components/systems/Code';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
-import DemoDialog from '@/app/design/components/DemoDialog';
-import DemoDropdownMenu from '@/app/design/components/DemoDropdownMenu';
-import DemoModal from '@/app/design/components/DemoModal';
-import DemoReactSelect from '@/app/design/components/DemoReactSelect';
-import DemoReactTable from '@/app/design/components/DemoReactTable';
-import DemoSearchbox from '@/app/design/components/DemoSearchbox';
-import DemoUseToast from '@/app/design/components/DemoUseToast';
-import DemoValidation from '@/app/design/components/DemoValidation';
-import DemoValidationZod from '@/app/design/components/DemoValidationZod';
-import DemoValidationZodObject from '@/app/design/components/DemoValidationZodObject';
-
+import DemoDialog from './components/DemoDialog';
+import DemoDropdownMenu from './components/DemoDropdownMenu';
+import DemoModal from './components/DemoModal';
+import DemoReactSelect from './components/DemoReactSelect';
+import DemoReactTable from './components/DemoReactTable';
+import DemoSearchbox from './components/DemoSearchbox';
+import DemoUseToast from './components/DemoUseToast';
+import DemoValidation from './components/DemoValidation';
+import DemoValidationZod from './components/DemoValidationZod';
+import DemoValidationZodObject from './components/DemoValidationZodObject';
 import DesignPage from './design-page';
 
 export const metadata: Metadata = {
-  title: 'Design System - NextJS',
-  description: 'Design Page',
+  title: 'Components - NextJS',
+  description: 'Components Design Page',
 };
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';

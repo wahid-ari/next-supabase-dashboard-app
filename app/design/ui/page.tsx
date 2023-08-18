@@ -8,8 +8,8 @@ import Wrapper from '@/components/systems/Wrapper';
 import UiPage from './ui-page';
 
 export const metadata: Metadata = {
-  title: 'Design System - NextJS',
-  description: 'Design Page',
+  title: 'UI - NextJS',
+  description: 'UI Design Page',
 };
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
