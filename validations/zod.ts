@@ -38,7 +38,6 @@ function transformZodErrorsIntoObject(errors: any) {
   const validationErrors = {};
   errors.forEach((error: any) => {
     if (error.path !== undefined) {
-      // @ts-ignore
       validationErrors[error.path] = error.message;
     }
   });

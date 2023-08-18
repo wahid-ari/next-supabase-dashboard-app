@@ -31,7 +31,6 @@ export default function Modal({
 }: Props) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      {/* @ts-ignore */}
       <Dialog as='div' className='fixed inset-0 z-50 overflow-y-auto' open={open} onClose={onClose}>
         {/* This element is to trick the browser into centering the modal contents horizontally. */}
         <div className='px-4 pt-4 text-center sm:block sm:p-0'>

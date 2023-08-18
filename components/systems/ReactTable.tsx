@@ -7,7 +7,6 @@ import {
   ChevronsRightIcon,
   ChevronUpIcon,
 } from 'lucide-react';
-// @ts-ignore
 import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
 import { twMerge } from 'tailwind-merge';
 
