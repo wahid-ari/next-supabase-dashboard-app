@@ -434,7 +434,7 @@ export default function Design() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#reactselect'>
+            <Link className={tocClass} href='#react-select'>
               ReactSelect
             </Link>
           </span>
@@ -908,7 +908,7 @@ export default function Design() {
       </Wrapper>
 
       <Wrapper
-        id='reactselect'
+        id='react-select'
         name='ReactSelect'
         noChildren
         props={[

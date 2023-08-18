@@ -34,7 +34,7 @@ export default function Wrapper({
 }: Props) {
   return (
     <section id={id} className='pt-8'>
-      <Heading className='group flex transition-all duration-500'>
+      <Heading h2 className='group flex transition-all duration-500 text-lg'>
         <span className='mr-2 text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
           #
         </span>{' '}
