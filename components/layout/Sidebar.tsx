@@ -160,7 +160,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/settings' icon={<SettingsIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/setting' icon={<SettingsIcon className='h-5 w-5' />} className='mt-1'>
             Settings
           </NavLink>
 

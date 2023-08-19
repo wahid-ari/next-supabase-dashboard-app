@@ -73,7 +73,7 @@ export default function Akun({ className, ...props }: Props) {
                   <Menu.Item>
                     {({ active }) => (
                       <Link
-                        href='/settings'
+                        href='/setting'
                         className={twMerge(
                           'flex w-full rounded px-2 py-1.5 text-sm',
                           active

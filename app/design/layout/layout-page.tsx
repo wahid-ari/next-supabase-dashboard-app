@@ -35,11 +35,7 @@ export default function LayoutPage() {
             routeName='design'
             icon={<LayoutPanelLeftIcon className='h-4 w-4' />}
           >
-            <NavLink
-              data-testid='nav-accordion-link'
-              href='/design/component'
-              icon={<LayersIcon className='h-4 w-4' />}
-            >
+            <NavLink data-testid='nav-accordion-link' href='/design' icon={<LayersIcon className='h-4 w-4' />}>
               Component
             </NavLink>
             <NavLink href='/design/layout' className='mt-1.5' icon={<LayoutDashboardIcon className='h-4 w-4' />}>
