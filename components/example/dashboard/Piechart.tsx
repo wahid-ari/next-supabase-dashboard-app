@@ -83,6 +83,7 @@ export function Piechart() {
     <ResponsiveContainer width='100%' height={350}>
       <PieChart>
         <Pie
+          className='focus:outline-1 dark:focus:outline-1 focus:outline-sky-600 dark:focus:outline-sky-600'
           data={data}
           type='monotone'
           dataKey='total'

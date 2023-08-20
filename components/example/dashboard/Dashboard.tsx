@@ -21,17 +21,17 @@ export default function DashboardPage() {
       <div className='mb-8 md:hidden'>
         <Image
           src='https://github.com/vercel.png'
-          width={200}
-          height={200}
+          width={300}
+          height={300}
           alt='Dashboard'
-          className='block dark:hidden'
+          className='block dark:hidden mx-auto rounded-lg'
         />
         <Image
           src='https://github.com/vercel.png'
-          width={200}
-          height={200}
+          width={300}
+          height={300}
           alt='Dashboard'
-          className='hidden dark:block'
+          className='hidden dark:block mx-auto rounded-lg'
         />
       </div>
       <div className='flex-col md:flex'>

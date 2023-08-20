@@ -29,12 +29,12 @@ const users = [
   {
     name: 'Isabella Nguyen',
     email: 'isabella.nguyen@email.com',
-    avatar: '/avatars/03.png',
+    avatar: '/avatars/02.png',
   },
   {
     name: 'Emma Wilson',
     email: 'emma@example.com',
-    avatar: '/avatars/05.png',
+    avatar: '/avatars/03.png',
   },
 ] as const;
 
