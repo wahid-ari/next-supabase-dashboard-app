@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier -w .",
-    "type-check": "tsc"
+    "type": "tsc"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.16",

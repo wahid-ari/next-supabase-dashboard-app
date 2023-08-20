@@ -133,7 +133,7 @@ export default function FormPage() {
     formInput.reset({
       username: text,
     });
-  }, [text]);
+  }, [formInput, text]);
 
   const formInputArray = useForm<z.infer<typeof InputArrayFormSchema>>({
     resolver: zodResolver(InputArrayFormSchema),
