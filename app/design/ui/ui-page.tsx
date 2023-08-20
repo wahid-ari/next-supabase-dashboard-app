@@ -1154,7 +1154,7 @@ export default function UiPage() {
           // onValueChange={(e) => setSelectValue(e)}
           onValueChange={setSelectValue}
         >
-          <SelectTrigger className='w-[180px]' aria-label='select-fruit'>
+          <SelectTrigger className='w-[180px]' id='select-fruit'>
             <SelectValue placeholder='Select a fruit' />
           </SelectTrigger>
           <SelectContent>

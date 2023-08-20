@@ -21,15 +21,15 @@ export default function DashboardPage() {
       <div className='mb-8 md:hidden'>
         <Image
           src='https://github.com/vercel.png'
-          width={880}
-          height={466}
+          width={200}
+          height={200}
           alt='Dashboard'
           className='block dark:hidden'
         />
         <Image
           src='https://github.com/vercel.png'
-          width={880}
-          height={466}
+          width={200}
+          height={200}
           alt='Dashboard'
           className='hidden dark:block'
         />

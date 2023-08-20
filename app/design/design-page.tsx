@@ -203,7 +203,7 @@ export default function DesignPage() {
       </Wrapper>
 
       <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'onChange']}>
-        <Input name='input' placeholder='Input default' data-testid='input' />
+        <Input name='inputt' placeholder='Input default' data-testid='input' />
       </Wrapper>
 
       <Wrapper id='inputdisabled' name='Input.disabled' props={['type', 'name', 'placeholder', 'defaultValue']}>
@@ -359,9 +359,10 @@ export default function DesignPage() {
       >
         <Radio name='radio' value='radio-blue' label='Blue' data-testid='radio' />
         <Radio name='radio' value='radio-red' label='Red' defaultChecked data-testid='radio-checked' />
-        <Radio.disabled name='radios' label='Radio Disabled' data-testid='radio-disabled' />
+        <Radio.disabled name='radios' value='enable' label='Radio Disabled' data-testid='radio-disabled' />
         <Radio.disabled
-          name='radios'
+          name='radioss'
+          value='disable'
           label='Radio Checked Disabled'
           defaultChecked
           data-testid='radio-checked-disabled'
