@@ -49,7 +49,7 @@ export function DemoGithub() {
             <Separator orientation='vertical' className='h-[20px]' />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant='outline' size='sm' className='px-2 shadow-none'>
+                <Button variant='outline' size='sm' className='px-2 shadow-none' aria-label='options'>
                   <ChevronDownIcon className='text-secondary-foreground h-4 w-4' />
                 </Button>
               </DropdownMenuTrigger>

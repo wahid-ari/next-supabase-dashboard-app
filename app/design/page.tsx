@@ -153,12 +153,12 @@ export default function Ui() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#inputdebounce'>
+            <Link className={tocClass} href='#input-debounce'>
               InputDebounce
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#textarea'>
+            <Link className={tocClass} href='#text-area'>
               TextArea
             </Link>
           </span>

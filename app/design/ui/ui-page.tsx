@@ -428,7 +428,7 @@ export default function UiPage() {
           <Button variant='outline'>Outline</Button>
           <Button variant='ghost'>Ghost</Button>
           <Button variant='link'>Link Variant</Button>
-          <Button variant='outline' size='icon'>
+          <Button variant='outline' size='icon' aria-label='button-icon'>
             <ChevronRight className='h-4 w-4' />
           </Button>
           <Button>
@@ -478,7 +478,7 @@ export default function UiPage() {
                 <div className='flex flex-col space-y-2.5'>
                   <Label htmlFor='framework'>Framework</Label>
                   <Select>
-                    <SelectTrigger id='framework'>
+                    <SelectTrigger id='framework' aria-label='framework'>
                       <SelectValue placeholder='Select' />
                     </SelectTrigger>
                     <SelectContent position='popper'>
@@ -507,6 +507,7 @@ export default function UiPage() {
       >
         <div className='flex items-center space-x-2'>
           <Checkbox
+            aria-label='terms'
             id='terms'
             checked={checkboxValue}
             // onCheckedChange={handleCheckboxChange}
@@ -520,7 +521,7 @@ export default function UiPage() {
           </label>
         </div>
         <div className='mt-4 flex items-center space-x-2'>
-          <Checkbox id='checkbox-disabled' disabled />
+          <Checkbox id='checkbox-disabled' aria-label='checkbox-disabled' disabled />
           <label
             htmlFor='checkbox-disabled'
             className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'
@@ -529,7 +530,7 @@ export default function UiPage() {
           </label>
         </div>
         <div className='items-top mt-4 flex space-x-2'>
-          <Checkbox id='terms1' />
+          <Checkbox id='terms1' aria-label='terms1' />
           <div className='grid gap-1.5 leading-none'>
             <label
               htmlFor='terms1'
@@ -583,6 +584,7 @@ export default function UiPage() {
             <Button
               variant='outline'
               role='combobox'
+              aria-label='combobox'
               aria-expanded={openCombobox}
               className='w-[200px] justify-between'
             >
@@ -965,7 +967,7 @@ export default function UiPage() {
       <Wrapper id='label' name='Label' docs='https://ui.shadcn.com/docs/components/label'>
         <div>
           <div className='flex items-center space-x-2'>
-            <Checkbox id='terms2' />
+            <Checkbox id='terms2' aria-label='terms2' />
             <Label htmlFor='terms2'>Accept terms and conditions</Label>
           </div>
         </div>
@@ -1093,13 +1095,13 @@ export default function UiPage() {
         docs='https://ui.shadcn.com/docs/components/progress'
         noChildren
       >
-        <Progress value={progress} className='w-[60%]' showValue />
+        <Progress value={progress} className='w-[60%]' showValue aria-label='progress' />
         <br />
-        <Progress value={progress} color='bg-emerald-600' className='h-2' />
+        <Progress value={progress} color='bg-emerald-600' className='h-2' aria-label='progresss' />
         <br />
-        <Progress value={0} className='h-3' />
+        <Progress value={0} className='h-3' aria-label='progresss' />
         <br />
-        <Progress value={0} showValue />
+        <Progress value={0} showValue aria-label='progressss' />
       </Wrapper>
 
       <Wrapper
@@ -1152,7 +1154,7 @@ export default function UiPage() {
           // onValueChange={(e) => setSelectValue(e)}
           onValueChange={setSelectValue}
         >
-          <SelectTrigger className='w-[180px]'>
+          <SelectTrigger className='w-[180px]' aria-label='select-fruit'>
             <SelectValue placeholder='Select a fruit' />
           </SelectTrigger>
           <SelectContent>
@@ -1169,7 +1171,6 @@ export default function UiPage() {
             </SelectGroup>
           </SelectContent>
         </Select>
-        <br />
         <Text>{selectValue}</Text>
       </Wrapper>
 
@@ -1287,7 +1288,6 @@ export default function UiPage() {
           <Switch id='airplane-mode' checked={switchValue} onCheckedChange={setSwitchValue} />
           <Label htmlFor='airplane-mode'>Airplane Mode</Label>
         </div>
-        <br />
         <Text>{switchValue == true ? 'true' : 'false'}</Text>
       </Wrapper>
 
@@ -1334,8 +1334,8 @@ export default function UiPage() {
               </CardHeader>
               <CardContent className='space-y-2'>
                 <div className='space-y-2.5'>
-                  <Label htmlFor='name'>Name</Label>
-                  <Input id='name' defaultValue='Pedro Duarte' />
+                  <Label htmlFor='account'>Name</Label>
+                  <Input id='account' defaultValue='Pedro Duarte' />
                 </div>
               </CardContent>
               <CardFooter>

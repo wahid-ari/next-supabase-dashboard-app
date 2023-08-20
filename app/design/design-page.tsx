@@ -256,7 +256,7 @@ export default function DesignPage() {
       </Wrapper>
 
       <Wrapper
-        id='inputdebounce'
+        id='input-debounce'
         name='InputDebounce'
         props={[
           'label',
@@ -283,7 +283,7 @@ export default function DesignPage() {
       </Wrapper>
 
       <Wrapper
-        id='textarea'
+        id='text-area'
         name='TextArea'
         props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
         noChildren
@@ -297,7 +297,12 @@ export default function DesignPage() {
         props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
         noChildren
       >
-        <TextArea.disabled label='TextArea' name='textarea' placeholder='text area' data-testid='textarea-disabled' />
+        <TextArea.disabled
+          label='TextArea'
+          name='textareadis'
+          placeholder='text area'
+          data-testid='textarea-disabled'
+        />
       </Wrapper>
 
       <Wrapper id='fileinput' name='FileInput' props={['className', 'label', 'name', 'value', 'onChange']} noChildren>
@@ -372,13 +377,19 @@ export default function DesignPage() {
       <Wrapper id='tabs' name='Tabs' props={['items']}>
         <Tabs items={['Tab A', 'Tab B', 'Tab C']} data-testid='tabs'>
           <Tabs.panel>
-            <Heading className='mb-0'>Tab Content A</Heading>
+            <Heading h2 className='mb-0 text-lg'>
+              Tab Content A
+            </Heading>
           </Tabs.panel>
           <Tabs.panel>
-            <Heading className='mb-0'>Tab Content B</Heading>
+            <Heading h2 className='mb-0 text-lg'>
+              Tab Content B
+            </Heading>
           </Tabs.panel>
           <Tabs.panel>
-            <Heading className='mb-0'>Tab Content C</Heading>
+            <Heading h2 className='mb-0 text-lg'>
+              Tab Content C
+            </Heading>
           </Tabs.panel>
         </Tabs>
       </Wrapper>
@@ -386,7 +397,9 @@ export default function DesignPage() {
       <Wrapper id='tabitem' name='Tabs.panel'>
         <Tabs items={['Tab']}>
           <Tabs.panel data-testid='tabs-panel'>
-            <Heading className='mb-0'>Tabs Panel</Heading>
+            <Heading h2 className='mb-0 text-lg'>
+              Tabs Panel
+            </Heading>
           </Tabs.panel>
         </Tabs>
       </Wrapper>

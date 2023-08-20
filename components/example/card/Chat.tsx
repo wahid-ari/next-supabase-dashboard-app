@@ -73,7 +73,13 @@ export function DemoChat() {
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button size='icon' variant='outline' className='ml-auto rounded-full' onClick={() => setOpen(true)}>
+                <Button
+                  aria-label='New Message'
+                  size='icon'
+                  variant='outline'
+                  className='ml-auto rounded-full'
+                  onClick={() => setOpen(true)}
+                >
                   <Plus className='h-4 w-4' />
                 </Button>
               </TooltipTrigger>

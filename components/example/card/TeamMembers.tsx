@@ -17,7 +17,7 @@ export function DemoTeamMembers() {
         <div className='flex items-center justify-between space-x-4'>
           <div className='flex items-center sm:space-x-4'>
             <Avatar className='hidden sm:block'>
-              <AvatarImage src='https://github.com/vercel.png' />
+              <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
               <AvatarFallback>OM</AvatarFallback>
             </Avatar>
             <div>
@@ -54,7 +54,7 @@ export function DemoTeamMembers() {
         <div className='flex items-center justify-between space-x-4'>
           <div className='flex items-center sm:space-x-4'>
             <Avatar className='hidden sm:block'>
-              <AvatarImage src='https://github.com/vercel.png' />
+              <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
               <AvatarFallback>JL</AvatarFallback>
             </Avatar>
             <div>

@@ -16,7 +16,7 @@ export function DemoShareDocument() {
       </CardHeader>
       <CardContent>
         <div className='flex space-x-2'>
-          <Input value='http://example.com/link/to/document' readOnly />
+          <Input value='http://example.com/link/to/document' readOnly aria-label='link' />
           <Button variant='secondary' className='h-[39px] shrink-0'>
             Copy Link
           </Button>
@@ -28,7 +28,7 @@ export function DemoShareDocument() {
             <div className='flex items-center justify-between space-x-4'>
               <div className='flex items-center sm:space-x-4'>
                 <Avatar className='hidden sm:block'>
-                  <AvatarImage src='https://github.com/vercel.png' />
+                  <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
                 <div>
@@ -37,7 +37,7 @@ export function DemoShareDocument() {
                 </div>
               </div>
               <Select defaultValue='edit'>
-                <SelectTrigger className='ml-auto w-[110px]'>
+                <SelectTrigger id='edit' className='ml-auto w-[110px]'>
                   <SelectValue placeholder='Select' />
                 </SelectTrigger>
                 <SelectContent>
@@ -49,7 +49,7 @@ export function DemoShareDocument() {
             <div className='flex items-center justify-between space-x-4'>
               <div className='flex items-center sm:space-x-4'>
                 <Avatar className='hidden sm:block'>
-                  <AvatarImage src='https://github.com/vercel.png' />
+                  <AvatarImage src='https://github.com/vercel.png' alt='Avatar' />
                   <AvatarFallback>IN</AvatarFallback>
                 </Avatar>
                 <div>
@@ -58,7 +58,7 @@ export function DemoShareDocument() {
                 </div>
               </div>
               <Select defaultValue='view'>
-                <SelectTrigger className='ml-auto w-[110px]'>
+                <SelectTrigger id='view' className='ml-auto w-[110px]'>
                   <SelectValue placeholder='Select' />
                 </SelectTrigger>
                 <SelectContent>
