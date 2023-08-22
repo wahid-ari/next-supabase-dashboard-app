@@ -2,7 +2,9 @@ import { NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
-export const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_ANON_KEY || '');
+export const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_ANON_KEY || '', {
+  auth: { persistSession: false },
+});
 
 // app api
 export async function getAppSessionToken(authorization: string, token: string) {
