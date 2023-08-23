@@ -7,6 +7,6 @@ export const metadata: Metadata = {
   description: 'Home Page',
 };
 
-export default function Home() {
+export default function Page() {
   return <FrontLayout>{''}</FrontLayout>;
 }

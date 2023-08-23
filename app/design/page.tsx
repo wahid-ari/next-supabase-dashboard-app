@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
 
-export default function Ui() {
+export default function Page() {
   return (
     <Layout>
       <Title>Components</Title>

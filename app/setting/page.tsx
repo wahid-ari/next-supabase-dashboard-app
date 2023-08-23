@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: 'Settings Design Page',
 };
 
-export default function Setting() {
+export default function Page() {
   return (
     <Layout>
       <Title>Setting</Title>
