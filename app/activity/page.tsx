@@ -19,17 +19,16 @@ async function getData() {
   return res.json();
 }
 
-const wait = (ms: number) => new Promise((_) => setTimeout(_, ms));
+// const wait = (ms: number) => new Promise((_) => setTimeout(_, ms));
 
 export default async function Page() {
   const data = await getData();
-  // await wait(1000);
+  // simulate wait and show laoding ui before showing page
+  // await wait(5000);
 
   return (
     <Layout>
-      <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title>Logs</Title>
-      </div>
+      <Title className='mb-4'>Logs</Title>
 
       <LogPage data={data} />
     </Layout>
