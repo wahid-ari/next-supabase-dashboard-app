@@ -56,7 +56,7 @@ export default function Layout({ children, demo, ...props }: Props) {
           <Menu />
         </div>
 
-        <div className='px-5 py-5'>{children}</div>
+        <div className='px-5 py-4'>{children}</div>
       </div>
     </main>
   );
