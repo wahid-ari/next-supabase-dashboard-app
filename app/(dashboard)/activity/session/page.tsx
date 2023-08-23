@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 
-import Layout from '@/components/layout/Layout';
-
 import SessionPage from './session-page';
 
 export const metadata: Metadata = {
@@ -26,8 +24,8 @@ export default async function Page() {
   // await wait(5000);
 
   return (
-    <Layout>
+    <>
       <SessionPage data={data} />
-    </Layout>
+    </>
   );
 }

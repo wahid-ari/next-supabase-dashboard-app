@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 
-import Layout from '@/components/layout/Layout';
 import Title from '@/components/systems/Title';
 
 import LogPage from './log-page';
@@ -27,10 +26,10 @@ export default async function Page() {
   // await wait(5000);
 
   return (
-    <Layout>
+    <>
       <Title className='mb-4'>Logs</Title>
 
       <LogPage data={data} />
-    </Layout>
+    </>
   );
 }

@@ -1,11 +1,10 @@
 import { twMerge } from 'tailwind-merge';
 
-import Layout from '@/components/layout/Layout';
 import Title from '@/components/systems/Title';
 
 export default function Loading() {
   return (
-    <Layout>
+    <>
       <Title className='mb-4'>Sessions</Title>
       <div
         className={twMerge(
@@ -34,6 +33,6 @@ export default function Loading() {
           <div className='h-5 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
