@@ -3,7 +3,6 @@
 // Error components must be Client Components
 // Try to make error when fetching data in activuty page to activate this error
 // import { useEffect } from 'react';
-
 import Title from '@/components/systems/Title';
 
 export default function Error({ error, reset }: { error: Error; reset: () => void }) {

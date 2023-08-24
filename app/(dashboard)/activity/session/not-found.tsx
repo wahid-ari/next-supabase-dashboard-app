@@ -1,8 +1,17 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import Title from '@/components/systems/Title';
 
 // Try to call notFound() function when rendering page in activuty page to activate this not found page
+export const metadata: Metadata = {
+  title: 'Not Found - NextJS',
+  description: 'Error not found',
+  icons: {
+    icon: '/favicon.ico',
+  },
+};
+
 export default function NotFound() {
   return (
     <>
