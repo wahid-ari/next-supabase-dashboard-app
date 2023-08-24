@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+// import { notFound } from 'next/navigation';
+
 import Title from '@/components/systems/Title';
 
 import LogPage from './log-page';
@@ -12,7 +14,7 @@ export const metadata: Metadata = {
 async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/log`, { cache: 'no-store' });
   if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
+    // This will activate the closest `error.tsx` Error Boundary
     throw new Error('Failed to fetch data');
   }
   return res.json();
@@ -24,6 +26,10 @@ export default async function Page() {
   const data = await getData();
   // simulate wait and show laoding ui before showing page
   // await wait(5000);
+  // This will activate the closest `not-found.tsx` ui
+  // if (!data) {
+  // notFound();
+  // }
 
   return (
     <>

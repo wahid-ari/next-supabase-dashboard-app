@@ -9,9 +9,10 @@ export async function GET() {
 }
 
 // /api/session?id=1
-export async function DELETE(request: NextRequest) {
+export async function DELETE(request: NextRequest, context: { params: string }) {
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
+  // const id = params.id // '1'
   // const headersList = headers();
   // const authorization = headersList.get('authorization');
   // const token = authorization?.split(' ')[1] || '';

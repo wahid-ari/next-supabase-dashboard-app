@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+// import { notFound } from 'next/navigation';
+
 import SessionPage from './session-page';
 
 export const metadata: Metadata = {
@@ -22,6 +24,10 @@ export default async function Page() {
   const data = await getData();
   // simulate wait and show laoding ui before showing page
   // await wait(5000);
+  // This will activate the closest `not-found.tsx` ui
+  // if (!data) {
+  //   notFound();
+  // }
 
   return (
     <>
