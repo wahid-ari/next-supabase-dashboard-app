@@ -5,7 +5,7 @@ import Title from '@/components/systems/Title';
 import SearchPage from './search-page';
 
 export const metadata: Metadata = {
-  title: 'Search - NextJS',
+  title: 'Search',
   description: 'Search Design Page',
 };
 

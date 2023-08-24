@@ -19,7 +19,7 @@ import DemoValidationZodObject from './_components/DemoValidationZodObject';
 import DesignPage from './design-page';
 
 export const metadata: Metadata = {
-  title: 'Components - NextJS',
+  title: 'Components',
   description: 'Components Design Page',
 };
 

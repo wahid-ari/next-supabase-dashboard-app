@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import SessionPage from './session-page';
 
 export const metadata: Metadata = {
-  title: 'Session - NextJS',
+  title: 'Session',
   description: 'Session Activity Page',
 };
 

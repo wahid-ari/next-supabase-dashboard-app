@@ -1,0 +1,13 @@
+{
+  "name": "Next.js App Router",
+  "short_name": "Next.js App Router",
+  "icons": [
+    {
+      "src": "/android-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

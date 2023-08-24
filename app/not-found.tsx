@@ -4,7 +4,7 @@ import Link from 'next/link';
 // Try to call notFound() function when rendering page in all page to activate this not found page
 // or give a wrong url address
 export const metadata: Metadata = {
-  title: 'Not Found - NextJS',
+  title: 'Not Found',
   description: 'Error not found',
   icons: {
     icon: '/favicon.ico',

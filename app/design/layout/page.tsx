@@ -8,7 +8,7 @@ import Wrapper from '@/components/systems/Wrapper';
 import LayoutPage from './layout-page';
 
 export const metadata: Metadata = {
-  title: 'Layout - NextJS',
+  title: 'Layout',
   description: 'Layout Design Page',
 };
 

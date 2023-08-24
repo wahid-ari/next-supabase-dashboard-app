@@ -8,7 +8,7 @@ import Wrapper from '@/components/systems/Wrapper';
 import FormPage from './form-page';
 
 export const metadata: Metadata = {
-  title: 'Form - NextJS',
+  title: 'Form',
   description: 'Form Design Page',
 };
 

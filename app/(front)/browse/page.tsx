@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import Title from '@/components/systems/Title';
 
 export const metadata: Metadata = {
-  title: 'Browse - NextJS',
+  title: 'Browse',
   description: 'Browse Page',
 };
 

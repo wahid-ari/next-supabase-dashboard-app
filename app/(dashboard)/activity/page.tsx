@@ -7,7 +7,7 @@ import Title from '@/components/systems/Title';
 import LogPage from './log-page';
 
 export const metadata: Metadata = {
-  title: 'Logs - NextJS',
+  title: 'Logs',
   description: 'Logs Activity Page',
 };
 

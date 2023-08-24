@@ -8,7 +8,7 @@ import Wrapper from '@/components/systems/Wrapper';
 import UiPage from './ui-page';
 
 export const metadata: Metadata = {
-  title: 'UI - NextJS',
+  title: 'UI',
   description: 'UI Design Page',
 };
 

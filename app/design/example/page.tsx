@@ -10,7 +10,7 @@ import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
 export const metadata: Metadata = {
-  title: 'Example UI - NextJS',
+  title: 'Example UI',
   description: 'Example UI Design Page',
 };
 
