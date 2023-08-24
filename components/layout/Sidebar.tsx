@@ -92,7 +92,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
 
         <div
           className={twMerge(
-            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-4 dark:border-neutral-800 sm:flex-grow',
+            'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 sm:flex-grow',
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800',
           )}
         >
@@ -100,26 +100,26 @@ export default function Sidebar({ className, ...props }: { className?: string })
             Dashboard
           </NavLink>
 
-          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-0.5'>
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UsersIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/author' icon={<UsersIcon className='h-5 w-5' />} className='mt-0.5'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/book' icon={<BookIcon className='h-5 w-5' />} className='mt-0.5'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<LayoutListIcon className='h-5 w-5' />} className='mt-1'>
+          <NavLink href='/genre' icon={<LayoutListIcon className='h-5 w-5' />} className='mt-0.5'>
             Genre
           </NavLink>
 
           <NavAccordion
             title='Activity'
             routeName='activity'
-            className='mt-1'
+            className='mt-0.5'
             icon={<GanttChartSquareIcon className='h-5 w-5' />}
           >
             <NavLink href='/activity' icon={<ListTreeIcon className='h-5 w-5' />}>
@@ -160,14 +160,14 @@ export default function Sidebar({ className, ...props }: { className?: string })
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/setting' icon={<SettingsIcon className='h-5 w-5' />} className='mt-1'>
-            Settings
+          <NavLink href='/setting' icon={<SettingsIcon className='h-5 w-5' />} className='mt-0.5'>
+            Setting
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
             icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
-            className='mt-1'
+            className='mt-0.5'
           >
             Docs
           </NavLink.external>

@@ -639,7 +639,7 @@ export default function UiPage() {
               </CommandItem>
             </CommandGroup>
             <CommandSeparator />
-            <CommandGroup heading='Settings'>
+            <CommandGroup heading='Setting'>
               <CommandItem>
                 <User className='mr-2 h-4 w-4' />
                 <span>Profile</span>
@@ -683,7 +683,7 @@ export default function UiPage() {
                 </CommandItem>
               </CommandGroup>
               <CommandSeparator />
-              <CommandGroup heading='Settings'>
+              <CommandGroup heading='Setting'>
                 <CommandItem>
                   <User className='mr-2 h-4 w-4' />
                   <span>Profile</span>
@@ -696,7 +696,7 @@ export default function UiPage() {
                 </CommandItem>
                 <CommandItem>
                   <Settings className='mr-2 h-4 w-4' />
-                  <span>Settings</span>
+                  <span>Setting</span>
                   <CommandShortcut>⌘S</CommandShortcut>
                 </CommandItem>
               </CommandGroup>

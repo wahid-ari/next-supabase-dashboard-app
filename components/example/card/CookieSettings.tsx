@@ -9,7 +9,7 @@ export function DemoCookieSettings() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Cookie Settings</CardTitle>
+        <CardTitle>Cookie Setting</CardTitle>
         <CardDescription>Manage your cookie settings here.</CardDescription>
       </CardHeader>
       <CardContent className='grid gap-6'>

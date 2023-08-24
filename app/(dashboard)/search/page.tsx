@@ -2,19 +2,19 @@ import type { Metadata } from 'next';
 
 import Title from '@/components/systems/Title';
 
-import SettingPage from './setting-page';
+import SearchPage from './search-page';
 
 export const metadata: Metadata = {
-  title: 'Setting - NextJS',
-  description: 'Setting Design Page',
+  title: 'Search - NextJS',
+  description: 'Search Design Page',
 };
 
 export default function Page() {
   return (
     <>
-      <Title>Setting</Title>
+      <Title>Search</Title>
 
-      <SettingPage />
+      <SearchPage />
     </>
   );
 }
