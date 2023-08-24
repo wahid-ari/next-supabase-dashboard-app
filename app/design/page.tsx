@@ -6,16 +6,16 @@ import Code from '@/components/systems/Code';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
-import DemoDialog from './components/DemoDialog';
-import DemoDropdownMenu from './components/DemoDropdownMenu';
-import DemoModal from './components/DemoModal';
-import DemoReactSelect from './components/DemoReactSelect';
-import DemoReactTable from './components/DemoReactTable';
-import DemoSearchbox from './components/DemoSearchbox';
-import DemoUseToast from './components/DemoUseToast';
-import DemoValidation from './components/DemoValidation';
-import DemoValidationZod from './components/DemoValidationZod';
-import DemoValidationZodObject from './components/DemoValidationZodObject';
+import DemoDialog from './_components/DemoDialog';
+import DemoDropdownMenu from './_components/DemoDropdownMenu';
+import DemoModal from './_components/DemoModal';
+import DemoReactSelect from './_components/DemoReactSelect';
+import DemoReactTable from './_components/DemoReactTable';
+import DemoSearchbox from './_components/DemoSearchbox';
+import DemoUseToast from './_components/DemoUseToast';
+import DemoValidation from './_components/DemoValidation';
+import DemoValidationZod from './_components/DemoValidationZod';
+import DemoValidationZodObject from './_components/DemoValidationZodObject';
 import DesignPage from './design-page';
 
 export const metadata: Metadata = {
