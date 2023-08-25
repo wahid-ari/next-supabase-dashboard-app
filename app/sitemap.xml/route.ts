@@ -5,7 +5,11 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 
+// https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
+// https://nextjs.org/docs/app/building-your-application/routing/route-handlers#non-ui-responses
+// https://claritydev.net/blog/nextjs-dynamic-sitemap-pages-app-directory
 // https://kentcdodds.com/sitemap.xml
+// https://slickplan.com/blog/xml-sitemap-priority-changefreq
 export async function GET() {
   const { data: books } = await supabase.from('book_books').select(`slug`).order('id');
   const { data: authors } = await supabase.from('book_authors').select(`slug`).order('id');
@@ -17,26 +21,32 @@ export async function GET() {
   <url>
     <loc>${BASE_URL}</loc>
     <lastmod>${today.toISOString()}</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>${BASE_URL}/books</loc>
     <lastmod>${today.toISOString()}</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>${BASE_URL}/authors</loc>
     <lastmod>${today.toISOString()}</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>${BASE_URL}/genres</loc>
     <lastmod>${today.toISOString()}</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>${BASE_URL}/browse</loc>
     <lastmod>${today.toISOString()}</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>${BASE_URL}/login</loc>
     <lastmod>${today.toISOString()}</lastmod>
+    <priority>0.5</priority>
   </url>
   ${books
     .map((book: any) => {
@@ -44,6 +54,7 @@ export async function GET() {
         <url>
           <loc>${`${BASE_URL}/books/${book.slug}`}</loc>
           <lastmod>${today.toISOString()}</lastmod>
+          <priority>0.7</priority>
         </url>
       `;
     })
@@ -54,6 +65,7 @@ export async function GET() {
     <url>
       <loc>${`${BASE_URL}/authors/${author.slug}`}</loc>
       <lastmod>${today.toISOString()}</lastmod>
+      <priority>0.7</priority>
     </url>
   `;
     })
@@ -64,6 +76,7 @@ export async function GET() {
     <url>
       <loc>${`${BASE_URL}/genres/${genre.slug}`}</loc>
       <lastmod>${today.toISOString()}</lastmod>
+      <priority>0.6</priority>
     </url>
   `;
     })
@@ -75,3 +88,54 @@ export async function GET() {
     },
   );
 }
+
+// app/sitemap.ts
+// async function getData() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/sitemap`);
+//   return res.json();
+// }
+
+// export default async function sitemap() {
+//   const data = await getData();
+//   const books = data.books.map((book: any) => ({
+//     url: `${process.env.NEXT_PUBLIC_API_ROUTE}/books/${book.slug}`,
+//     lastModified: new Date(),
+//   }));
+//   const authors = data.authors.map((author: any) => ({
+//     url: `${process.env.NEXT_PUBLIC_API_ROUTE}/authors/${author.slug}`,
+//     lastModified: new Date(),
+//   }));
+//   const genres = data.genres.map((genre: any) => ({
+//     url: `${process.env.NEXT_PUBLIC_API_ROUTE}/genres/${genre.slug}`,
+//     lastModified: new Date(),
+//   }));
+//   return [
+//     {
+//       url: `${process.env.NEXT_PUBLIC_API_ROUTE}`,
+//       lastModified: new Date(),
+//     },
+//     {
+//       url: `${process.env.NEXT_PUBLIC_API_ROUTE}/books`,
+//       lastModified: new Date(),
+//     },
+//     {
+//       url: `${process.env.NEXT_PUBLIC_API_ROUTE}/authors`,
+//       lastModified: new Date(),
+//     },
+//     {
+//       url: `${process.env.NEXT_PUBLIC_API_ROUTE}/genres`,
+//       lastModified: new Date(),
+//     },
+//     {
+//       url: `${process.env.NEXT_PUBLIC_API_ROUTE}/browse`,
+//       lastModified: new Date(),
+//     },
+//     {
+//       url: `${process.env.NEXT_PUBLIC_API_ROUTE}/login`,
+//       lastModified: new Date(),
+//     },
+//     ...books,
+//     ...authors,
+//     ...genres,
+//   ];
+// }
