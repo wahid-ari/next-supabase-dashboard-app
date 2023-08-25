@@ -1,6 +1,7 @@
 {
   "name": "Next.js App Router",
   "short_name": "Next.js App Router",
+  "description": "Next.js App Router Description",
   "icons": [
     {
       "src": "/android-icon-192x192.png",
