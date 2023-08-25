@@ -12,17 +12,15 @@ import { Toaster } from '@/components/ui/Toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 const siteConfig = {
-  url: 'https://next-supabase-dashboard-app.vercel.app',
+  url: process.env.NEXT_PUBLIC_API_ROUTE,
   title: 'Next.js App Router',
-  description: 'Next.js App Router',
+  description: 'Next.js App Router Description',
   ogImage: '/og.png',
   author: 'Wahid Ari',
   authorUsername: 'wahidari',
   authorWeb: 'https://wahidari.vercel.app',
   twitterUsername: '@wahiidari',
 };
-
-// TODO set up sitemap.xml
 
 export const metadata: Metadata = {
   title: {
@@ -47,7 +45,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: siteConfig.ogImage,
+        url: `${siteConfig.url}${siteConfig.ogImage}`,
         width: 1200,
         height: 630,
         alt: siteConfig.title,
@@ -58,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
-    images: [siteConfig.ogImage],
+    images: [`${siteConfig.url}${siteConfig.ogImage}`],
     creator: siteConfig.twitterUsername,
   },
   icons: {
