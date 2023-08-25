@@ -3,6 +3,7 @@ import { supabase } from '@/libs/supabase';
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 
 // https://kentcdodds.com/blog/rss.xml
+// https://stackoverflow.com/questions/2784183/what-does-cdata-in-xml-mean
 export async function GET() {
   const { data: books } = await supabase.from('book_books').select(`title, description, slug, created_at`).order('id');
   // const { data: authors } = await supabase.from('book_authors').select(`name, bio, slug, created_at`).order('id');
@@ -16,6 +17,8 @@ export async function GET() {
   <link>${BASE_URL}/books</link>
   <description>Next.js App Router Description</description>
   <language>en-us</language>
+  <generator>Next.js App Router</generator>
+  <ttl>40</ttl>
   ${books
     .map((book: any) => {
       return `
