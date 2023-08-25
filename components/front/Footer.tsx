@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { GithubIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
+import { GithubIcon, InstagramIcon, RssIcon, TwitterIcon } from 'lucide-react';
 
 import { cn } from '@/libs/utils';
 
@@ -65,6 +65,11 @@ export default function Footer({ className, ...props }: { className?: string; [p
                     Studios
                   </Link>
                 </li>
+                <li className='mb-2'>
+                  <Link href='/browse' className={linkClassName}>
+                    Browse
+                  </Link>
+                </li>
               </ul>
             </div>
             <div>
@@ -101,23 +106,23 @@ export default function Footer({ className, ...props }: { className?: string; [p
             </Link>
             . All Rights Reserved.
           </span>
-          <div className='mt-4 flex space-x-6 sm:mt-0 sm:justify-center'>
-            <a href='https://www.instagram.com/' className={linkIconClassName}>
+          <div className='mt-4 flex space-x-4 sm:mt-0 sm:justify-center'>
+            <a href='https://www.instagram.com/' title='Instagram' target='_blank' className={linkIconClassName}>
               <InstagramIcon className='h-5 w-5' />
               <span className='sr-only'>Instagram page</span>
             </a>
-            <a href='https://twitter.com' className={linkIconClassName}>
+            <a href='https://twitter.com' title='Twitter' target='_blank' className={linkIconClassName}>
               <TwitterIcon className='h-5 w-5' />
               <span className='sr-only'>Twitter page</span>
             </a>
-            <a
-              href='https://github.com'
-              target='_blank'
-              className='rounded text-neutral-700 transition-all duration-200 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-300 dark:hover:text-white'
-            >
+            <a href='https://github.com' title='GitHub' target='_blank' className={linkIconClassName}>
               <GithubIcon className='h-5 w-5' />
               <span className='sr-only'>GitHub account</span>
             </a>
+            <Link href='/rss.xml' title='RSS' className={linkIconClassName}>
+              <RssIcon className='h-5 w-5' />
+              <span className='sr-only'>RSS</span>
+            </Link>
           </div>
         </div>
       </div>
