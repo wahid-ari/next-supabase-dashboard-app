@@ -420,15 +420,15 @@ export default function DesignPage() {
           data-testid='table'
           head={
             <>
-              <Table.td shrink>No</Table.td>
-              <Table.td>Column 1</Table.td>
-              <Table.td>Column 2</Table.td>
-              <Table.td>Column 3</Table.td>
-              <Table.td>Column 4</Table.td>
-              <Table.td>Column 5</Table.td>
-              <Table.td>Column 6</Table.td>
-              <Table.td>Column 7</Table.td>
-              <Table.td>Column 8</Table.td>
+              <Table.th shrink>No</Table.th>
+              <Table.th>Column 1</Table.th>
+              <Table.th>Column 2</Table.th>
+              <Table.th>Column 3</Table.th>
+              <Table.th>Column 4</Table.th>
+              <Table.th>Column 5</Table.th>
+              <Table.th>Column 6</Table.th>
+              <Table.th>Column 7</Table.th>
+              <Table.th>Column 8</Table.th>
             </>
           }
         >
@@ -492,12 +492,12 @@ export default function DesignPage() {
           caption='Table 3.1: Badge'
           head={
             <>
-              <TableSimple.td shrink>No</TableSimple.td>
-              <TableSimple.td>Column 1</TableSimple.td>
-              <TableSimple.td>Column 2</TableSimple.td>
-              <TableSimple.td>Column 3</TableSimple.td>
-              <TableSimple.td>Column 4</TableSimple.td>
-              <TableSimple.td>Column 5</TableSimple.td>
+              <TableSimple.th shrink>No</TableSimple.th>
+              <TableSimple.th>Column 1</TableSimple.th>
+              <TableSimple.th>Column 2</TableSimple.th>
+              <TableSimple.th>Column 3</TableSimple.th>
+              <TableSimple.th>Column 4</TableSimple.th>
+              <TableSimple.th>Column 5</TableSimple.th>
             </>
           }
         >
