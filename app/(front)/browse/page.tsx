@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <Title className='mb-4'>Browse</Title>;
+  return <Title>Browse</Title>;
 }

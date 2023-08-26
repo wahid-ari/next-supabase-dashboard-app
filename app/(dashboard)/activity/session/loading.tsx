@@ -5,7 +5,7 @@ import Title from '@/components/systems/Title';
 export default function Loading() {
   return (
     <>
-      <Title className='mb-4'>Session</Title>
+      <Title>Session</Title>
       <div
         className={twMerge(
           'mt-2 mb-4 relative isolate space-y-3 overflow-hidden rounded bg-neutral-200/60 p-4',

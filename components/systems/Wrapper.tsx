@@ -8,6 +8,7 @@ import Heading from '@/components/systems/Heading';
 
 type Props = {
   children?: ReactNode;
+  className?: string;
   id?: string;
   name?: string;
   docs?: string;
@@ -22,6 +23,7 @@ type Props = {
 
 export default function Wrapper({
   children,
+  className,
   id,
   name,
   docs,
@@ -33,7 +35,7 @@ export default function Wrapper({
   noWrap,
 }: Props) {
   return (
-    <section id={id} className='pt-8'>
+    <section id={id} className={twMerge('pt-8', className)}>
       <Heading h2 className='group flex transition-all duration-500 text-lg'>
         <span className='mr-2 text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
           #

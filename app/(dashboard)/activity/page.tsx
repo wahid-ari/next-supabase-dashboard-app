@@ -33,7 +33,7 @@ export default async function Page() {
 
   return (
     <>
-      <Title className='mb-4'>Logs</Title>
+      <Title>Logs</Title>
 
       <LogPage data={data} />
     </>

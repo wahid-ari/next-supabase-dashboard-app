@@ -54,7 +54,7 @@ export default function LogPage({ data }) {
   return (
     <>
       <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title>Session</Title>
+        <Title className='mb-0'>Session</Title>
         {/* FIX this  */}
         {/* <Button.danger onClick={() => setOpenDeleteAllDialog(true)} className='flex items-center gap-2'>
           <TrashIcon className='h-4 w-4' />

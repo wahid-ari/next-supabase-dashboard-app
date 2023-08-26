@@ -27,7 +27,7 @@ export default function Page() {
         </span>
       </div>
 
-      <Wrapper id='tableofcontent' name='Table of Content' noChildren noClassName noProps>
+      <Wrapper id='tableofcontent' name='Table of Content' className='pt-4' noChildren noClassName noProps>
         <div className='columns-2 text-sky-600 dark:text-sky-500 sm:columns-3'>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#dashboard'>

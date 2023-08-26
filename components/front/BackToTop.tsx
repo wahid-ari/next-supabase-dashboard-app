@@ -10,7 +10,7 @@ export default function BackToTop({ className, ...props }: { className?: string;
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 200) {
+      if (window.scrollY > 200) {
         setShowBackToTop(true);
       } else {
         setShowBackToTop(false);
@@ -30,7 +30,7 @@ export default function BackToTop({ className, ...props }: { className?: string;
     <div
       {...props}
       className={cn(
-        'fixed bottom-4 left-1/2 z-40 -translate-x-1/2 transform rounded-full',
+        'fixed bottom-[18px] right-4 sm:right-auto sm:left-1/2 z-40 sm:-translate-x-1/2 sm:transform rounded-full',
         'bg-neutral-100 bg-opacity-20 backdrop-blur backdrop-filter dark:bg-opacity-40',
         'border dark:border-neutral-800 dark:bg-neutral-800',
       )}

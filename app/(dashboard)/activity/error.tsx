@@ -13,7 +13,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 
   return (
     <>
-      <Title className='mb-4'>Logs</Title>
+      <Title>Logs</Title>
       <div className='h-[400px] flex items-center justify-center'>
         <div className='text-center'>
           <p className='text-base'>Error Activity Page</p>
