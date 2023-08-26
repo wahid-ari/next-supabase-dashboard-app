@@ -18,7 +18,15 @@ export async function GET() {
   <description>Next.js App Router Description</description>
   <language>en-us</language>
   <generator>Next.js App Router</generator>
+  <lastBuildDate>${new Date()}</lastBuildDate>
+  <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
   <ttl>40</ttl>
+  <image>
+  <title>Next.js App Router</title>
+  <url>${BASE_URL}/icon.svg</url>
+  <link>${BASE_URL}/books</link>
+  </image>
+  <copyright>Copyright © 2023 Next.js App Router</copyright>
   ${books
     .map((book: any) => {
       return `
