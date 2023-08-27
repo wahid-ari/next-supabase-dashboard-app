@@ -179,14 +179,17 @@ export const columns: ColumnDef<Payment>[] = [
         aria-label='Select all'
       />
     ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        id='Select row'
-        aria-label='Select row'
-      />
-    ),
+    cell: ({ row }) => {
+      const id = row.original.id;
+      return (
+        <Checkbox
+          checked={row.getIsSelected()}
+          onCheckedChange={(value) => row.toggleSelected(!!value)}
+          id={`Select ${id}`}
+          aria-label={`Select ${id}`}
+        />
+      );
+    },
     enableSorting: false,
     enableHiding: false,
   },

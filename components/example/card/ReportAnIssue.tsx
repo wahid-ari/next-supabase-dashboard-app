@@ -19,7 +19,7 @@ export function DemoReportAnIssue() {
           <div className='grid gap-2'>
             <Label htmlFor='area'>Area</Label>
             <Select defaultValue='billing'>
-              <SelectTrigger id='area'>
+              <SelectTrigger id='area' aria-label='area'>
                 <SelectValue placeholder='Select' />
               </SelectTrigger>
               <SelectContent>
@@ -31,7 +31,7 @@ export function DemoReportAnIssue() {
           <div className='grid gap-2'>
             <Label htmlFor='security-level'>Security Level</Label>
             <Select defaultValue='2'>
-              <SelectTrigger id='security-level'>
+              <SelectTrigger id='security-level' aria-label='security level'>
                 <SelectValue placeholder='Select level' />
               </SelectTrigger>
               <SelectContent>

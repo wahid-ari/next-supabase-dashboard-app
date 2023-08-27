@@ -20,7 +20,7 @@ export function DemoPaymentMethod() {
             htmlFor='paypal'
             className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
-            <RadioGroupItem value='paypal' id='paypal' className='sr-only' />
+            <RadioGroupItem value='paypal' id='paypal' aria-label='paypal' className='sr-only' />
             <Icons.paypal className='mb-3 h-6 w-6' />
             Paypal
           </Label>
@@ -28,7 +28,7 @@ export function DemoPaymentMethod() {
             htmlFor='cards'
             className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
-            <RadioGroupItem value='cards' id='cards' className='sr-only' />
+            <RadioGroupItem value='cards' id='cards' aria-label='cards' className='sr-only' />
             <Icons.cards className='mb-3 h-6 w-6' />
             Card
           </Label>
@@ -36,7 +36,7 @@ export function DemoPaymentMethod() {
             htmlFor='apple'
             className='flex flex-col items-center justify-between rounded-md border-2 p-4 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 [&:has([data-state=checked])]:border-sky-600 [&:has([data-state=checked])]:bg-neutral-100 dark:[&:has([data-state=checked])]:bg-neutral-800'
           >
-            <RadioGroupItem value='apple' id='apple' className='sr-only' />
+            <RadioGroupItem value='apple' id='apple' aria-label='apple' className='sr-only' />
             <Icons.apple className='mb-3 h-6 w-6' />
             Apple
           </Label>
@@ -53,7 +53,7 @@ export function DemoPaymentMethod() {
           <div className='grid gap-2'>
             <Label htmlFor='month'>Expires</Label>
             <Select>
-              <SelectTrigger id='month'>
+              <SelectTrigger id='month' aria-label='month'>
                 <SelectValue placeholder='Month' />
               </SelectTrigger>
               <SelectContent>
@@ -75,7 +75,7 @@ export function DemoPaymentMethod() {
           <div className='grid gap-2'>
             <Label htmlFor='year'>Year</Label>
             <Select>
-              <SelectTrigger id='year'>
+              <SelectTrigger id='year' aria-label='year'>
                 <SelectValue placeholder='Year' />
               </SelectTrigger>
               <SelectContent>

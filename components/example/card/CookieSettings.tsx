@@ -20,7 +20,7 @@ export function DemoCookieSettings() {
               These cookies are essential in order to use the website and use its features.
             </span>
           </Label>
-          <Switch id='necessary' defaultChecked />
+          <Switch id='necessary' aria-label='necessary' defaultChecked />
         </div>
         <div className='flex items-center justify-between space-x-2'>
           <Label htmlFor='functional' className='flex flex-col space-y-1'>
@@ -29,7 +29,7 @@ export function DemoCookieSettings() {
               These cookies allow the website to provide personalized functionality.
             </span>
           </Label>
-          <Switch id='functional' />
+          <Switch id='functional' aria-label='functional' />
         </div>
       </CardContent>
       <CardFooter>

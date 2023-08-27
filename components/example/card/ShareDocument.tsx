@@ -37,7 +37,7 @@ export function DemoShareDocument() {
                 </div>
               </div>
               <Select defaultValue='edit'>
-                <SelectTrigger id='edit' className='ml-auto w-[110px]'>
+                <SelectTrigger id='edit' aria-label='edit' className='ml-auto w-[110px]'>
                   <SelectValue placeholder='Select' />
                 </SelectTrigger>
                 <SelectContent>
@@ -58,7 +58,7 @@ export function DemoShareDocument() {
                 </div>
               </div>
               <Select defaultValue='view'>
-                <SelectTrigger id='view' className='ml-auto w-[110px]'>
+                <SelectTrigger id='view' aria-label='view' className='ml-auto w-[110px]'>
                   <SelectValue placeholder='Select' />
                 </SelectTrigger>
                 <SelectContent>
