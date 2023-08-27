@@ -310,7 +310,7 @@ export default function FormPage() {
               render={({ field }) => (
                 <FormItem className='flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 dark:border-neutral-800'>
                   <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange} id='mobile' />
+                    <Checkbox checked={field.value} onCheckedChange={field.onChange} id='mobile' aria-label='mobile' />
                   </FormControl>
                   <div className='space-y-2 leading-none'>
                     <FormLabel>Use different settings for my mobile devices</FormLabel>
@@ -355,6 +355,7 @@ export default function FormPage() {
                               <Checkbox
                                 checked={field.value?.includes(item.id)}
                                 id={item.id}
+                                aria-label={item.id}
                                 onCheckedChange={(checked) => {
                                   return checked
                                     ? field.onChange([...field.value, item.id])
@@ -452,19 +453,19 @@ export default function FormPage() {
                     >
                       <FormItem className='flex items-center space-x-3 space-y-0'>
                         <FormControl>
-                          <RadioGroupItem value='all' />
+                          <RadioGroupItem value='all' aria-label='All new messages' />
                         </FormControl>
                         <FormLabel className='font-normal'>All new messages</FormLabel>
                       </FormItem>
                       <FormItem className='flex items-center space-x-3 space-y-0'>
                         <FormControl>
-                          <RadioGroupItem value='mentions' />
+                          <RadioGroupItem value='mentions' aria-label='Direct messages and mentions' />
                         </FormControl>
                         <FormLabel className='font-normal'>Direct messages and mentions</FormLabel>
                       </FormItem>
                       <FormItem className='flex items-center space-x-3 space-y-0'>
                         <FormControl>
-                          <RadioGroupItem value='none' />
+                          <RadioGroupItem value='none' aria-label='Nothing' />
                         </FormControl>
                         <FormLabel className='font-normal'>Nothing</FormLabel>
                       </FormItem>
@@ -497,7 +498,7 @@ export default function FormPage() {
                     <FormItem>
                       <FormLabel className='[&:has([data-state=checked])>div]:border-sky-600'>
                         <FormControl>
-                          <RadioGroupItem value='light' className='sr-only' />
+                          <RadioGroupItem value='light' aria-label='light' className='sr-only' />
                         </FormControl>
                         <div className='items-center rounded-md border-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:border-neutral-700 p-1'>
                           <div className='space-y-2 rounded-sm bg-[#ecedef] p-2'>
@@ -517,7 +518,7 @@ export default function FormPage() {
                     <FormItem>
                       <FormLabel className='[&:has([data-state=checked])>div]:border-sky-600'>
                         <FormControl>
-                          <RadioGroupItem value='dark' className='sr-only' />
+                          <RadioGroupItem value='dark' aria-label='dark' className='sr-only' />
                         </FormControl>
                         <div className='items-center rounded-md border-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:border-neutral-700 p-1'>
                           <div className='space-y-2 rounded-sm bg-slate-950 p-2'>
@@ -561,7 +562,7 @@ export default function FormPage() {
                   <FormLabel>Email</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger aria-label='email'>
                         <SelectValue placeholder='Select a verified email to display' />
                       </SelectTrigger>
                     </FormControl>
@@ -606,7 +607,7 @@ export default function FormPage() {
                         <FormDescription>Receive emails about new products, features, and more.</FormDescription>
                       </div>
                       <FormControl>
-                        <Switch checked={field.value} onCheckedChange={field.onChange} />
+                        <Switch checked={field.value} onCheckedChange={field.onChange} aria-label='marketing' />
                       </FormControl>
                     </FormItem>
                   )}
@@ -621,7 +622,13 @@ export default function FormPage() {
                         <FormDescription>Receive emails about your account security.</FormDescription>
                       </div>
                       <FormControl>
-                        <Switch checked={field.value} onCheckedChange={field.onChange} disabled aria-readonly />
+                        <Switch
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          aria-label='security'
+                          disabled
+                          aria-readonly
+                        />
                       </FormControl>
                     </FormItem>
                   )}

@@ -1112,15 +1112,15 @@ export default function UiPage() {
       >
         <RadioGroup defaultValue={radiogroupValue} onValueChange={setRadiogroupValue}>
           <div className='mb-2 flex items-center space-x-2'>
-            <RadioGroupItem value='default' id='r1' />
+            <RadioGroupItem value='default' id='r1' aria-label='r1' />
             <Label htmlFor='r1'>Default</Label>
           </div>
           <div className='mb-2 flex items-center space-x-2'>
-            <RadioGroupItem value='comfortable' id='r2' />
+            <RadioGroupItem value='comfortable' id='r2' aria-label='r2' />
             <Label htmlFor='r2'>Comfortable</Label>
           </div>
           <div className='mb-2 flex items-center space-x-2'>
-            <RadioGroupItem value='compact' id='r3' disabled />
+            <RadioGroupItem value='compact' id='r3' aria-label='r3' disabled />
             <Label htmlFor='r3'>Compact</Label>
           </div>
         </RadioGroup>
@@ -1154,7 +1154,7 @@ export default function UiPage() {
           // onValueChange={(e) => setSelectValue(e)}
           onValueChange={setSelectValue}
         >
-          <SelectTrigger className='w-[180px]' id='select-fruit'>
+          <SelectTrigger className='w-[180px]' id='select-fruit' aria-label='select-fruit'>
             <SelectValue placeholder='Select a fruit' />
           </SelectTrigger>
           <SelectContent>
@@ -1285,7 +1285,12 @@ export default function UiPage() {
         docs='https://ui.shadcn.com/docs/components/switch'
       >
         <div className='flex items-center space-x-2'>
-          <Switch id='airplane-mode' checked={switchValue} onCheckedChange={setSwitchValue} />
+          <Switch
+            id='airplane-mode'
+            checked={switchValue}
+            aria-label='airplane-mode'
+            onCheckedChange={setSwitchValue}
+          />
           <Label htmlFor='airplane-mode'>Airplane Mode</Label>
         </div>
         <Text>{switchValue == true ? 'true' : 'false'}</Text>

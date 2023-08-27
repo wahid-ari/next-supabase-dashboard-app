@@ -176,6 +176,7 @@ export const columns: ColumnDef<Payment>[] = [
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         id='Select all'
+        aria-label='Select all'
       />
     ),
     cell: ({ row }) => (
@@ -183,6 +184,7 @@ export const columns: ColumnDef<Payment>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         id='Select row'
+        aria-label='Select row'
       />
     ),
     enableSorting: false,
