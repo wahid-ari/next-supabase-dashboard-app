@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import Layout from '@/components/layout/Layout';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
@@ -16,7 +15,7 @@ const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 fo
 
 export default function Page() {
   return (
-    <Layout>
+    <>
       <div className='relative'>
         <Title>UI</Title>
         <span className='absolute left-[30px] top-1 flex h-5 w-5 animate-bounce items-center justify-center'>
@@ -241,6 +240,6 @@ export default function Page() {
       </Wrapper>
 
       <UiPage />
-    </Layout>
+    </>
   );
 }
