@@ -1,5 +1,4 @@
 import { NextApiResponse } from 'next';
-import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 
 export const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_ANON_KEY || '', {
@@ -7,11 +6,10 @@ export const supabase = createClient(process.env.SUPABASE_URL || '', process.env
 });
 
 // app api
-export async function getAppSessionToken(authorization: string, token: string) {
-  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+export async function getAppSessionToken(token: string) {
   const { data } = await supabase.from('book_sessions').select('*').eq('token', token).single();
   if (data) return data;
-  else NextResponse.json({ error: 'Token invalid' }, { status: 401 });
+  else return null;
 }
 
 // pages api
