@@ -1,9 +1,17 @@
 import { NextApiResponse } from 'next';
+import { headers } from 'next/headers';
 import { createClient } from '@supabase/supabase-js';
 
 export const supabase = createClient(process.env.SUPABASE_URL || '', process.env.SUPABASE_ANON_KEY || '', {
   auth: { persistSession: false },
 });
+
+export function getAppHeader() {
+  const headersList = headers();
+  const authorization = headersList.get('authorization');
+  const token = authorization?.split(' ')[1] || '';
+  return { authorization, token };
+}
 
 // app api
 export async function getAppSessionToken(token: string) {

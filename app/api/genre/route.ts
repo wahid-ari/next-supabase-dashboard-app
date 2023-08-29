@@ -1,8 +1,7 @@
-import { headers } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 import slug from 'slug';
 
-import { getAppSessionToken, supabase, writeLogs } from '@/libs/supabase';
+import { getAppHeader, getAppSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
 export async function GET(request: NextRequest) {
   // Get Request Query
@@ -46,15 +45,12 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  // Get Request Header
-  // const headersList = headers();
-  // const authorization = headersList.get('authorization');
+  // Get Request Header Token
+  // const { authorization, token } = getAppHeader();
   // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
-  // const token = authorization?.split(' ')[1] || '';
-  // Get Request Body
-  // Extract the body of the request
+  // Get Request Body, Extract the body of the request
   const { name, link } = await request.json();
-  // Check Session
+  // Check Session if Token is Valid
   // const session = await getAppSessionToken(token);
   // if (session) {
   if (!name) {
@@ -90,15 +86,12 @@ export async function POST(request: NextRequest) {
 }
 
 export async function PUT(request: NextRequest) {
-  // Get Request Header
-  // const headersList = headers();
-  // const authorization = headersList.get('authorization');
+  // Get Request Header Token
+  // const { authorization, token } = getAppHeader();
   // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
-  // const token = authorization?.split(' ')[1] || '';
-  // Get Request Body
-  // Extract the body of the request
+  // Get Request Body, Extract the body of the request
   const { id, name, link } = await request.json();
-  // Check Session
+  // Check Session if Token is Valid
   // const session = await getAppSessionToken(token);
   // if (session) {
   if (!name) {
@@ -127,15 +120,13 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  // Get Request Header Token
+  // const { authorization, token } = getAppHeader();
+  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Query
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
-  // Get Request Header
-  // const headersList = headers();
-  // const authorization = headersList.get('authorization');
-  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
-  // const token = authorization?.split(' ')[1] || '';
-  // Check Session
+  // Check Session if Token is Valid
   // const session = await getAppSessionToken(token);
   // if (session) {
   if (!id) {
