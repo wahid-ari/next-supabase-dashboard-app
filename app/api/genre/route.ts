@@ -3,6 +3,7 @@ import slug from 'slug';
 
 import { getAppHeader, getAppSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
+// /api/genre?id=1&slug=title&seo=true
 export async function GET(request: NextRequest) {
   // Get Request Query
   const { searchParams } = new URL(request.url);
@@ -119,6 +120,7 @@ export async function PUT(request: NextRequest) {
   // }
 }
 
+// /api/genre?id=1
 export async function DELETE(request: NextRequest) {
   // Get Request Header Token
   // const { authorization, token } = getAppHeader();

@@ -1,7 +1,6 @@
-import { headers } from 'next/headers';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { getAppSessionToken, supabase } from '@/libs/supabase';
+import { getAppHeader, getAppSessionToken, supabase } from '@/libs/supabase';
 
 export async function GET() {
   const { data } = await supabase.from('book_sessions').select(`*, book_users (*)`).order('id');
@@ -10,13 +9,15 @@ export async function GET() {
 
 // /api/session?id=1
 export async function DELETE(request: NextRequest) {
+  // Get Request Header Token
+  // const { authorization, token } = getAppHeader();
+  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  // Get Request Query
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
-  // const headersList = headers();
-  // const authorization = headersList.get('authorization');
-  // const token = authorization?.split(' ')[1] || '';
-  // const sessionDelete = await getAppSessionToken(authorization, token);
-  // if (sessionDelete) {
+  // Check Session if Token is Valid
+  // const session = await getAppSessionToken(token);
+  // if (session) {
   if (!id) {
     const { data } = await supabase.from('book_sessions').select(`*`).order('id');
     for (const item of data) {
@@ -33,5 +34,7 @@ export async function DELETE(request: NextRequest) {
     }
     return NextResponse.json({ message: 'Success delete session' }, { status: 200 });
   }
+  // } else {
+  //   return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
   // }
 }
