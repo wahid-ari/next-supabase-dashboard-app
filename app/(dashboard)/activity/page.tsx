@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 
+import { siteConfig } from '@/config/site';
+
 // import { notFound } from 'next/navigation';
 
 import Title from '@/components/systems/Title';
@@ -8,7 +10,26 @@ import LogPage from './log-page';
 
 export const metadata: Metadata = {
   title: 'Logs',
-  description: 'Logs Activity Page',
+  description: 'Logs Page',
+  alternates: {
+    canonical: `${siteConfig.url}/activity`,
+  },
+  openGraph: {
+    title: 'Logs',
+    description: 'Logs Page',
+    url: `${siteConfig.url}/activity`,
+    images: [
+      {
+        url: `${siteConfig.url}/api/og?title=Logs`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Logs',
+    description: 'Logs Page',
+    images: [`${siteConfig.url}/api/og?title=Logs`],
+  },
 };
 
 async function getData() {

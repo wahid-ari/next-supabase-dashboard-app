@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/site';
+
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
@@ -9,6 +11,25 @@ import FormPage from './form-page';
 export const metadata: Metadata = {
   title: 'Form',
   description: 'Form Design Page',
+  alternates: {
+    canonical: `${siteConfig.url}/design/form`,
+  },
+  openGraph: {
+    title: 'Form',
+    description: 'Form Design Page',
+    url: `${siteConfig.url}/design/form`,
+    images: [
+      {
+        url: `${siteConfig.url}/api/og?title=Form`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Form',
+    description: 'Form Design Page',
+    images: [`${siteConfig.url}/api/og?title=Form`],
+  },
 };
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';

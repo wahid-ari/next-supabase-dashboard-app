@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/site';
+
 import Code from '@/components/systems/Code';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
@@ -20,6 +22,25 @@ import DesignPage from './design-page';
 export const metadata: Metadata = {
   title: 'Components',
   description: 'Components Design Page',
+  alternates: {
+    canonical: `${siteConfig.url}/design`,
+  },
+  openGraph: {
+    title: 'Components',
+    description: 'Components Design Page',
+    url: `${siteConfig.url}/design`,
+    images: [
+      {
+        url: `${siteConfig.url}/api/og?title=Components`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Components',
+    description: 'Components Design Page',
+    images: [`${siteConfig.url}/api/og?title=Components`],
+  },
 };
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';

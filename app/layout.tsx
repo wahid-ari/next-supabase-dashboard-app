@@ -7,25 +7,19 @@ import { GlobalProvider } from '@/context/GlobalContext';
 import '@/styles/globals.css';
 import '@/styles/prism.css';
 
+import { siteConfig } from '@/config/site';
+
 import { Toaster } from '@/components/ui/Toaster';
 
 const inter = Inter({ subsets: ['latin'] });
-
-const siteConfig = {
-  url: process.env.NEXT_PUBLIC_API_ROUTE,
-  title: 'Next.js App Router',
-  description: 'Next.js App Router Description',
-  ogImage: '/og.png',
-  author: 'Wahid Ari',
-  authorUsername: 'wahidari',
-  authorWeb: 'https://wahidari.vercel.app',
-  twitterUsername: '@wahiidari',
-};
 
 export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
     template: `%s - ${siteConfig.title}`,
+  },
+  alternates: {
+    canonical: siteConfig.url,
   },
   description: siteConfig.description,
   keywords: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],

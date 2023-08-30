@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/site';
+
 import Auth from '@/components/example/auth/Auth';
 import Card from '@/components/example/card/Card';
 import Dashboard from '@/components/example/dashboard/Dashboard';
@@ -11,6 +13,25 @@ import Wrapper from '@/components/systems/Wrapper';
 export const metadata: Metadata = {
   title: 'Example UI',
   description: 'Example UI Design Page',
+  alternates: {
+    canonical: `${siteConfig.url}/design/example`,
+  },
+  openGraph: {
+    title: 'Example UI',
+    description: 'Example UI Design Page',
+    url: `${siteConfig.url}/design/example`,
+    images: [
+      {
+        url: `${siteConfig.url}/api/og?title=Example UI`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Example UI',
+    description: 'Example UI Design Page',
+    images: [`${siteConfig.url}/api/og?title=Example UI`],
+  },
 };
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';

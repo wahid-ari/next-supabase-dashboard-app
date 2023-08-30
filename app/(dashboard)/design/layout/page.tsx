@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/site';
+
 import NotFoundPage from '@/components/layout/NotFoundPage';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
@@ -10,6 +12,25 @@ import LayoutPage from './layout-page';
 export const metadata: Metadata = {
   title: 'Layout',
   description: 'Layout Design Page',
+  alternates: {
+    canonical: `${siteConfig.url}/design/layout`,
+  },
+  openGraph: {
+    title: 'Layout',
+    description: 'Layout Design Page',
+    url: `${siteConfig.url}/design/layout`,
+    images: [
+      {
+        url: `${siteConfig.url}/api/og?title=Layout`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Layout',
+    description: 'Layout Design Page',
+    images: [`${siteConfig.url}/api/og?title=Layout`],
+  },
 };
 
 const tocClass = 'px-1 py-0.5 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none rounded';
