@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes';
 import { useMounted } from '@/hooks/useMounted';
 
 import Breadcrumb from '@/components/layout/Breadcrumb';
+import ErrorPage from '@/components/layout/ErrorPage';
 import Layout from '@/components/layout/Layout';
 import Menu from '@/components/layout/Menu';
 import NavAccordion from '@/components/layout/NavAccordion';
@@ -96,6 +97,19 @@ export default function LayoutPage() {
         <div className='overflow-hidden'>
           <Sidebar data-testid='sidebar' className='!z-0 !flex !w-auto' />
         </div>
+      </Wrapper>
+
+      <Wrapper id='error-page' name='ErrorPage' props={['status', 'title', 'message', 'reset']} noChildren>
+        <ErrorPage
+          className='h-[200px]'
+          status='500'
+          title='Server Error'
+          message='Internal Server Error'
+          reset={() => {
+            console.log('Reset Error Page');
+            alert('Reset Error Page');
+          }}
+        />
       </Wrapper>
     </>
   );

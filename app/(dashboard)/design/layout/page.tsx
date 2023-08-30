@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import NotFoundPage from '@/components/layout/NotFoundPage';
 import Title from '@/components/systems/Title';
 import Wrapper from '@/components/systems/Wrapper';
 
@@ -71,10 +72,30 @@ export default function Page() {
               Sidebar
             </Link>
           </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#error-page'>
+              ErrorPage
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#not-found-page'>
+              NotFoundPage
+            </Link>
+          </span>
         </div>
       </Wrapper>
 
       <LayoutPage />
+
+      <Wrapper id='not-found-page' name='NotFoundPage' props={['status', 'title', 'description', 'link']} noChildren>
+        <NotFoundPage
+          className='h-[200px]'
+          status='404'
+          title='Not Found'
+          description='Could not find requested resource'
+          link='/activity'
+        />
+      </Wrapper>
     </>
   );
 }
