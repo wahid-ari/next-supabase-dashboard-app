@@ -6,7 +6,7 @@ import SearchPage from './search-page';
 
 export const metadata: Metadata = {
   title: 'Search',
-  description: 'Search Design Page',
+  description: 'Search Page',
 };
 
 export default function Page() {

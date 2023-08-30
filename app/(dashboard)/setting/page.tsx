@@ -7,7 +7,7 @@ import SettingPage from './setting-page';
 
 export const metadata: Metadata = {
   title: 'Setting',
-  description: 'Setting Design Page',
+  description: 'Setting Page',
 };
 
 export default function Page() {
