@@ -15,7 +15,7 @@ async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/log`, { cache: 'no-store' });
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch log data');
   }
   return res.json();
 }

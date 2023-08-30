@@ -13,7 +13,7 @@ async function getData() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/session`, { cache: 'no-store' });
   if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
+    throw new Error('Failed to fetch session data');
   }
   return res.json();
 }
