@@ -15,7 +15,7 @@ import LabeledInput from '@/components/systems/LabeledInput';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-export default function SettingPage({ data }: { data: any }) {
+export default function GenrePage({ data }: { data: any }) {
   const router = useRouter();
   const { updateToast, pushToast } = useToast();
   const [openCreateDialog, setOpenCreateDialog] = useState(false);

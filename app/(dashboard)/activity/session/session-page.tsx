@@ -12,7 +12,7 @@ import InputDebounce from '@/components/systems/InputDebounce';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-export default function LogPage({ data }) {
+export default function SessionPage({ data }) {
   const [inputDebounceValue, setInputDebounceValue] = useState('');
   const { updateToast, pushToast } = useToast();
   const [openDeleteAllDialog, setOpenDeleteAllDialog] = useState(false);
