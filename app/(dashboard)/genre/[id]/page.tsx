@@ -2,6 +2,10 @@ import type { Metadata, ResolvingMetadata } from 'next';
 
 import { siteConfig } from '@/config/site';
 
+import Title from '@/components/systems/Title';
+
+import DetailGenrePage from './detail-genre-page';
+
 async function getData(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre?id=${id}`);
   if (!res.ok) {
@@ -37,7 +41,11 @@ export async function generateMetadata({ params }, parent: ResolvingMetadata): P
 }
 
 export default async function Page({ params }) {
-  // const data = await getData(params.id);
-  // console.log(data, '\n');
-  return '';
+  const data = await getData(params.id);
+  return (
+    <>
+      <Title>{data?.name}</Title>
+      <DetailGenrePage data={data} />
+    </>
+  );
 }
