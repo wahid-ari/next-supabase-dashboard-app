@@ -17,7 +17,6 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
       (
         <div
           style={{
-            fontSize: 60,
             width: '100%',
             height: '100%',
             display: 'flex',
@@ -27,7 +26,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img tw='absolute' alt='bg' width='100%' height='100%' src={`${process.env.NEXT_PUBLIC_API_ROUTE}/ogs.png`} />
 
-          <div tw='flex items-center text-white absolute left-16 -top-2'>
+          <div tw='flex items-center text-white absolute left-16 top-10'>
             <svg
               height='35'
               xmlns='http://www.w3.org/2000/svg'
