@@ -42,6 +42,7 @@ export default function Akun({ className, ...props }: Props) {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
+              {/* FIX this  */}
               {/* {(mounted && session?.name) || 'Menu'} */}
               Menu
               <ChevronDownIcon
