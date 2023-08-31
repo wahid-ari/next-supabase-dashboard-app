@@ -1,14 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { ChevronRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 export default function Breadcrumb({ ...props }) {
   const pathname = usePathname();
-  // dont show breadcrumb item in detail page
-  const paths = pathname
+  const params = useParams();
+  const path = pathname
     .split('/')
     .slice(1)
     .filter((r) => {
@@ -17,6 +17,17 @@ export default function Breadcrumb({ ...props }) {
       }
       return true;
     });
+
+  // dont show breadcrumb item in detail page
+  // FIX this, hide detail page that use [id] from breadcrumb
+  // from "Home>Genre>27"
+  // to "Home>Genre>Detail"
+  let paths = params.id ? [...path.slice(0, -1), 'detail'] : path;
+  // if (params.id) {
+  //   paths = path.slice(0, -1);
+  // } else paths = path;
+  // console.log(paths)
+
   // const paths = router.asPath
   //   .split("/")
   //   .slice(1)
