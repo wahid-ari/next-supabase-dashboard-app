@@ -190,7 +190,7 @@ export default function SettingPage({ data }: { data: any }) {
               <TableSimple.td shrink>{index + 1}</TableSimple.td>
               <TableSimple.td>
                 <Link
-                  href={`/genre/detail/${item.id}`}
+                  href={`/genre/${item.id}`}
                   className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   {item.name}
