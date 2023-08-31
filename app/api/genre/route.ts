@@ -47,105 +47,105 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   // Get Request Header Token
-  // const { authorization, token } = getAppHeader();
-  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  const { authorization, token } = getAppHeader();
+  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Body, Extract the body of the request
   const { name, link } = await request.json();
   // Check Session if Token is Valid
-  // const session = await getAppSessionToken(token);
-  // if (session) {
-  if (!name) {
-    return NextResponse.json({ error: 'Name required' }, { status: 422 });
+  const session = await getAppSessionToken(token);
+  if (session) {
+    if (!name) {
+      return NextResponse.json({ error: 'Name required' }, { status: 422 });
+    } else {
+      let nameSlug = slug(name);
+      const { data: isSlugExist } = await supabase.from('book_genres').select(`*`).eq('slug', nameSlug).order('id');
+      // if slug already exist, add genres.length + 1 to slug to make it unique
+      if (isSlugExist.length > 0) {
+        const { data: genres } = await supabase.from('book_genres').select(`id`, { count: 'exact' });
+        nameSlug = `${nameSlug}-${genres.length + 1}`;
+      }
+      const { error } = await supabase.from('book_genres').insert([
+        {
+          slug: nameSlug,
+          name: name,
+          link: link,
+        },
+      ]);
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 422 });
+      }
+      // Write logs
+      // const errorLogs = await writeLogs(session.user_id, 'create', 'genre');
+      // if (errorLogs) {
+      //   return NextResponse.json({ error: error.message }, { status: 422 });
+      // }
+      return NextResponse.json({ message: 'Success add genre' }, { status: 200 });
+    }
   } else {
-    let nameSlug = slug(name);
-    const { data: isSlugExist } = await supabase.from('book_genres').select(`*`).eq('slug', nameSlug).order('id');
-    // if slug already exist, add genres.length + 1 to slug to make it unique
-    if (isSlugExist.length > 0) {
-      const { data: genres } = await supabase.from('book_genres').select(`id`, { count: 'exact' });
-      nameSlug = `${nameSlug}-${genres.length + 1}`;
-    }
-    const { error } = await supabase.from('book_genres').insert([
-      {
-        slug: nameSlug,
-        name: name,
-        link: link,
-      },
-    ]);
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 422 });
-    }
-    // Write logs
-    // const errorLogs = await writeLogs(session.user_id, 'create', 'genre');
-    // if (errorLogs) {
-    //   return NextResponse.json({ error: error.message }, { status: 422 });
-    // }
-    return NextResponse.json({ message: 'Success add genre' }, { status: 200 });
+    return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
   }
-  // } else {
-  //   return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
-  // }
 }
 
 export async function PUT(request: NextRequest) {
   // Get Request Header Token
-  // const { authorization, token } = getAppHeader();
-  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  const { authorization, token } = getAppHeader();
+  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Body, Extract the body of the request
   const { id, name, link } = await request.json();
   // Check Session if Token is Valid
-  // const session = await getAppSessionToken(token);
-  // if (session) {
-  if (!name) {
-    return NextResponse.json({ error: 'Name required' }, { status: 422 });
-  } else {
-    const { error } = await supabase
-      .from('book_genres')
-      .update({
-        name: name,
-        link: link,
-      })
-      .eq('id', id);
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 422 });
+  const session = await getAppSessionToken(token);
+  if (session) {
+    if (!name) {
+      return NextResponse.json({ error: 'Name required' }, { status: 422 });
+    } else {
+      const { error } = await supabase
+        .from('book_genres')
+        .update({
+          name: name,
+          link: link,
+        })
+        .eq('id', id);
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 422 });
+      }
+      // Write logs
+      // const errorLogs = await writeLogs(session.user_id, 'update', 'genre', id);
+      // if (errorLogs) {
+      //   return NextResponse.json({ error: error.message }, { status: 422 });
+      // }
+      return NextResponse.json({ message: 'Success update genre' }, { status: 201 });
     }
-    // Write logs
-    // const errorLogs = await writeLogs(session.user_id, 'update', 'genre', id);
-    // if (errorLogs) {
-    //   return NextResponse.json({ error: error.message }, { status: 422 });
-    // }
-    return NextResponse.json({ message: 'Success update genre' }, { status: 201 });
+  } else {
+    return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
   }
-  // } else {
-  //   return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
-  // }
 }
 
 // /api/genre?id=1
 export async function DELETE(request: NextRequest) {
   // Get Request Header Token
-  // const { authorization, token } = getAppHeader();
-  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  const { authorization, token } = getAppHeader();
+  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Query
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
   // Check Session if Token is Valid
-  // const session = await getAppSessionToken(token);
-  // if (session) {
-  if (!id) {
-    return NextResponse.json({ error: 'Id required' }, { status: 422 });
-  } else {
-    const { error } = await supabase.from('book_genres').delete().eq('id', id);
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 422 });
+  const session = await getAppSessionToken(token);
+  if (session) {
+    if (!id) {
+      return NextResponse.json({ error: 'Id required' }, { status: 422 });
+    } else {
+      const { error } = await supabase.from('book_genres').delete().eq('id', id);
+      if (error) {
+        return NextResponse.json({ error: error.message }, { status: 422 });
+      }
+      // Write logs
+      // const errorLogs = await writeLogs(session.user_id, 'delete', 'genre', id);
+      // if (errorLogs) {
+      //   return NextResponse.json({ error: error.message }, { status: 422 });
+      // }
+      return NextResponse.json({ message: 'Success delete genre' }, { status: 200 });
     }
-    // Write logs
-    // const errorLogs = await writeLogs(session.user_id, 'delete', 'genre', id);
-    // if (errorLogs) {
-    //   return NextResponse.json({ error: error.message }, { status: 422 });
-    // }
-    return NextResponse.json({ message: 'Success delete genre' }, { status: 200 });
+  } else {
+    return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
   }
-  // } else {
-  //   return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
-  // }
 }
