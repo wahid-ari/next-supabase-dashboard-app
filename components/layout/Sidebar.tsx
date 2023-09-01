@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   BookIcon,
@@ -25,7 +25,7 @@ import {
 // import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
-import { GlobalContext } from '@/context/GlobalContext';
+import { useShowNav } from '@/context/GlobalContext';
 
 import NavAccordion from '@/components/layout/NavAccordion';
 // import { useMounted } from '@/hooks/useMounted';
@@ -39,7 +39,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
   const router = useRouter();
   const pathname = usePathname();
   const [openModal, setOpenModal] = useState(false);
-  const { showNav, setShowNav } = useContext(GlobalContext);
+  const { showNav, setShowNav } = useShowNav();
   // const admin = nookies.get(null, 'type');
   // const mounted = useMounted();
 

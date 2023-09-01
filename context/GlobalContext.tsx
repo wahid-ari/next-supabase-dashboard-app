@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, Dispatch, ReactNode, SetStateAction, useState } from 'react';
+import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from 'react';
 import { ThemeProvider } from 'next-themes';
 
 type GlobalContextType = {
@@ -23,4 +23,12 @@ export function GlobalProvider({ children, ...props }: { children: ReactNode }) 
       </ThemeProvider>
     </GlobalContext.Provider>
   );
+}
+
+export function useShowNav() {
+  const context = useContext(GlobalContext);
+  if (context === undefined) {
+    throw new Error('useCounter must be used within a GlobalProvider');
+  }
+  return context;
 }
