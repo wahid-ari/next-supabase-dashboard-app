@@ -59,6 +59,7 @@ export default function Navbar({ className, ...props }: { className?: string }) 
         </div>
 
         {/* {mounted && session?.name ? <Menu className='lg:hidden' /> : null} */}
+        {/* Show on Mobile */}
         {mounted && <Menu className='lg:hidden' />}
       </div>
     </nav>
