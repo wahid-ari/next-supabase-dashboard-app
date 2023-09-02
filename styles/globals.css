@@ -19,6 +19,23 @@ html {
   border-radius: 999px;
 }
 
+.banner {
+  background: linear-gradient(
+      145deg,
+      rgba(4, 116, 120, 0.5) 34%,
+      transparent 34%,
+      transparent 64%,
+      rgba(5, 128, 150, 0.5) 64%,
+      rgba(5, 140, 150, 0.5) 100%
+    ),
+    linear-gradient(
+      40deg,
+      rgb(4, 103, 120) 0%,
+      /* rgb(4, 120, 87) 62%, */ rgb(16, 174, 185) 62%,
+      rgb(16, 174, 185) 100%
+    );
+}
+
 /* Footer Link Hover Animation */
 .hover-underline-animation {
   display: inline-block;
