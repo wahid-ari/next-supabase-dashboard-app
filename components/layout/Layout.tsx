@@ -1,10 +1,6 @@
 import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-// import nookies from 'nookies';
-// import { useSession } from 'next-auth/react';
-
-// import { useMounted } from '@/hooks/useMounted';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import Menu from '@/components/layout/Menu';
 import Navbar from '@/components/layout/Navbar';
@@ -16,10 +12,6 @@ type Props = {
 };
 
 export default function Layout({ children, demo, ...props }: Props) {
-  // const admin = nookies.get(null, 'name');
-  // const { data: session, status }: { data: any; status: any } = useSession();
-  // const mounted = useMounted();
-
   return (
     <main
       {...props}
@@ -52,7 +44,6 @@ export default function Layout({ children, demo, ...props }: Props) {
         >
           <Breadcrumb />
 
-          {/* {mounted && session?.name ? <Menu /> : null} */}
           <Menu />
         </div>
 

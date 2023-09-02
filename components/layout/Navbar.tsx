@@ -1,24 +1,18 @@
 'use client';
 
-import { useContext } from 'react';
 import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
-// import nookies from 'nookies';
-// import { useSession } from 'next-auth/react';
-
-import { GlobalContext } from '@/context/GlobalContext';
-import { useMounted } from '@/hooks/useMounted';
+import { useShowNav } from '@/context/GlobalContext';
 
 import Menu from '@/components/layout/Menu';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 
 export default function Navbar({ className, ...props }: { className?: string }) {
-  const { setShowNav } = useContext(GlobalContext);
-  // const admin = nookies.get(null, 'name');
-  // const { data: session }: { data: any; status: any } = useSession();
-  const mounted = useMounted();
+  const { setShowNav } = useShowNav();
+  const { data: session }: { data: any; status: any } = useSession();
 
   return (
     <nav
@@ -58,9 +52,8 @@ export default function Navbar({ className, ...props }: { className?: string }) 
           <ThemeChanger />
         </div>
 
-        {/* {mounted && session?.name ? <Menu className='lg:hidden' /> : null} */}
         {/* Show on Mobile */}
-        {mounted && <Menu className='lg:hidden' />}
+        {session?.authenticated ? <Menu className='lg:hidden' /> : null}
       </div>
     </nav>
   );

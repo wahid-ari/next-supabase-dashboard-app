@@ -5,13 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, SearchIcon, XIcon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 
 import { cn } from '@/libs/utils';
-
-// import nookies from 'nookies';
-// import { useSession } from 'next-auth/react';
-
-// import { useMounted } from '@hooks/useMounted';
 
 import ActiveLink from '@/components/front/ActiveLink';
 import FrontThemeChanger from '@/components/front/FrontThemeChanger';
@@ -40,10 +36,8 @@ const activeCn = cn(
 );
 
 export default function FrontNavbar({ className, ...props }: { className?: string }) {
-  // const admin = nookies.get(null, 'name');
-  // const { data: session, status }: { data: any; status: any } = useSession();
-  // const mounted = useMounted();
   const [isShowMore, setIsShowMore] = useState(false);
+  const { data: session, status }: { data: any; status: any } = useSession();
 
   return (
     <Popover
@@ -151,36 +145,34 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             {/* End Nav Link  */}
 
             <div className='hidden items-center gap-3 md:flex'>
-              <FrontThemeChanger />
-              {/* {mounted && status != 'loading' ? (
-                session?.name ? (
-                  <Link
-                    href='/dashboard'
-                    className={cn(
-                      'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
-                      'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
-                    )}
-                    passHref
-                  >
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link
-                    href='/login'
-                    className={cn(
-                      'rounded bg-sky-500 px-3 py-1 text-sm font-medium text-white transition-all duration-200',
-                      'hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400',
-                    )}
-                    passHref
-                  >
-                    Login
-                  </Link>
-                )
+              {status == 'loading' ? (
+                <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Loading</span>
+              ) : session?.authenticated ? (
+                <Link
+                  href='/dashboard'
+                  className={cn(
+                    'px-1 text-[15px] font-medium text-gray-700 transition-all duration-200',
+                    'rounded hover:text-sky-500 dark:text-neutral-200 dark:hover:text-sky-500',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                  )}
+                  passHref
+                >
+                  Dashboard
+                </Link>
               ) : (
-                <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Loading..</span>
-                // <Shimer className='!h-5 !w-16' />
-              )} */}
+                <Link
+                  href='/login'
+                  className={cn(
+                    'rounded bg-sky-500 px-3 py-1 text-sm font-medium text-white transition-all duration-200',
+                    'hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400',
+                  )}
+                  passHref
+                >
+                  Login
+                </Link>
+              )}
+
+              <FrontThemeChanger />
             </div>
 
             {/* Mobile menu button */}
@@ -281,18 +273,18 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <ActiveLink href='/browse' activeClassName='!text-sky-500 dark:text-sky-500' className={activeCn}>
                   Browse
                 </ActiveLink>
-                {/* {mounted && (
+                {status != 'loading' && (
                   <Link
-                    href={`${session?.name ? '/dashboard' : '/login'}`}
+                    href={`${session?.authenticated ? '/dashboard' : '/login'}`}
                     className={cn(
                       'block rounded px-3 py-1.5 text-[15px] font-medium text-gray-600 hover:bg-gray-100',
                       'hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                       'dark:text-neutral-200 dark:hover:bg-neutral-800',
                     )}
                   >
-                    {session?.name ? 'Dashboard' : 'Login'}
+                    {session?.authenticated ? 'Dashboard' : 'Login'}
                   </Link>
-                )} */}
+                )}
               </div>
             </div>
           </Popover.Panel>

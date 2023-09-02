@@ -22,14 +22,11 @@ import {
   UsersIcon,
   XIcon,
 } from 'lucide-react';
-// import nookies from 'nookies';
 import { twMerge } from 'tailwind-merge';
 
 import { useShowNav } from '@/context/GlobalContext';
 
 import NavAccordion from '@/components/layout/NavAccordion';
-// import { useMounted } from '@/hooks/useMounted';
-
 import NavLink from '@/components/layout/NavLink';
 import ThemeChanger from '@/components/layout/ThemeChanger';
 import Badge from '@/components/systems/Badge';
@@ -40,8 +37,6 @@ export default function Sidebar({ className, ...props }: { className?: string })
   const pathname = usePathname();
   const [openModal, setOpenModal] = useState(false);
   const { showNav, setShowNav } = useShowNav();
-  // const admin = nookies.get(null, 'type');
-  // const mounted = useMounted();
 
   const hideMenu = () => {
     setShowNav(false);
@@ -176,9 +171,6 @@ export default function Sidebar({ className, ...props }: { className?: string })
         <hr className='mt-2 dark:border-neutral-800' />
 
         <div className='px-4 py-2'>
-          {/* FIX this  */}
-          {/* {mounted ? (
-            admin.name ? ( */}
           <button
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
@@ -191,12 +183,6 @@ export default function Sidebar({ className, ...props }: { className?: string })
             <LogOutIcon className='h-5 w-5' />
             Logout
           </button>
-          {/* ) : (
-              <NavLink.login href='/login' icon={<ArrowRightOnRectangleIcon className='h-5 w-5' />} className='mt-1'>
-                Login
-              </NavLink.login>
-            )
-          ) : null} */}
         </div>
       </aside>
       <Modal

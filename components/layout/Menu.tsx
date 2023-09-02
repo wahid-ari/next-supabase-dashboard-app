@@ -5,12 +5,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
-// import nookies from 'nookies';
-// import { useSession } from 'next-auth/react';
-
-// import { useMounted } from '@/hooks/useMounted';
 import Modal from '@/components/systems/Modal';
 
 type Props = {
@@ -18,11 +15,9 @@ type Props = {
 };
 
 export default function Akun({ className, ...props }: Props) {
-  // const admin = nookies.get(null, 'name');
-  // const { data: session, status }: { data: any; status: any } = useSession();
+  const { data: session }: { data: any; status: any } = useSession();
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
-  // const mounted = useMounted();
 
   function handleLogout() {
     setOpenModal(false);
@@ -42,9 +37,7 @@ export default function Akun({ className, ...props }: Props) {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              {/* FIX this  */}
-              {/* {(mounted && session?.name) || 'Menu'} */}
-              Menu
+              {session?.session?.name || 'Menu'}
               <ChevronDownIcon
                 className={twMerge('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                 aria-hidden='true'
@@ -60,17 +53,6 @@ export default function Akun({ className, ...props }: Props) {
             >
               <Menu.Items className='absolute right-0 lg:right-1 z-50 mt-2 w-32 origin-top-right rounded-md bg-white shadow-md focus:outline-none dark:bg-neutral-900 border dark:border-neutral-700'>
                 <div className='space-y-1 p-1'>
-                  {/* <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${active ? 'bg-gray-100 text-sky-600 dark:text-sky-500 dark:bg-neutral-900 transition-all'
-                          : 'text-gray-500 dark:text-neutral-300'
-                          } flex w-full rounded px-2 py-1.5 text-sm mb-1`}
-                      >
-                        Edit
-                      </button>
-                    )}
-                  </Menu.Item> */}
                   <Menu.Item>
                     {({ active }) => (
                       <Link
@@ -101,20 +83,6 @@ export default function Akun({ className, ...props }: Props) {
                       </button>
                     )}
                   </Menu.Item>
-                  {/* <Menu.Item>
-                    {({ active }) => (
-                      <Link
-                        href='/logout'
-                        className={`${
-                          active
-                            ? 'bg-gray-100 text-red-600 transition-all dark:bg-neutral-900 dark:text-red-500'
-                            : 'text-red-500 dark:text-red-500'
-                        } flex w-full rounded px-2 py-1.5 text-sm`}
-                      >
-                        Logout
-                      </Link>
-                    )}
-                  </Menu.Item> */}
                 </div>
               </Menu.Items>
             </Transition>
