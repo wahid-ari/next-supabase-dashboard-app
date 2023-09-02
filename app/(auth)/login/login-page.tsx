@@ -160,7 +160,7 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <p className='mt-4 text-center font-normal dark:text-neutral-800'>
+          {/* <p className='mt-4 text-center font-normal dark:text-neutral-800'>
             Dont have an account?{' '}
             <Link
               href='/register'
@@ -168,7 +168,7 @@ export default function LoginPage() {
             >
               Register Now
             </Link>
-          </p>
+          </p> */}
 
           <p className='mt-2 text-center font-normal dark:text-neutral-800'>
             Continue to{' '}

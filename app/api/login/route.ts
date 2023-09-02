@@ -19,9 +19,9 @@ import { supabase } from '@/libs/supabase';
 //     username: data.username,
 //     password: data.name,
 //   },
-//   process.env.JWT_SECRET
+//   process.env.NEXTAUTH_SECRET
 // );
-// const user = jwt.verify(token, process.env.JWT_SECRET);
+// const user = jwt.verify(token, process.env.NEXTAUTH_SECRET);
 
 export async function POST(request: NextRequest) {
   // Get Request Body, Extract the body of the request
@@ -53,11 +53,11 @@ export async function POST(request: NextRequest) {
         name: data.name,
         type: data.type,
       },
-      process.env.JWT_SECRET,
+      process.env.NEXTAUTH_SECRET,
     );
     const { error: errorSession } = await supabase.from('book_sessions').insert({ user_id: data.id, token: token });
     console.error(errorSession);
-    // const decode = jwt.verify(token, process.env.JWT_SECRET);
+    // const decode = jwt.verify(token, process.env.NEXTAUTH_SECRET);
     // console.log(decode)
     return NextResponse.json({ ...data, token }, { status: 200 });
   }

@@ -10,8 +10,11 @@ export async function GET(request: Request) {
     return new NextResponse(JSON.stringify({ message: 'You are not logged in' }), { status: 401 });
   }
 
-  return NextResponse.json({
-    authenticated: !!session,
-    session,
-  });
+  return NextResponse.json(
+    {
+      authenticated: !!session,
+      session,
+    },
+    { status: 200 },
+  );
 }
