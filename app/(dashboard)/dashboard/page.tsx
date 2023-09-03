@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: 'Dashboard',
   description: 'Dashboard Page',
   alternates: {
-    canonical: `${siteConfig.url}/setting`,
+    canonical: `${siteConfig.url}/dashboard`,
   },
   openGraph: {
     title: 'Dashboard',
     description: 'Dashboard Page',
-    url: `${siteConfig.url}/setting`,
+    url: `${siteConfig.url}/dashboard`,
     images: [
       {
         url: `${siteConfig.url}/api/og?title=Dashboard`,
