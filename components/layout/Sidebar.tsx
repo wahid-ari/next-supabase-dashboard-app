@@ -70,7 +70,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className='rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden'
+            className='focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden border p-0.5 rounded-md dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
@@ -81,7 +81,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
             MyBook
           </p>
           <div className='cursor-pointer pt-1'>
-            <ThemeChanger />
+            <ThemeChanger border />
           </div>
         </div>
 
@@ -91,23 +91,23 @@ export default function Sidebar({ className, ...props }: { className?: string })
             'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-800',
           )}
         >
-          <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-5 w-5' />}>
+          <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-[18px] w-[18px]' />}>
             Dashboard
           </NavLink>
 
-          <NavLink href='/search' icon={<SearchIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/search' icon={<SearchIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Search
           </NavLink>
 
-          <NavLink href='/author' icon={<UsersIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/author' icon={<UsersIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Author
           </NavLink>
 
-          <NavLink href='/book' icon={<BookIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/book' icon={<BookIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Book
           </NavLink>
 
-          <NavLink href='/genre' icon={<LayoutListIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/genre' icon={<LayoutListIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Genre
           </NavLink>
 
@@ -115,53 +115,53 @@ export default function Sidebar({ className, ...props }: { className?: string })
             title='Activity'
             routeName='activity'
             className='mt-0.5'
-            icon={<GanttChartSquareIcon className='h-5 w-5' />}
+            icon={<GanttChartSquareIcon className='h-[18px] w-[18px]' />}
           >
-            <NavLink href='/activity' icon={<ListTreeIcon className='h-5 w-5' />}>
+            <NavLink href='/activity' icon={<ListTreeIcon className='h-[18px] w-[18px]' />}>
               Log
             </NavLink>
 
-            <NavLink href='/activity/session' icon={<SheetIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/activity/session' icon={<SheetIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Session
             </NavLink>
           </NavAccordion>
 
-          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[19px] w-[19px]' />}>
-            <NavLink href='/design' icon={<LayersIcon className='h-5 w-5' />}>
+          <NavAccordion title='Design' routeName='design' icon={<LayoutPanelLeftIcon className='h-[18px] w-[18px]' />}>
+            <NavLink href='/design' icon={<LayersIcon className='h-[18px] w-[18px]' />}>
               Component
             </NavLink>
             <NavLink
               href='/design/layout'
               className='relative mt-1.5'
-              icon={<LayoutDashboardIcon className='h-5 w-5' />}
+              icon={<LayoutDashboardIcon className='h-[18px] w-[18px]' />}
             >
               Layout
-              <span className='absolute left-24 top-2.5 flex h-5 w-5 animate-bounce items-center justify-center'>
+              <span className='absolute left-24 top-2.5 flex h-[18px] w-[18px] animate-bounce items-center justify-center'>
                 <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75' />
                 <span className='relative inline-flex h-3 w-3 rounded-full bg-sky-500' />
               </span>
             </NavLink>
-            <NavLink href='/design/ui' icon={<ContainerIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/ui' icon={<ContainerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               UI
               <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/form' icon={<ListTodoIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/form' icon={<ListTodoIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Form
               <Badge>New</Badge>
             </NavLink>
-            <NavLink href='/design/example' icon={<ComputerIcon className='h-5 w-5' />} className='mt-1.5'>
+            <NavLink href='/design/example' icon={<ComputerIcon className='h-[18px] w-[18px]' />} className='mt-1.5'>
               Example
               <Badge>New</Badge>
             </NavLink>
           </NavAccordion>
 
-          <NavLink href='/setting' icon={<SettingsIcon className='h-5 w-5' />} className='mt-0.5'>
+          <NavLink href='/setting' icon={<SettingsIcon className='h-[18px] w-[18px]' />} className='mt-0.5'>
             Setting
           </NavLink>
 
           <NavLink.external
             href='https://my-book-docs.vercel.app'
-            icon={<ExternalLinkIcon className='h-5 w-5' />}
+            icon={<ExternalLinkIcon className='h-[18px] w-[18px]' />}
             className='mt-0.5'
           >
             Docs
@@ -175,13 +175,13 @@ export default function Sidebar({ className, ...props }: { className?: string })
             data-testid='button-logout'
             onClick={() => setOpenModal(true)}
             className={twMerge(
-              'flex w-full items-center justify-start gap-2 px-3 py-1.5 text-sm font-medium transition-all',
+              'group flex w-full items-center justify-start gap-2 px-3 py-1.5 text-sm font-medium transition-all',
               'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
             )}
           >
-            <div className='border rounded-md dark:border-neutral-800 p-0.5'>
-              <LogOutIcon className='h-5 w-5' />
+            <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
+              <LogOutIcon className='h-[18px] w-[18px]' />
             </div>
             Logout
           </button>

@@ -28,9 +28,9 @@ export default function ErrorPage({
             // Attempt to recover by trying to re-render the segment
             () => reset()
           }
-          className='text-white bg-sky-600 transition-all hover:bg-sky-500 rounded px-2 py-1 text-sm'
+          className='text-white bg-sky-600 transition-all hover:bg-sky-500 rounded px-3 py-1.5 font-medium text-sm'
         >
-          TRY AGAIN
+          Try Again
         </button>
       </div>
     </div>

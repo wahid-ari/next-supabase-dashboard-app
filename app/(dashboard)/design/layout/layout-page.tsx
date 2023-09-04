@@ -68,8 +68,8 @@ export default function LayoutPage() {
       </Wrapper>
 
       <Wrapper id='theme-changer' name='ThemeChanger' noChildren noClassName>
-        <ThemeChanger data-testid='theme-changer' />
-        {mounted ? <Text data-testid='theme-changer-value'>{theme}</Text> : null}
+        <ThemeChanger data-testid='theme-changer' border />
+        {mounted ? <Text data-testid='theme-changer-value' className="mt-2">{theme}</Text> : null}
       </Wrapper>
 
       <Wrapper id='menu' name='Menu' noChildren>
@@ -101,6 +101,7 @@ export default function LayoutPage() {
 
       <Wrapper id='error-page' name='ErrorPage' props={['status', 'title', 'message', 'reset']} noChildren>
         <ErrorPage
+          data-testid='error-page'
           className='h-[200px]'
           status='500'
           title='Server Error'

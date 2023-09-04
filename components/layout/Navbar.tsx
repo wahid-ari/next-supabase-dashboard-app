@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { MenuIcon } from 'lucide-react';
-import { useSession } from 'next-auth/react';
 import { twMerge } from 'tailwind-merge';
 
 import { useShowNav } from '@/context/GlobalContext';
@@ -12,7 +11,6 @@ import ThemeChanger from '@/components/layout/ThemeChanger';
 
 export default function Navbar({ className, ...props }: { className?: string }) {
   const { setShowNav } = useShowNav();
-  const { data: session }: { data: any; status: any } = useSession();
 
   return (
     <nav
@@ -53,7 +51,7 @@ export default function Navbar({ className, ...props }: { className?: string }) 
         </div>
 
         {/* Show on Mobile */}
-        {session?.authenticated ? <Menu className='lg:hidden' /> : null}
+        <Menu className='lg:hidden' />
       </div>
     </nav>
   );

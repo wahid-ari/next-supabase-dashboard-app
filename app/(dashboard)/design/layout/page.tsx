@@ -110,6 +110,7 @@ export default function Page() {
 
       <Wrapper id='not-found-page' name='NotFoundPage' props={['status', 'title', 'description', 'link']} noChildren>
         <NotFoundPage
+          data-testid='not-found-page'
           className='h-[200px]'
           status='404'
           title='Not Found'
