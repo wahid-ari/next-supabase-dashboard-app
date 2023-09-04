@@ -104,7 +104,7 @@ test.describe('Testing Menu Component', () => {
     const menu = page.getByTestId('menu');
     await expect(menu).toBeVisible();
     await expect(menu).toHaveClass(
-      /inline-flex w-full items-center font-medium justify-center rounded text-neutral-600 hover:text-gray-900/,
+      /inline-flex w-full items-center font-medium justify-center rounded text-neutral-600 hover:text-neutral-900/,
     );
     await expect(menu).toHaveText('Menu');
   });

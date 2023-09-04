@@ -69,7 +69,11 @@ export default function LayoutPage() {
 
       <Wrapper id='theme-changer' name='ThemeChanger' noChildren noClassName>
         <ThemeChanger data-testid='theme-changer' border />
-        {mounted ? <Text data-testid='theme-changer-value' className="mt-2">{theme}</Text> : null}
+        {mounted ? (
+          <Text data-testid='theme-changer-value' className='mt-2'>
+            {theme}
+          </Text>
+        ) : null}
       </Wrapper>
 
       <Wrapper id='menu' name='Menu' noChildren>

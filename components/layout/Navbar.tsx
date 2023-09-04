@@ -30,7 +30,7 @@ export default function Navbar({ className, ...props }: { className?: string }) 
           aria-label='Menu'
         >
           <MenuIcon
-            className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700 dark:text-neutral-400 dark:hover:text-neutral-200'
+            className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200'
             onClick={() => setShowNav(true)}
           />
         </button>

@@ -12,7 +12,7 @@ export default function DemoDropdownMenu() {
         <>
           <Menu.Button
             className={twMerge(
-              'flex items-center rounded font-medium text-gray-600 transition-all hover:text-gray-900',
+              'flex items-center rounded font-medium text-neutral-600 transition-all hover:text-neutral-900',
               'focus:outline-none dark:text-neutral-300 dark:hover:text-neutral-100',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -40,8 +40,8 @@ export default function DemoDropdownMenu() {
                       className={twMerge(
                         'flex w-full rounded px-2 py-1.5 text-sm',
                         active
-                          ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
-                          : 'text-gray-700 dark:text-neutral-300',
+                          ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                          : 'text-neutral-700 dark:text-neutral-300',
                       )}
                     >
                       Setting
@@ -55,8 +55,8 @@ export default function DemoDropdownMenu() {
                       className={twMerge(
                         'flex w-full rounded px-2 py-1.5 text-sm',
                         active
-                          ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
-                          : 'text-gray-700 dark:text-neutral-300',
+                          ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                          : 'text-neutral-700 dark:text-neutral-300',
                       )}
                     >
                       UI
@@ -69,8 +69,8 @@ export default function DemoDropdownMenu() {
                       className={twMerge(
                         'flex w-full rounded px-2 py-1.5 text-sm',
                         active
-                          ? 'bg-gray-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
-                          : 'text-gray-700 dark:text-neutral-300',
+                          ? 'bg-neutral-100 text-sky-600 transition-all dark:bg-neutral-800 dark:text-sky-500'
+                          : 'text-neutral-700 dark:text-neutral-300',
                       )}
                     >
                       Logout

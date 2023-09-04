@@ -22,7 +22,7 @@ export default function ThemeChanger({ border, ...props }: { border?: boolean; [
       {theme == 'dark' ? (
         <SunIcon className='h-[19px] w-[19px] text-neutral-300 transition-all hover:text-neutral-100' />
       ) : (
-        <MoonIcon className='h-5 w-5 text-gray-500 transition-all hover:text-gray-700' />
+        <MoonIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-700' />
       )}
     </button>
   );

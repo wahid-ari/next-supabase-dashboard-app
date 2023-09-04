@@ -110,7 +110,7 @@ export default function LoginPage() {
 
           <form onSubmit={handleSubmit}>
             <div className='mb-5'>
-              <label className='block text-sm text-gray-800' htmlFor='username'>
+              <label className='block text-sm text-neutral-800' htmlFor='username'>
                 Username
               </label>
               <input
@@ -119,14 +119,14 @@ export default function LoginPage() {
                 placeholder='Username'
                 value={form.username}
                 onChange={handleChange}
-                className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
+                className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
                 autoComplete='off'
                 required
               />
             </div>
 
             <div className='mb-5'>
-              <label className='block text-sm text-gray-800' htmlFor='password'>
+              <label className='block text-sm text-neutral-800' htmlFor='password'>
                 Password
               </label>
               <div className='relative mb-4 flex items-center'>
@@ -136,7 +136,7 @@ export default function LoginPage() {
                   placeholder='Password'
                   value={form.password}
                   onChange={handleChange}
-                  className='mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-gray-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
+                  className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-600 dark:bg-white dark:text-neutral-800'
                   autoComplete='off'
                   required
                 />
@@ -144,12 +144,12 @@ export default function LoginPage() {
                   type='button'
                   aria-label='show password'
                   onClick={() => setShowPassword(!showPassword)}
-                  className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-gray-300 p-1.5 outline-none ring-gray-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
+                  className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-600'
                 >
                   {showPassword ? (
-                    <EyeIcon className='h-5 w-5 text-gray-600' />
+                    <EyeIcon className='h-5 w-5 text-neutral-600' />
                   ) : (
-                    <EyeOffIcon className='h-5 w-5 text-gray-600' />
+                    <EyeOffIcon className='h-5 w-5 text-neutral-600' />
                   )}
                 </button>
               </div>
