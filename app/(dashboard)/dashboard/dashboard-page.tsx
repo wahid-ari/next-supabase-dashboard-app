@@ -58,7 +58,7 @@ export default function DashboardPage({
     <div className='mt-5 grid grid-cols-1 gap-5'>
       <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
         <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-          <Text.medium>Total Book by Genre</Text.medium>
+          <Text.medium className="text-[15px]">Total Book by Genre</Text.medium>
         </div>
         {mounted ? (
           <div className='m-auto w-80 py-3'>
@@ -93,7 +93,7 @@ export default function DashboardPage({
 
       <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
         <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
-          <Text.medium>Total Book by Author</Text.medium>
+          <Text.medium className="text-[15px]">Total Book by Author</Text.medium>
         </div>
         <div className='p-3'>
           {mounted ? (
