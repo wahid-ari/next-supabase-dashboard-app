@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from 'next-auth/middleware';
 
-// FIX this https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
 // FIX this
+// this https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
 // https://github.com/nextauthjs/next-auth/issues/5695
 
 export function middleware(request: NextRequest) {
@@ -18,4 +18,5 @@ export function middleware(request: NextRequest) {
 
 // To include all dashboard nested routes (sub pages like /dashboard/settings, /dashboard/profile)
 // you can pass matcher: "/dashboard/:path*" to config.
-export const config = { matcher: ['/old', '/dashboard/:path*', '/genre/:path*'] };
+// export const config = { matcher: ['/old', '/dashboard/:path*', '/genre/:path*'] };
+export const config = { matcher: ['/old', '/genre/:path*'] };
