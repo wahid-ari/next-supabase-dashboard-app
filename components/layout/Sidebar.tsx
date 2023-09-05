@@ -180,9 +180,9 @@ export default function Sidebar({ className, ...props }: { className?: string })
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
             )}
           >
-            <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'>
-              <LogOutIcon className='h-[18px] w-[18px]' />
-            </div>
+            {/* <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800 dark:group-hover:border-neutral-700'> */}
+            <LogOutIcon className='h-[18px] w-[18px]' />
+            {/* </div> */}
             Logout
           </button>
         </div>
