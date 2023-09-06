@@ -2,8 +2,8 @@ import { supabase } from '@/libs/supabase';
 
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 
-// https://kentcdodds.com/blog/rss.xml
-// https://stackoverflow.com/questions/2784183/what-does-cdata-in-xml-mean
+// TODO Docs https://kentcdodds.com/blog/rss.xml
+// TODO Docs https://stackoverflow.com/questions/2784183/what-does-cdata-in-xml-mean
 export async function GET() {
   const { data: books } = await supabase.from('book_books').select(`title, description, slug, created_at`).order('id');
   // const { data: authors } = await supabase.from('book_authors').select(`name, bio, slug, created_at`).order('id');

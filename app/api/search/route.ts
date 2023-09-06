@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   if (!query) {
     return NextResponse.json({ message: 'Query Required' }, { status: 200 });
   }
-  // https://supabase.com/docs/guides/database/full-text-search#search-multiple-columns
+  // TODO Docs https://supabase.com/docs/guides/database/full-text-search#search-multiple-columns
   // create function in supabase > sql editor > new query
   // create function title_isbn(book_books) returns text as $$
   //   select $1.title || ' ' || $1.isbn;

@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from 'next-auth/middleware';
 
 // FIX this
-// this https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
-// https://github.com/nextauthjs/next-auth/issues/5695
+// TODO Docs https://codevoweb.com/setup-and-use-nextauth-in-nextjs-13-app-directory/
+// TODO Docs https://github.com/nextauthjs/next-auth/issues/5695
 
 export function middleware(request: NextRequest) {
   // check cookie, if valid return early

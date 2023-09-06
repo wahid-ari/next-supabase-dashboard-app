@@ -5,11 +5,11 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 
-// https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
-// https://nextjs.org/docs/app/building-your-application/routing/route-handlers#non-ui-responses
-// https://claritydev.net/blog/nextjs-dynamic-sitemap-pages-app-directory
-// https://kentcdodds.com/sitemap.xml
-// https://slickplan.com/blog/xml-sitemap-priority-changefreq
+// TODO Docs https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
+// TODO Docs https://nextjs.org/docs/app/building-your-application/routing/route-handlers#non-ui-responses
+// TODO Docs https://claritydev.net/blog/nextjs-dynamic-sitemap-pages-app-directory
+// TODO Docs https://kentcdodds.com/sitemap.xml
+// TODO Docs https://slickplan.com/blog/xml-sitemap-priority-changefreq
 export async function GET() {
   const { data: books } = await supabase.from('book_books').select(`slug`).order('id');
   const { data: authors } = await supabase.from('book_authors').select(`slug`).order('id');

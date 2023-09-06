@@ -26,7 +26,7 @@ export async function GET(request: Request) {
     }
   }
   // Remove duplicate values from an array of objects in javascript
-  // https://stackoverflow.com/questions/45439961/remove-duplicate-values-from-an-array-of-objects-in-javascript
+  // TODO Docs https://stackoverflow.com/questions/45439961/remove-duplicate-values-from-an-array-of-objects-in-javascript
   let data = result.reduce((unique, o) => {
     if (!unique.some((obj: any) => obj.id === o.id)) {
       unique.push(o);

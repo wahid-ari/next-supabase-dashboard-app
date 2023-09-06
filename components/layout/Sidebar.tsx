@@ -46,7 +46,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
     setShowNav(false);
   }, [pathname, setShowNav]);
 
-  // https://stackoverflow.com/questions/54989513/react-prevent-scroll-when-modal-is-open
+  // TODO Docs https://stackoverflow.com/questions/54989513/react-prevent-scroll-when-modal-is-open
   useEffect(() => {
     if (showNav) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'visible';
