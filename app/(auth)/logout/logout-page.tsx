@@ -27,7 +27,7 @@ export default function LogoutPage({ session }: { session: any }) {
     }
 
     postLogout();
-  }, [router]);
+  }, [router, session?.id, session?.token]);
 
   return '';
 }

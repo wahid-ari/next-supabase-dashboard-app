@@ -36,7 +36,7 @@ async function getTotalDashboard() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard`);
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch genre data');
+    throw new Error('Failed to fetch total dashboard data');
   }
   return res.json();
 }
@@ -45,7 +45,7 @@ async function getTotalDashboard() {
 //   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-author`);
 //   if (!res.ok) {
 //     // This will activate the closest `error.tsx` Error Boundary
-//     throw new Error('Failed to fetch genre data');
+//     throw new Error('Failed to fetch total author data');
 //   }
 //   return res.json();
 // }
@@ -54,7 +54,7 @@ async function getTotalDashboard() {
 //   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-book`);
 //   if (!res.ok) {
 //     // This will activate the closest `error.tsx` Error Boundary
-//     throw new Error('Failed to fetch genre data');
+//     throw new Error('Failed to fetch total book data');
 //   }
 //   return res.json();
 // }
@@ -63,7 +63,7 @@ async function getTotalDashboard() {
 //   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-genre`);
 //   if (!res.ok) {
 //     // This will activate the closest `error.tsx` Error Boundary
-//     throw new Error('Failed to fetch genre data');
+//     throw new Error('Failed to fetch total genre data');
 //   }
 //   return res.json();
 // }
@@ -72,7 +72,7 @@ async function getStatisticBookByAuthor() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-author`);
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch genre data');
+    throw new Error('Failed to fetch book by author data');
   }
   return res.json();
 }
@@ -81,7 +81,7 @@ async function getStatisticBookByGenre() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-genre`);
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch genre data');
+    throw new Error('Failed to fetch book by genre data');
   }
   return res.json();
 }

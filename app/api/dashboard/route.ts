@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import { supabase } from '@/libs/supabase';
 
-export async function GET(request: Request) {
+export async function GET() {
   const { data: authors } = await supabase.from('book_authors').select(`id`, { count: 'exact' });
   const { data: books } = await supabase.from('book_books').select(`id`, { count: 'exact' });
   const { data: genres } = await supabase.from('book_genres').select(`id`, { count: 'exact' });
