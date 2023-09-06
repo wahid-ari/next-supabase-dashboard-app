@@ -90,26 +90,27 @@ export default function DashboardPage({
             <ResponsiveContainer width='100%' height={350}>
               <PieChart data={dataStatisticBookByGenre}>
                 <PieRecharts
-                  className='focus:outline-1 dark:focus:outline-1 focus:outline-sky-600 dark:focus:outline-sky-600'
+                  className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
                   data={dataStatisticBookByGenre}
-                  type='monotone'
                   dataKey='total'
+                  type='monotone'
                   strokeWidth={2}
                   stroke={theme == 'dark' ? '#171717' : '#fff'}
                   fill='#adfa1d'
                   cx='50%'
                   cy='50%'
-                  innerRadius={60}
+                  innerRadius={windowSize.width < 450 ? 50 : 60}
                   outerRadius={windowSize.width < 450 ? 80 : 90}
-                  label={windowSize.width < 500 ? false : true}
+                  label={true}
                   labelLine={true}
+                  paddingAngle={1}
                 >
                   {dataStatisticBookByGenre.map((_, index) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </PieRecharts>
                 <TooltipRecharts
-                  content={<CustomTooltip />}
+                  content={<CustomTooltip category='Genre' />}
                   cursor={{
                     stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
                     strokeWidth: 1,
@@ -123,17 +124,6 @@ export default function DashboardPage({
           </div>
         ) : (
           <div className='py-3 w-80 m-auto'>
-            <div className='flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
-              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-              <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-            </div>
             <div
               className={cn(
                 'relative isolate w-64 h-64 m-auto overflow-hidden rounded-full bg-neutral-200/60 p-4',
@@ -143,6 +133,17 @@ export default function DashboardPage({
               )}
             >
               <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+            </div>
+            <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
+              <div className='h-4 w-10 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </div>
           </div>
         )}
@@ -185,7 +186,7 @@ export default function DashboardPage({
                   ))}
                 </BarRecharts>
                 <TooltipRecharts
-                  content={<CustomTooltip />}
+                  content={<CustomTooltip category='Author' />}
                   cursor={{
                     stroke: theme == 'dark' ? '#525252' : '#a3a3a3',
                     strokeWidth: 1,
@@ -297,11 +298,21 @@ export default function DashboardPage({
   );
 }
 
-function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: any; label?: string }) {
+function CustomTooltip({
+  active,
+  payload,
+  label,
+  category = 'Category',
+}: {
+  active?: boolean;
+  payload?: any;
+  label?: string;
+  category?: string;
+}) {
   if (active && payload && payload.length) {
     return (
       <div className='rounded bg-white/80 p-3 shadow backdrop-blur-sm dark:bg-neutral-900/80'>
-        <p className='mb-2 font-medium'>{`Author : ${label || payload[0].payload.label}`}</p>
+        <p className='mb-2 font-medium'>{`${category} : ${label || payload[0].payload.label}`}</p>
         <p className='font-medium'>{`Total Book : ${payload[0].value}`}</p>
       </div>
     );
@@ -332,8 +343,8 @@ function CustomXAxisTick({ x, y, payload }: any) {
 
 function renderColorfulLegendText(value: string, entry: any) {
   return (
-    <span className='text-neutral-800 dark:text-neutral-200'>
-      {entry.payload.total} - {entry.payload.label}
+    <span className='text-neutral-700 dark:text-neutral-300'>
+      {entry.payload.label} - <span className='font-semibold'>{entry.payload.total}</span>
     </span>
   );
 }
