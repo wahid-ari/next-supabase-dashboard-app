@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteConfig.url,
   },
+  metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   keywords: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
   authors: [
