@@ -33,14 +33,14 @@ export const metadata: Metadata = {
   },
 };
 
-async function getTotalDashboard() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard`);
-  if (!res.ok) {
-    // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch total dashboard data');
-  }
-  return res.json();
-}
+// async function getTotalDashboard() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard`);
+//   if (!res.ok) {
+//     // This will activate the closest `error.tsx` Error Boundary
+//     throw new Error('Failed to fetch total dashboard data');
+//   }
+//   return res.json();
+// }
 
 // async function getTotalAuthor() {
 //   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-author`);
@@ -89,7 +89,7 @@ async function getTotalDashboard() {
 
 export default async function Page() {
   // TODO Docs https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#parallel-data-fetching
-  const totalDashboard = await getTotalDashboard();
+  // const totalDashboard = await getTotalDashboard();
   // Initiate both requests in parallel
   // const totalDashboardData = await getTotalDashboard();
   // const totalAuthor = await getTotalAuthor();
@@ -129,7 +129,7 @@ export default async function Page() {
           icon={<LayoutListIcon className='h-12 w-12' />}
           data-testid='genre-count'
         /> */}
-        <Card
+        {/* <Card
           title='Author'
           link='/author'
           count={totalDashboard.author}
@@ -149,7 +149,7 @@ export default async function Page() {
           count={totalDashboard.genre}
           icon={<LayoutListIcon className='h-12 w-12' />}
           data-testid='genre-count'
-        />
+        /> */}
       </div>
 
       {/* TODO Docs https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example */}
