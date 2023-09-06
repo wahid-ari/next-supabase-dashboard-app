@@ -49,7 +49,7 @@ export default function Loading() {
         </div>
       </div>
 
-      <div
+      {/* <div
         className={cn(
           'mt-2 mb-4 relative isolate space-y-3 overflow-hidden rounded bg-neutral-200/60 p-4',
           'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite]',
@@ -58,7 +58,7 @@ export default function Loading() {
         )}
       >
         <div className='h-80 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-      </div>
+      </div> */}
     </>
   );
 }
