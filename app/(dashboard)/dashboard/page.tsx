@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
 
@@ -87,12 +88,20 @@ async function getStatisticBookByGenre() {
 }
 
 export default async function Page() {
-  const totalDashboard = await getTotalDashboard();
+  // TODO Docs https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#parallel-data-fetching
+  // Initiate both requests in parallel
+  const totalDashboardData = await getTotalDashboard();
   // const totalAuthor = await getTotalAuthor();
   // const totalBook = await getTotalBook();
   // const totalGenre = await getTotalGenre();
-  const statisticBookByAuthor = await getStatisticBookByAuthor();
-  const statisticBookByGenre = await getStatisticBookByGenre();
+  const statisticBookByAuthorData = await getStatisticBookByAuthor();
+  const statisticBookByGenreData = await getStatisticBookByGenre();
+  // Wait for the promises to resolve
+  const [totalDashboard, statisticBookByAuthor, statisticBookByGenre] = await Promise.all([
+    totalDashboardData,
+    statisticBookByAuthorData,
+    statisticBookByGenreData,
+  ]);
 
   return (
     <>
@@ -147,10 +156,13 @@ export default async function Page() {
         />
       </div>
 
-      <DashboardPage
-        dataStatisticBookByAuthor={statisticBookByAuthor}
-        dataStatisticBookByGenre={statisticBookByGenre}
-      />
+      {/* TODO Docs https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example */}
+      <Suspense fallback={<p>Loading charts...</p>}>
+        <DashboardPage
+          dataStatisticBookByAuthor={statisticBookByAuthor}
+          dataStatisticBookByGenre={statisticBookByGenre}
+        />
+      </Suspense>
     </>
   );
 }
