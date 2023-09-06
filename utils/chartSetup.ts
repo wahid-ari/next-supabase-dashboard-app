@@ -24,16 +24,20 @@ function populateData(param: any, type?: string) {
   switch (type) {
     // type book = label & total
     case 'book':
-      param.map((item: any) => labels.push(item.label));
-      param.map((item: any) => totals.push(item.total));
+      param.map((item: any) => {
+        labels.push(item.label);
+        totals.push(item.total);
+      });
       bgColor = colors.slice(0, 13);
       borderColor = colors.slice(0, 13);
       labelName = 'Total Book';
       break;
     // type quote = label & total
     case 'quote':
-      param.map((item: any) => labels.push(item.label));
-      param.map((item: any) => totals.push(item.total));
+      param.forEach((item: any) => {
+        labels.push(item.label);
+        totals.push(item.total);
+      });
       bgColor = colors.slice(1, 13);
       borderColor = colors.slice(1, 13);
       labelName = 'Total Quote';

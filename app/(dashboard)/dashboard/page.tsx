@@ -41,32 +41,32 @@ async function getTotalDashboard() {
   return res.json();
 }
 
-async function getTotalAuthor() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-author`);
-  if (!res.ok) {
-    // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch genre data');
-  }
-  return res.json();
-}
+// async function getTotalAuthor() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-author`);
+//   if (!res.ok) {
+//     // This will activate the closest `error.tsx` Error Boundary
+//     throw new Error('Failed to fetch genre data');
+//   }
+//   return res.json();
+// }
 
-async function getTotalBook() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-book`);
-  if (!res.ok) {
-    // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch genre data');
-  }
-  return res.json();
-}
+// async function getTotalBook() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-book`);
+//   if (!res.ok) {
+//     // This will activate the closest `error.tsx` Error Boundary
+//     throw new Error('Failed to fetch genre data');
+//   }
+//   return res.json();
+// }
 
-async function getTotalGenre() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-genre`);
-  if (!res.ok) {
-    // This will activate the closest `error.tsx` Error Boundary
-    throw new Error('Failed to fetch genre data');
-  }
-  return res.json();
-}
+// async function getTotalGenre() {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-genre`);
+//   if (!res.ok) {
+//     // This will activate the closest `error.tsx` Error Boundary
+//     throw new Error('Failed to fetch genre data');
+//   }
+//   return res.json();
+// }
 
 async function getStatisticBookByAuthor() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-author`);
