@@ -69,23 +69,23 @@ async function getTotalDashboard() {
 //   return res.json();
 // }
 
-// async function getStatisticBookByAuthor() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-author`);
-//   if (!res.ok) {
-//     // This will activate the closest `error.tsx` Error Boundary
-//     throw new Error('Failed to fetch book by author data');
-//   }
-//   return res.json();
-// }
+async function getStatisticBookByAuthor() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-author`);
+  if (!res.ok) {
+    // This will activate the closest `error.tsx` Error Boundary
+    throw new Error('Failed to fetch book by author data');
+  }
+  return res.json();
+}
 
-// async function getStatisticBookByGenre() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-genre`);
-//   if (!res.ok) {
-//     // This will activate the closest `error.tsx` Error Boundary
-//     throw new Error('Failed to fetch book by genre data');
-//   }
-//   return res.json();
-// }
+async function getStatisticBookByGenre() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-genre`);
+  if (!res.ok) {
+    // This will activate the closest `error.tsx` Error Boundary
+    throw new Error('Failed to fetch book by genre data');
+  }
+  return res.json();
+}
 
 export default async function Page() {
   // TODO Docs https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#parallel-data-fetching
@@ -95,8 +95,8 @@ export default async function Page() {
   // const totalAuthor = await getTotalAuthor();
   // const totalBook = await getTotalBook();
   // const totalGenre = await getTotalGenre();
-  // const statisticBookByAuthorData = await getStatisticBookByAuthor();
-  // const statisticBookByGenreData = await getStatisticBookByGenre();
+  const statisticBookByAuthor = await getStatisticBookByAuthor();
+  const statisticBookByGenre = await getStatisticBookByGenre();
   // Wait for the promises to resolve
   // const [totalDashboard, statisticBookByAuthor, statisticBookByGenre] = await Promise.all([
   //   totalDashboardData,
@@ -153,12 +153,12 @@ export default async function Page() {
       </div>
 
       {/* TODO Docs https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example */}
-      {/* <Suspense fallback={<p>Loading charts...</p>}>
+      <Suspense fallback={<p>Loading charts...</p>}>
         <DashboardPage
           dataStatisticBookByAuthor={statisticBookByAuthor}
           dataStatisticBookByGenre={statisticBookByGenre}
         />
-      </Suspense> */}
+      </Suspense>
     </>
   );
 }
