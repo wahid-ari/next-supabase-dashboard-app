@@ -4,6 +4,8 @@ import slug from 'slug';
 
 import { getAppHeader, getAppSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
+export const dynamic = 'force-dynamic';
+
 // /api/genre?id=1&slug=title&seo=true
 export async function GET(request: NextRequest) {
   // Get Request Query

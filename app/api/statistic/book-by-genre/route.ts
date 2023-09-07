@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 
 import { supabase } from '@/libs/supabase';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
   const { data: books_genres } = await supabase.from('book_books_genres').select(`*`).order('id');
   const { data: genres } = await supabase.from('book_genres').select(`*`).order('id');
