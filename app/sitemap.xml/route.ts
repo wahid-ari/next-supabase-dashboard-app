@@ -10,6 +10,9 @@ const today = new Date(timeElapsed);
 // TODO Docs https://claritydev.net/blog/nextjs-dynamic-sitemap-pages-app-directory
 // TODO Docs https://kentcdodds.com/sitemap.xml
 // TODO Docs https://slickplan.com/blog/xml-sitemap-priority-changefreq
+
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   const { data: books } = await supabase.from('book_books').select(`slug`).order('id');
   const { data: authors } = await supabase.from('book_authors').select(`slug`).order('id');
