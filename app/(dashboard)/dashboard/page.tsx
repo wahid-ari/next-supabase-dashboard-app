@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 async function getTotalDashboard() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard`, { cache: 'no-store' });
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
     throw new Error('Failed to fetch total dashboard data');
@@ -43,7 +43,7 @@ async function getTotalDashboard() {
 }
 
 // async function getTotalAuthor() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-author`);
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-author`, { cache: 'no-store' });
 //   if (!res.ok) {
 //     // This will activate the closest `error.tsx` Error Boundary
 //     throw new Error('Failed to fetch total author data');
@@ -52,7 +52,7 @@ async function getTotalDashboard() {
 // }
 
 // async function getTotalBook() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-book`);
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-book`, { cache: 'no-store' });
 //   if (!res.ok) {
 //     // This will activate the closest `error.tsx` Error Boundary
 //     throw new Error('Failed to fetch total book data');
@@ -61,7 +61,7 @@ async function getTotalDashboard() {
 // }
 
 // async function getTotalGenre() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-genre`);
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/dashboard/total-genre`, { cache: 'no-store' });
 //   if (!res.ok) {
 //     // This will activate the closest `error.tsx` Error Boundary
 //     throw new Error('Failed to fetch total genre data');
@@ -70,7 +70,7 @@ async function getTotalDashboard() {
 // }
 
 async function getStatisticBookByAuthor() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-author`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-author`, { cache: 'no-store' });
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
     throw new Error('Failed to fetch book by author data');
@@ -79,7 +79,7 @@ async function getStatisticBookByAuthor() {
 }
 
 async function getStatisticBookByGenre() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-genre`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/statistic/book-by-genre`, { cache: 'no-store' });
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
     throw new Error('Failed to fetch book by genre data');
