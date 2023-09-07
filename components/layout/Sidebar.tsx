@@ -88,7 +88,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
         <div
           className={twMerge(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 flex-grow',
-            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-800',
+            'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
           )}
         >
           <NavLink isHome href='/dashboard' icon={<LayoutGridIcon className='h-[18px] w-[18px]' />}>

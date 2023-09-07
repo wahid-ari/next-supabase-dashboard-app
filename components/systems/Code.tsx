@@ -60,7 +60,7 @@ export default function Code({ className, name = 'Code', code, lang = 'javascrip
         </button>
         <pre
           className={twMerge(
-            'line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-700 dark:scrollbar-thumb-neutral-700',
+            'line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800',
             'focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none',
           )}
         >
