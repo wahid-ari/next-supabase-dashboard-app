@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 import slug from 'slug';
 
@@ -79,6 +80,7 @@ export async function POST(request: NextRequest) {
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
+      revalidatePath(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
       return NextResponse.json({ message: 'Success add genre' }, { status: 200 });
     }
   } else {
@@ -113,6 +115,7 @@ export async function PUT(request: NextRequest) {
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
+      revalidatePath(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
       return NextResponse.json({ message: 'Success update genre' }, { status: 201 });
     }
   } else {
@@ -143,6 +146,7 @@ export async function DELETE(request: NextRequest) {
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
+      revalidatePath(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre`);
       return NextResponse.json({ message: 'Success delete genre' }, { status: 200 });
     }
   } else {
