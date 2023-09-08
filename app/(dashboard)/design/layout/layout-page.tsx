@@ -1,6 +1,14 @@
 'use client';
 
-import { ContainerIcon, LayersIcon, LayoutDashboardIcon, LayoutPanelLeftIcon, LogOutIcon } from 'lucide-react';
+import {
+  ContainerIcon,
+  ExternalLinkIcon,
+  LayersIcon,
+  LayoutDashboardIcon,
+  LayoutPanelLeftIcon,
+  LogInIcon,
+  LogOutIcon,
+} from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { useMounted } from '@/hooks/useMounted';
@@ -56,6 +64,26 @@ export default function LayoutPage() {
           >
             Layout
           </NavLink>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='nav-link-external' name='NavLink.external' props={['href', 'icon']}>
+        <div className='w-64'>
+          <NavLink.external
+            data-testid='nav-link-external'
+            href='https://github.com'
+            icon={<ExternalLinkIcon className='h-4 w-4' />}
+          >
+            External
+          </NavLink.external>
+        </div>
+      </Wrapper>
+
+      <Wrapper id='nav-link-login' name='NavLink.login' props={['href', 'icon']}>
+        <div className='w-64'>
+          <NavLink.login data-testid='nav-link-login' href='/login' icon={<LogInIcon className='h-4 w-4' />}>
+            Login
+          </NavLink.login>
         </div>
       </Wrapper>
 

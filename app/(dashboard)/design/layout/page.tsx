@@ -64,6 +64,16 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#nav-link-external'>
+              NavLink.external
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#nav-link-login'>
+              NavLink.login
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#nav-link-logout'>
               NavLink.logout
             </Link>
