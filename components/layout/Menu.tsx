@@ -32,8 +32,9 @@ export default function Akun({ className, ...props }: Props) {
             <Menu.Button
               {...props}
               className={twMerge(
-                'inline-flex w-full items-center font-medium justify-center rounded text-neutral-600 hover:text-neutral-900',
-                'transition-all focus:outline-none dark:text-neutral-300 dark:hover:text-neutral-100',
+                'inline-flex w-full items-center font-medium justify-center rounded transition-all',
+                'text-neutral-600 hover:text-neutral-900',
+                'dark:text-neutral-300 dark:hover:text-neutral-100',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >

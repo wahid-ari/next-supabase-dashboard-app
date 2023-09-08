@@ -126,7 +126,7 @@ NavLink.login = ({ children, className, href, icon, ...props }: Other) => {
         className,
       )}
     >
-      <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800'>{icon}</div>
+      {icon}
       <span>{children}</span>
     </Link>
   );
@@ -146,7 +146,7 @@ NavLink.logout = ({ children, className, href, icon, ...props }: Other) => {
         className,
       )}
     >
-      <div className='border rounded-md dark:border-neutral-800 p-0.5 bg-neutral-100 dark:bg-neutral-800'>{icon}</div>
+      {icon}
       <span>{children}</span>
     </Link>
   );

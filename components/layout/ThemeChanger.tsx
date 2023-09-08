@@ -15,8 +15,8 @@ export default function ThemeChanger({ border, ...props }: { border?: boolean; [
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
       aria-label='Change Theme'
       className={cn(
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 transition-all duration-200',
-        border && 'border p-0.5 rounded-md dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800',
+        'rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 transition-all duration-200',
+        border && 'border p-0.5 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800',
       )}
     >
       {theme == 'dark' ? (

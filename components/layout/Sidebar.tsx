@@ -70,7 +70,10 @@ export default function Sidebar({ className, ...props }: { className?: string })
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className='focus-visible:outline-none focus-visible:ring focus-visible:ring-sky-500 lg:hidden border p-0.5 rounded-md dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+            className={twMerge(
+              'lg:hidden border p-0.5 rounded dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+            )}
             onClick={hideMenu}
             id='closemenu'
             aria-label='Close Menu'
