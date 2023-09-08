@@ -71,6 +71,25 @@ test.describe('Testing NavLink Component', () => {
     await expect(navLink).toHaveText(/Layout/);
     await expect(navLink).toHaveAttribute('href', '/design/layout');
   });
+  test('renders a NavLink.External component', async ({ page }) => {
+    const navLink = page.getByTestId('nav-link-external');
+    await expect(navLink).toBeVisible();
+    await expect(navLink).toHaveClass(
+      /rounded text-sm font-medium text-neutral-600 hover:text-sky-600 dark:text-neutral-300/,
+    );
+    await expect(navLink).toHaveText(/External/);
+    await expect(navLink).toHaveAttribute('href', 'https://github.com');
+    await expect(navLink).toHaveAttribute('target', '_blank');
+  });
+  test('renders a NavLink.login component', async ({ page }) => {
+    const navLink = page.getByTestId('nav-link-login');
+    await expect(navLink).toBeVisible();
+    await expect(navLink).toHaveClass(
+      /text-emerald-500 hover:text-emerald-600 dark:text-emerald-600 dark:hover:text-emerald-500/,
+    );
+    await expect(navLink).toHaveText(/Login/);
+    await expect(navLink).toHaveAttribute('href', '/login');
+  });
   test('renders a NavLink.logout component', async ({ page }) => {
     const navLink = page.getByTestId('nav-link-logout');
     await expect(navLink).toBeVisible();
@@ -103,9 +122,7 @@ test.describe('Testing Menu Component', () => {
   test('renders a Menu component', async ({ page }) => {
     const menu = page.getByTestId('menu');
     await expect(menu).toBeVisible();
-    await expect(menu).toHaveClass(
-      /inline-flex w-full items-center font-medium justify-center rounded text-neutral-600 hover:text-neutral-900/,
-    );
+    await expect(menu).toHaveClass(/inline-flex w-full items-center font-medium justify-center rounded transition-all/);
     await expect(menu).toHaveText('Menu');
   });
   test('should renders a Menu Item component', async ({ page }) => {
