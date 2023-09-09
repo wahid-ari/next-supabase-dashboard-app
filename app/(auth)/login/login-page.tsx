@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn } from 'next-auth/react';
@@ -13,6 +14,8 @@ import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 
 export default function LoginPage() {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl');
   const [form, setForm] = useState({ username: 'develop', password: '' });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -52,7 +55,7 @@ export default function LoginPage() {
             name,
             type,
             token,
-            callbackUrl: '/dashboard',
+            callbackUrl: callbackUrl || '/dashboard',
           });
           updateToast({
             toastId,

@@ -15,7 +15,7 @@ type Props = {
 };
 
 export default function Akun({ className, ...props }: Props) {
-  const { data: session }: { data: any; status: any } = useSession();
+  const { data: session }: { data: any } = useSession();
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
 
@@ -38,7 +38,7 @@ export default function Akun({ className, ...props }: Props) {
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
               )}
             >
-              {session?.session?.name || 'Menu'}
+              {session?.name || 'Menu'}
               <ChevronDownIcon
                 className={twMerge('ml-1 h-5 w-4 transition-all duration-200', open ? 'rotate-180' : 'rotate-0')}
                 aria-hidden='true'
