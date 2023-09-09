@@ -1,14 +1,19 @@
 'use client';
 
-import { useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
+
+import { useDebounce } from '@/hooks/useDebounce';
 
 import LabeledInput from '@/components/systems/LabeledInput';
 import ReactTable from '@/components/systems/ReactTable';
 
 export default function DetailGenrePage({ data }) {
+  const [inputDebounce, setInputDebounce] = useState('');
+  const debouncedValue = useDebounce(inputDebounce, 500);
+
   const column = useMemo(
     () => [
       {
@@ -76,6 +81,10 @@ export default function DetailGenrePage({ data }) {
 
   const tableInstance = useRef(null);
 
+  useEffect(() => {
+    tableInstance.current?.setGlobalFilter(debouncedValue);
+  }, [debouncedValue]);
+
   return data?.books_by_genres?.length > 0 ? (
     <>
       <LabeledInput
@@ -83,8 +92,9 @@ export default function DetailGenrePage({ data }) {
         id='caridata'
         name='caridata'
         placeholder='Keyword'
+        value={inputDebounce}
         onChange={(e) => {
-          tableInstance.current.setGlobalFilter(e.target.value);
+          setInputDebounce(e.target.value);
         }}
       />
 

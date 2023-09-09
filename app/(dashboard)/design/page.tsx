@@ -173,6 +173,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-debounce-hook'>
+              Input (Debounce Hook)
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#input-debounce'>
               InputDebounce
             </Link>

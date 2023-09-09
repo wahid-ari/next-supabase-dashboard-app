@@ -6,6 +6,8 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
+import { useDebounce } from '@/hooks/useDebounce';
+
 import Badge from '@/components/systems/Badge';
 import Button from '@/components/systems/Button';
 import Card from '@/components/systems/Card';
@@ -33,6 +35,8 @@ import TextArea from '@/components/systems/TextArea';
 import Wrapper from '@/components/systems/Wrapper';
 
 export default function DesignPage() {
+  const [inputDebounce, setInputDebounce] = useState('');
+  const debouncedValue = useDebounce(inputDebounce, 500);
   const [inputDebounceValue, setInputDebounceValue] = useState();
 
   const [file, setFile] = useState({ name: '' });
@@ -253,6 +257,20 @@ export default function DesignPage() {
           type='password'
           data-testid='labeledinput-disabled'
         />
+      </Wrapper>
+
+      <Wrapper
+        id='input-debounce-hook'
+        name='Input (Debounce Hook)'
+        props={['type', 'name', 'placeholder', 'value', 'onChange']}
+      >
+        <Input
+          name='input-debounce-hook'
+          placeholder='Input debounce hook'
+          data-testid='input-debounce-hook'
+          onChange={(e) => setInputDebounce(e.target.value)}
+        />
+        <Text data-testid='input-debounce-hook-text'>{debouncedValue}</Text>
       </Wrapper>
 
       <Wrapper
