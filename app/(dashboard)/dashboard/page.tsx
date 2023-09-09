@@ -146,6 +146,7 @@ export default async function Page() {
         />
         <Card
           title='Genre'
+          // FIX this cause console error because genre page need user to logged in
           link='/genre'
           count={totalDashboard.genre}
           icon={<LayoutListIcon className='h-12 w-12' />}

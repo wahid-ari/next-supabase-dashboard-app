@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
       process.env.NEXTAUTH_SECRET,
     );
     const { error: errorSession } = await supabase.from('book_sessions').insert({ user_id: data.id, token: token });
-    console.error(errorSession);
+    if (errorSession) console.error('error inserting session', errorSession);
     // const decode = jwt.verify(token, process.env.NEXTAUTH_SECRET);
     // console.log(decode)
     return NextResponse.json({ ...data, token }, { status: 200 });
