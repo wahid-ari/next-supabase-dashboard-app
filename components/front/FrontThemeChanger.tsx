@@ -1,4 +1,4 @@
-import { MoonIcon, SunIcon } from 'lucide-react';
+import { MoonIcon, SunIcon, SunMoonIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 import { cn } from '@/libs/utils';
@@ -12,13 +12,15 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
     return (
       <button
         className={cn(
-          'rounded-full border-2 hover:border-neutral-400 dark:border-neutral-700 dark:hover:border-neutral-500',
-          'focus:border-sky-500 focus:outline-none dark:focus:border-sky-500',
-          'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
-          variant === 'icon' && 'w-8',
-          variant === 'labelled' && 'px-4',
+          'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
+          'focus:outline-none focus:ring-2 focus:ring-sky-500',
+          'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
+          variant === 'icon' && 'p-1',
+          variant === 'labelled' && 'px-2 py-1',
         )}
-      />
+      >
+        <SunMoonIcon className='h-[19px] w-[19px] text-neutral-700 dark:text-neutral-200' />
+      </button>
     );
   }
 
@@ -27,30 +29,30 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
       {...props}
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
       className={cn(
-        'rounded-full border-2 hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
-        'focus:border-sky-500 focus:outline-none dark:focus:border-sky-500',
-        'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
-        variant === 'icon' && 'w-8',
-        variant === 'labelled' && 'px-4',
+        'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
+        'focus:outline-none focus:ring-2 focus:ring-sky-500',
+        'inline-flex items-center justify-center overflow-hidden transition-all duration-200',
+        variant === 'icon' && 'p-1',
+        variant === 'labelled' && 'py-1 px-2',
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className='relative h-5 w-5'>
         <span
-          className='absolute inset-0 rotate-90 transform text-black transition duration-500 motion-reduce:duration-0 dark:rotate-0 dark:text-white'
+          className='flex items-center justify-center absolute inset-0 rotate-90 transform text-neutral-700 dark:text-neutral-200 transition duration-500 motion-reduce:duration-0 dark:rotate-0'
           style={{ transformOrigin: '50% 100px' }}
         >
-          <MoonIcon className='h-5 w-5' />
+          <MoonIcon className='h-[19px] w-[19px]' />
         </span>
         <span
-          className='absolute inset-0 rotate-0 transform text-black transition duration-500 motion-reduce:duration-0 dark:-rotate-90 dark:text-white'
+          className='flex items-center justify-center absolute inset-0 rotate-0 transform text-neutral-700 dark:text-neutral-200 transition duration-500 motion-reduce:duration-0 dark:-rotate-90'
           style={{ transformOrigin: '50% 100px' }}
         >
-          <SunIcon className='h-5 w-5' />
+          <SunIcon className='h-[19px] w-[19px]' />
         </span>
       </div>
-      <span className={cn('ml-3 text-black dark:text-white', variant === 'icon' && 'sr-only')}>
-        {theme == 'dark' ? 'switch to light mode' : 'switch to dark mode'}
+      <span className={cn('ml-1 text-sm text-neutral-700 dark:text-neutral-200', variant === 'icon' && 'sr-only')}>
+        {theme == 'dark' ? 'Light' : 'Dark'}
       </span>
     </button>
   );
