@@ -122,7 +122,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                         )}
                       >
-                        <SearchIcon className='h-5 w-5' />
+                        <SearchIcon className='h-[18px] w-[18px]' />
                       </Popover.Button>
                       <Transition
                         as={Fragment}
@@ -149,7 +149,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
             </div>
             {/* End Nav Link  */}
 
-            <div className='hidden items-center gap-3 md:flex'>
+            <div className='hidden items-center gap-2 md:flex'>
               {status == 'loading' ? (
                 <span className='text-[15px] font-medium text-neutral-700 dark:text-neutral-200'>Loading</span>
               ) : session?.authenticated ? (
@@ -168,8 +168,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <Link
                   href='/login'
                   className={cn(
-                    'rounded bg-sky-500 px-3 py-1 text-sm font-medium text-white transition-all duration-200',
-                    'hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400',
+                    'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium text-neutral-700 dark:text-neutral-200 transition-all duration-200',
+                    'hover:bg-sky-500 hover:text-white dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}
                   passHref
                 >
