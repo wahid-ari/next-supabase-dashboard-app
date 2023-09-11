@@ -44,12 +44,11 @@ export default function GenrePage({ data }: { data: any }) {
         setOpenCreateDialog(false);
         setName('');
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        router.refresh();
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      router.refresh();
     }
   }
 
@@ -64,12 +63,11 @@ export default function GenrePage({ data }: { data: any }) {
         setOpenEditDialog(false);
         setEditItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        router.refresh();
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      router.refresh();
     }
   }
 
@@ -84,12 +82,11 @@ export default function GenrePage({ data }: { data: any }) {
         setOpenDeleteDialog(false);
         setDeleteItem({ id: null, name: '' });
         updateToast({ toastId, message: res?.data?.message, isError: false });
+        router.refresh();
       }
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      router.refresh();
     }
   }
 

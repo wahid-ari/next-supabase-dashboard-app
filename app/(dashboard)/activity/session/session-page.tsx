@@ -41,8 +41,6 @@ export default function SessionPage({ data }) {
     } catch (error) {
       console.error(error);
       updateToast({ toastId, message: error?.response?.data?.error, isError: true });
-    } finally {
-      // mutate(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/session`);
     }
   }
 
