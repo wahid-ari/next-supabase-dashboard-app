@@ -33,6 +33,7 @@ export default function AddAuthorPage() {
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
         // FIX author page not gettting the latest data after inserting one
+        router.refresh();
         router.push('/author');
       }
     } catch (error) {
