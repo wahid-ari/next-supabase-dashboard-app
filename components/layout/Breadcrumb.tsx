@@ -20,13 +20,20 @@ export default function Breadcrumb({ ...props }) {
 
   // dont show breadcrumb item in detail page
   // FIX this, hide detail page that use [id] from breadcrumb
-  // from "Home>Genre>27"
-  // to "Home>Genre>Detail"
-  let paths = params.id ? [...path.slice(0, -1), 'detail'] : path;
-  // if (params.id) {
-  //   paths = path.slice(0, -1);
-  // } else paths = path;
-  // console.log(paths)
+  let paths = [];
+  if (pathname.split('/').includes('edit')) {
+    // from Home>Author>Edit>314
+    // to Home>Author>Edit
+    paths = params.id ? [...path.slice(0, -2), 'Edit'] : path;
+  } else if (pathname.split('/').includes('detail')) {
+    // from Home>Author>Detail>314
+    // to Home>Author>Detail
+    paths = params.id ? [...path.slice(0, -2), 'Detail'] : path;
+  } else {
+    // from "Home>Genre>27"
+    // to "Home>Genre>Detail"
+    paths = params.id ? [...path.slice(0, -1), 'Detail'] : path;
+  }
 
   // const paths = router.asPath
   //   .split("/")
