@@ -13,14 +13,14 @@ type Props = {
 
 export default function Layout({ children, demo, ...props }: Props) {
   return (
-    <main
+    <div
       {...props}
       className='min-h-screen w-full bg-white text-sm dark:bg-neutral-900 lg:grid'
       style={{ gridTemplateColumns: 'auto 1fr' }}
     >
       <Sidebar className={`${demo ? '!z-0' : ''}`} />
 
-      <div className='relative'>
+      <main className='relative'>
         <Navbar className={`${demo ? '!z-0' : ''}`} />
 
         {/* Show on Mobile */}
@@ -48,7 +48,7 @@ export default function Layout({ children, demo, ...props }: Props) {
         </div>
 
         <div className='px-5 pt-4 pb-5'>{children}</div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

@@ -12,11 +12,11 @@ type Props = {
 
 export default function FrontLayout({ children, className, ...props }: Props) {
   return (
-    <main {...props} className='relative dark:bg-neutral-900'>
+    <div {...props} className='relative dark:bg-neutral-900'>
       <FrontNavbar className='bg-white/50 backdrop-blur-md backdrop-filter dark:bg-neutral-900/30' />
-      <div className={cn('mx-auto min-h-screen w-full max-w-7xl p-4', className)}>{children}</div>
+      <main className={cn('mx-auto min-h-screen w-full max-w-7xl p-4', className)}>{children}</main>
       <Footer />
       <BackToTop />
-    </main>
+    </div>
   );
 }
