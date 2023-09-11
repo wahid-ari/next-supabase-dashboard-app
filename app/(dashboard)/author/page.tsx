@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 import { siteConfig } from '@/config/site';
 import { authOptions } from '@/libs/auth';
 
-import Title from '@/components/systems/Title';
+import AuthorPage from './author-page';
 
 export const metadata: Metadata = {
   title: 'Author',
@@ -31,15 +31,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Page() {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect('/login');
+async function getData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`, { cache: 'no-store' });
+  if (!res.ok) {
+    // This will activate the closest `error.tsx` Error Boundary
+    throw new Error('Failed to fetch author data');
   }
+  return res.json();
+}
 
-  return (
-    <>
-      <Title>Author</Title>
-    </>
-  );
+export default async function Page() {
+  // const session = await getServerSession(authOptions);
+  // if (!session) {
+  //   redirect('/login');
+  // }
+  const data = await getData();
+
+  return <AuthorPage data={data} />;
 }
