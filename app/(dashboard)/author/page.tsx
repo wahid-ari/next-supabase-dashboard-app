@@ -33,22 +33,21 @@ export const metadata: Metadata = {
   },
 };
 
-// async function getData() {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`, { cache: 'no-store' });
-//   if (!res.ok) {
-//     // This will activate the closest `error.tsx` Error Boundary
-//     throw new Error('Failed to fetch author data');
-//   }
-//   return res.json();
-// }
+async function getData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`, { cache: 'no-store' });
+  if (!res.ok) {
+    // This will activate the closest `error.tsx` Error Boundary
+    throw new Error('Failed to fetch author data');
+  }
+  return res.json();
+}
 
 export default async function Page() {
   // const session = await getServerSession(authOptions);
   // if (!session) {
   //   redirect('/login');
   // }
-  // const data = await getData();
+  const data = await getData();
 
-  return '';
-  // return <AuthorPage data={data} />;
+  return <AuthorPage data={data} />;
 }
