@@ -555,7 +555,7 @@ export default function UiPage() {
           <div className='flex items-center justify-between space-x-4'>
             <h4 className='text-sm font-semibold'>@peduarte starred 3 repositories</h4>
             <CollapsibleTrigger asChild>
-              <Button variant='outline' size='icon'>
+              <Button variant='outline' size='icon' title='Open'>
                 <ChevronsUpDown className='h-4 w-4' />
                 <span className='sr-only'>Toggle</span>
               </Button>
@@ -1375,7 +1375,7 @@ export default function UiPage() {
       <Wrapper id='theme' name='Theme' noClassName noChildren docs='https://ui.shadcn.com/docs/dark-mode'>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant='outline' size='icon'>
+            <Button variant='outline' size='icon' title='Change Theme' aria-label='Change Theme'>
               <Sun className='h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0' />
               <Moon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
               <span className='sr-only'>Toggle theme</span>
@@ -1442,12 +1442,12 @@ export default function UiPage() {
         props={['defaultPressed', 'pressed', 'onPressedChange', 'disabled', 'variant', 'size']}
         docs='https://ui.shadcn.com/docs/components/toggle'
       >
-        <Toggle pressed={toggleValue} onPressedChange={setToggleValue} aria-label='Toggle italic'>
+        <Toggle pressed={toggleValue} onPressedChange={setToggleValue} aria-label='Toggle italic' title='Toggle italic'>
           <Bold className='h-4 w-4' />
         </Toggle>
         <br />
         <br />
-        <Toggle variant='outline' aria-label='Toggle italic'>
+        <Toggle variant='outline' aria-label='Toggle italic' title='Toggle italic'>
           <Italic className='h-4 w-4' />
         </Toggle>
         <br />
@@ -1458,7 +1458,7 @@ export default function UiPage() {
         </Toggle>
         <br />
         <br />
-        <Toggle size='sm' variant='outline' aria-label='Toggle italic'>
+        <Toggle size='sm' variant='outline' aria-label='Toggle italic' title='Toggle italic'>
           <Italic className='h-4 w-4' />
         </Toggle>
         <br />
@@ -1479,13 +1479,13 @@ export default function UiPage() {
           onValueChange={setToggleGroupValue}
           aria-label='Text alignment'
         >
-          <ToggleGroupItem value='left' aria-label='Left aligned'>
+          <ToggleGroupItem value='left' aria-label='Left aligned' title='Left aligned'>
             <AlignLeftIcon className='h-4 w-4' />
           </ToggleGroupItem>
-          <ToggleGroupItem value='center' aria-label='Center aligned'>
+          <ToggleGroupItem value='center' aria-label='Center aligned' title='Center aligned'>
             <AlignCenterIcon className='h-4 w-4' />
           </ToggleGroupItem>
-          <ToggleGroupItem value='right' aria-label='Right aligned' disabled>
+          <ToggleGroupItem value='right' aria-label='Right aligned' title='Right aligned' disabled>
             <AlignRightIcon className='h-4 w-4' />
           </ToggleGroupItem>
         </ToggleGroup>

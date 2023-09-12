@@ -13,6 +13,8 @@ export default function SettingPage() {
 
   return (
     <div
+      role='button'
+      title='Change Theme'
       onClick={handleDarkMode}
       className='relative h-6 w-11 cursor-pointer rounded-full bg-neutral-300 transition-all dark:bg-sky-500'
     >

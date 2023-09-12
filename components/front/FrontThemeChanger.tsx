@@ -27,6 +27,8 @@ export default function FrontThemeChanger({ variant = 'icon', ...props }: { vari
   return (
     <button
       {...props}
+      title='Change Theme'
+      aria-label='Change Theme'
       onClick={() => setTheme(theme == 'dark' ? 'light' : 'dark')}
       className={cn(
         'rounded-md border hover:border-neutral-300 dark:border-neutral-700 dark:hover:border-neutral-600',
