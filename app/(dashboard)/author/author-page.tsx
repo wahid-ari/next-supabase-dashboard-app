@@ -4,7 +4,7 @@ import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { ExternalLinkIcon, PlusIcon } from 'lucide-react';
+import { ArrowUpRightIcon, PlusIcon } from 'lucide-react';
 
 import useToast from '@/hooks/useToast';
 
@@ -101,7 +101,7 @@ export default function AuthorPage({ data }: { data: any }) {
                 rel='noreferrer'
               >
                 Open
-                <ExternalLinkIcon className='ml-1 h-4 w-4' />
+                <ArrowUpRightIcon className='ml-1 h-4 w-4' />
               </a>
             );
           }

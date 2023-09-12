@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLinkIcon, ImageIcon } from 'lucide-react';
+import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
 
 import { siteConfig } from '@/config/site';
 
@@ -86,7 +86,7 @@ export default async function Page({ params }) {
                         rel='noreferrer'
                       >
                         Open
-                        <ExternalLinkIcon className='ml-1 h-4 w-4' />
+                        <ArrowUpRightIcon className='ml-1 h-4 w-4' />
                       </a>
                     ) : (
                       '-'
@@ -104,7 +104,7 @@ export default async function Page({ params }) {
                         rel='noreferrer'
                       >
                         Open
-                        <ExternalLinkIcon className='ml-1 h-4 w-4' />
+                        <ArrowUpRightIcon className='ml-1 h-4 w-4' />
                       </a>
                     ) : (
                       '-'
