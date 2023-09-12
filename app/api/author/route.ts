@@ -76,7 +76,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: error.message }, { status: 422 });
       }
       // Write logs
-      // const errorLogs = await writeLogs(sessionPost.user_id, 'create', 'author');
+      // const errorLogs = await writeLogs(session.user_id, 'create', 'author');
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
