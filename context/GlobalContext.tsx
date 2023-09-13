@@ -22,7 +22,7 @@ export function GlobalProvider({ children, ...props }: { children: ReactNode }) 
   const [token, setToken] = useState(null);
   async function getSessionToken() {
     const session: any = await getSession();
-    if (session) setToken(session?.session?.token);
+    if (session) setToken(session?.token);
   }
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export function GlobalProvider({ children, ...props }: { children: ReactNode }) 
 export function useShowNav() {
   const context = useContext(GlobalContext);
   if (context === undefined) {
-    throw new Error('useCounter must be used within a GlobalProvider');
+    throw new Error('useShowNav must be used within a GlobalProvider');
   }
   return context;
 }

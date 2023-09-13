@@ -1,6 +1,11 @@
 import type { Metadata, ResolvingMetadata } from 'next';
 
+// import { redirect } from 'next/navigation';
+// import { getServerSession } from 'next-auth';
+
 import { siteConfig } from '@/config/site';
+
+// import { authOptions } from '@/libs/auth';
 
 import Title from '@/components/systems/Title';
 
@@ -41,7 +46,12 @@ export async function generateMetadata({ params }, parent: ResolvingMetadata): P
 }
 
 export default async function Page({ params }) {
+  // const session = await getServerSession(authOptions);
+  // if (!session) {
+  //   redirect('/login');
+  // }
   const data = await getData(params.id);
+
   return (
     <>
       <Title>Edit {data?.name}</Title>
