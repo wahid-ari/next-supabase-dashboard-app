@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import { siteConfig } from '@/config/site';
 
@@ -8,6 +9,9 @@ import DetailGenrePage from './detail-genre-page';
 
 async function getData(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/genre?id=${id}`);
+  if (res.status == 404) {
+    notFound();
+  }
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
     throw new Error('Failed to fetch genre data');
@@ -42,6 +46,7 @@ export async function generateMetadata({ params }, parent: ResolvingMetadata): P
 
 export default async function Page({ params }) {
   const data = await getData(params.id);
+
   return (
     <>
       <Title>{data?.name}</Title>
