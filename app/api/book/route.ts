@@ -27,11 +27,14 @@ export async function GET(request: NextRequest) {
     let column = id ? 'id' : 'slug';
     let param = id ? id : slug;
     const { data: genres } = await supabase.from('book_genres').select(`*`).order('id');
-    const { data: books } = await supabase
+    const { data: books, error } = await supabase
       .from('book_books')
       .select(`*, book_authors (id, slug, name, image, bio, web)`)
       .eq(column, param)
       .order('id');
+    if (error || books.length < 1) {
+      return NextResponse.json({ error: 'Not Found' }, { status: 404 });
+    }
     let bookId = books[0].id;
     const { data: books_genres } = await supabase
       .from('book_books_genres')

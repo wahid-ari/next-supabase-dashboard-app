@@ -23,7 +23,10 @@ export async function GET(request: NextRequest) {
   } else {
     let column = id ? 'id' : 'slug';
     let param = id ? id : slug;
-    const { data: genres } = await supabase.from('book_genres').select(`*`).eq(column, param).order('id');
+    const { data: genres, error } = await supabase.from('book_genres').select(`*`).eq(column, param).order('id');
+    if (error || genres.length < 1) {
+      return NextResponse.json({ error: 'Not Found' }, { status: 404 });
+    }
     const { data: books_genres } = await supabase
       .from('book_books_genres')
       .select(`*`)

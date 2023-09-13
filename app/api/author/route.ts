@@ -23,13 +23,16 @@ export async function GET(request: NextRequest) {
   } else {
     let column = id ? 'id' : 'slug';
     let param = id ? id : slug;
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from('book_authors')
       .select(
         `*, book_quotes (id, quote), book_books (id, slug, title, pages, language, published, link, image, image_small)`,
       )
       .eq(column, param)
       .order('id');
+    if (error || data.length < 1) {
+      return NextResponse.json({ error: 'Not Found' }, { status: 404 });
+    }
     const { book_books, book_quotes } = data[0];
     delete data[0].book_books;
     delete data[0].book_quotes;
