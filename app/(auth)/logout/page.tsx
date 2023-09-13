@@ -18,6 +18,7 @@ export default async function Page() {
   if (!session) {
     redirect('/');
   }
+
   return (
     <div className='flex min-h-screen flex-col items-center justify-center'>
       <LogoutPage session={session} />
