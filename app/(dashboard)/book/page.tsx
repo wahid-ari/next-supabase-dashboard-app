@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { siteConfig } from '@/config/site';
 
-import Title from '@/components/systems/Title';
+import BookPage from './book-page';
 
 export const metadata: Metadata = {
   title: 'Book',
@@ -28,10 +28,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return (
-    <>
-      <Title>Book</Title>
-    </>
-  );
+async function getData() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`, { cache: 'no-store' });
+  if (!res.ok) {
+    // This will activate the closest `error.tsx` Error Boundary
+    throw new Error('Failed to fetch book data');
+  }
+  return res.json();
+}
+
+export default async function Page() {
+  const data = await getData();
+
+  return <BookPage data={data} />;
 }
