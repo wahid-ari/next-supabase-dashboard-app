@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next';
+import { notFound } from 'next/navigation';
 
 // import { redirect } from 'next/navigation';
 // import { getServerSession } from 'next-auth';
@@ -13,6 +14,9 @@ import EditAuthorPage from './edit-author-page';
 
 async function getData(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author?id=${id}`, { cache: 'no-store' });
+  if (res.status == 404) {
+    notFound();
+  }
   if (!res.ok) {
     // This will activate the closest `error.tsx` Error Boundary
     throw new Error('Failed to fetch author data');
