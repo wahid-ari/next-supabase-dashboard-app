@@ -110,15 +110,15 @@ export async function POST(request: NextRequest) {
       // if new book have genre
       if (genre?.length > 0) {
         // create array of genre of a book
-        let genre = [];
+        let genreToInsert = [];
         genre.forEach((item: any) => {
-          genre.push({
+          genreToInsert.push({
             book_id: bookId,
             genre_id: item.value,
           });
         });
         // insert genre of a book to book_books_genres table
-        const { error } = await supabase.from('book_books_genres').insert(genre);
+        const { error } = await supabase.from('book_books_genres').insert(genreToInsert);
         if (error) {
           return NextResponse.json({ error: error.message }, { status: 422 });
         }
@@ -182,15 +182,15 @@ export async function PUT(request: NextRequest) {
       // if edited book have genre
       if (genre?.length > 0) {
         // create array of genre of a edited book
-        let genre = [];
+        let genreToInsert = [];
         genre.forEach((item: any) => {
-          genre.push({
+          genreToInsert.push({
             book_id: id,
             genre_id: item.value,
           });
         });
         // insert genre of a edited book to book_books_genres table
-        const { error } = await supabase.from('book_books_genres').insert(genre);
+        const { error } = await supabase.from('book_books_genres').insert(genreToInsert);
         if (error) {
           return NextResponse.json({ error: error.message }, { status: 422 });
         }
