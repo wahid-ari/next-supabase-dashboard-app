@@ -5,7 +5,7 @@ import Title from '@/components/systems/Title';
 export default function Loading() {
   return (
     <>
-      <Title>Edit Author</Title>
+      <Title>Create Author</Title>
       <div className='grid grid-cols-1 gap-x-8 md:grid-cols-2'>
         <div>
           {[...Array(4).keys()].map((e, i) => (

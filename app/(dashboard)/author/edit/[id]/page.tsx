@@ -59,6 +59,7 @@ export default async function Page({ params }) {
   return (
     <>
       <Title>Edit {data?.name}</Title>
+
       <EditAuthorPage data={data} />
     </>
   );
