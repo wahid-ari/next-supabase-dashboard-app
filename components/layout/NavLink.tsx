@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
@@ -16,8 +16,12 @@ type Props = {
 export default function NavLink({ children, className, href, icon, isHome, ...props }: Props) {
   // const router = useRouter();
   const pathname = usePathname();
+  const params = useParams();
   const isDetailOrAddRoute =
-    (pathname.includes(href) && pathname.includes('[id]')) || (pathname.includes(href) && pathname.includes('add'));
+    (pathname.includes(href) && pathname.includes('detail')) ||
+    (pathname.includes(href) && pathname.includes('add')) ||
+    (pathname.includes(href) && pathname.includes('edit')) ||
+    (pathname.includes(href) && params.id);
 
   // const hrefSplit = href.split('/');
   // const lastHref = hrefSplit[hrefSplit.length - 1];
