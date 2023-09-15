@@ -1,8 +1,19 @@
+import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+
+import { authOptions } from '@/libs/auth';
+
 import Shimmer from '@/components/ui/Shimmer';
 
 import Title from '@/components/systems/Title';
 
-export default function Loading() {
+export default async function Loading() {
+  // FIX Loading page still showed when try to access this page before login
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/login');
+  }
+
   return (
     <>
       <Title>Create Author</Title>
