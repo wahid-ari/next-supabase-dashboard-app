@@ -1,12 +1,9 @@
 import type { Metadata, ResolvingMetadata } from 'next';
-import { notFound } from 'next/navigation';
-
-// import { redirect } from 'next/navigation';
-// import { getServerSession } from 'next-auth';
+import { notFound, redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
 
 import { siteConfig } from '@/config/site';
-
-// import { authOptions } from '@/libs/auth';
+import { authOptions } from '@/libs/auth';
 
 import Title from '@/components/systems/Title';
 
@@ -68,10 +65,10 @@ export async function generateMetadata({ params }, parent: ResolvingMetadata): P
 }
 
 export default async function Page({ params }) {
-  // const session = await getServerSession(authOptions);
-  // if (!session) {
-  //   redirect('/login');
-  // }
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    redirect('/login');
+  }
   const book = await getDataBook(params.id);
   const author = await getDataAuthor();
   const genre = await getDataGenre();
