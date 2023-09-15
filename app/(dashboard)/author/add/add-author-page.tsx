@@ -32,7 +32,6 @@ export default function AddAuthorPage() {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author`, createItem);
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
-        // FIX author page not gettting the latest data after inserting one
         router.refresh();
         router.push('/author');
       }

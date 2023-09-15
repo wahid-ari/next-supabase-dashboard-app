@@ -66,7 +66,6 @@ export default function AddBookPage({ authors, genres }) {
       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`, createItem);
       if (res.status == 200) {
         updateToast({ toastId, message: res?.data?.message, isError: false });
-        // FIX author page not gettting the latest data after inserting one
         router.refresh();
         router.push('/book');
       }

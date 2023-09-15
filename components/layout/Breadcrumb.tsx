@@ -19,7 +19,6 @@ export default function Breadcrumb({ ...props }) {
     });
 
   // dont show breadcrumb item in detail page
-  // FIX this, hide detail page that use [id] from breadcrumb
   let paths = [];
   if (pathname.split('/').includes('edit')) {
     // from Home>Author>Edit>314
