@@ -99,7 +99,7 @@ export default function EditAuthorPage({ data }) {
           height={6}
         />
 
-        <Button type='submit' className='w-full mt-2'>
+        <Button type='submit' className='w-full mt-1.5 py-2'>
           Update
         </Button>
       </div>

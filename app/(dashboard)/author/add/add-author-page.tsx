@@ -100,7 +100,7 @@ export default function AddAuthorPage() {
           height={6}
         />
 
-        <Button.success type='submit' className='w-full mt-2'>
+        <Button.success type='submit' className='w-full mt-1.5 py-2'>
           Save
         </Button.success>
       </div>
