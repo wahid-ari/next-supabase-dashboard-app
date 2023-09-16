@@ -1,5 +1,3 @@
-import { twMerge } from 'tailwind-merge';
-
 import Shimmer from '@/components/ui/Shimmer';
 
 import Title from '@/components/systems/Title';
