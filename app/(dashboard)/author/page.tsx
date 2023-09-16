@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
-import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
 
 import { siteConfig } from '@/config/site';
-import { authOptions } from '@/libs/auth';
 
 import AuthorPage from './author-page';
 
@@ -41,11 +38,6 @@ async function getData() {
 }
 
 export default async function Page() {
-  // FIX Loading page still showed when try to access this page before login
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect('/login');
-  }
   const data = await getData();
 
   return <AuthorPage data={data} />;
