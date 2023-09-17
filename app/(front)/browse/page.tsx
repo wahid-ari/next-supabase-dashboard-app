@@ -4,6 +4,8 @@ import { siteConfig } from '@/config/site';
 
 import Title from '@/components/systems/Title';
 
+import BrowsePage from './browse-page';
+
 export const metadata: Metadata = {
   title: 'Browse',
   description: 'Browse Page',
@@ -29,5 +31,11 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <Title>Browse</Title>;
+  return (
+    <>
+      <Title>Browse</Title>
+
+      <BrowsePage />
+    </>
+  );
 }
