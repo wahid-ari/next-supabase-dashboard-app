@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
+import { compareSearchResult, searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
 import { useAtom } from 'jotai';
 import { twMerge } from 'tailwind-merge';
 
@@ -32,19 +32,6 @@ export default function SearchPage() {
     resetAuthorsHistory,
     resetAllSearchHistory,
   } = useSearchHistory();
-
-  function compareSearchResult(history: any, newResults: any) {
-    let newHistory = history;
-    // iterate each search result
-    for (const b of newResults) {
-      // check if new result already in the history
-      const exists = history.findIndex((item: any) => item.id == b.id) > -1;
-      if (!exists) {
-        newHistory.push(b);
-      }
-    }
-    return newHistory;
-  }
 
   useEffect(() => {
     if (data?.books?.length > 0) {
