@@ -44,3 +44,16 @@ export function useSearchHistory() {
     resetAllSearchHistory,
   };
 }
+
+export function compareSearchResult(history: any, newResults: any) {
+  let newHistory = history;
+  // iterate each search result
+  for (const b of newResults) {
+    // check if new result already in the history
+    const exists = history.findIndex((item: any) => item.id == b.id) > -1;
+    if (!exists) {
+      newHistory.push(b);
+    }
+  }
+  return newHistory;
+}
