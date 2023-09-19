@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Select from 'react-select';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Label from '@/components/systems/Label';

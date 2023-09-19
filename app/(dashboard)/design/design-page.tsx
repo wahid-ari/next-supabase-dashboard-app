@@ -6,7 +6,7 @@ import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@/hooks/use-debounce';
 
 import Badge from '@/components/systems/Badge';
 import Button from '@/components/systems/Button';

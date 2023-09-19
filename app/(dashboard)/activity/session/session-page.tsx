@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { TrashIcon } from 'lucide-react';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';

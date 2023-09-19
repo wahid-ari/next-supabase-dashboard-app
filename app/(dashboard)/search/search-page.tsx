@@ -2,10 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { compareSearchResult, searchHistoryAtom, useSearchHistory } from '@/store/useAtom';
-import { useAtom } from 'jotai';
 import { twMerge } from 'tailwind-merge';
 
+import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
 import { useSearchData } from '@/libs/swr';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
@@ -22,8 +21,9 @@ export default function SearchPage() {
   const query = useRef(search);
   const { data, error } = useSearchData(search);
 
-  const [searchHistory] = useAtom(searchHistoryAtom);
   const {
+    searchHistory,
+    setSearchHistory,
     addBooksHistory,
     addAuthorsHistory,
     removeBooksHistory,

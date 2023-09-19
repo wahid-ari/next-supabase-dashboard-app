@@ -2,7 +2,7 @@
 
 import { CopyIcon } from 'lucide-react';
 
-import useWindowSize from '@/hooks/useWindowSize';
+import useWindowSize from '@/hooks/use-window-size';
 
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';

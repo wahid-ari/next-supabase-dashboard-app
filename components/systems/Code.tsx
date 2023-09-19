@@ -5,7 +5,7 @@ import { ClipboardCopyIcon, ClipboardPasteIcon } from 'lucide-react';
 import Prism from 'prismjs';
 import { twMerge } from 'tailwind-merge';
 
-import { useMounted } from '@/hooks/useMounted';
+import { useMounted } from '@/hooks/use-mounted';
 
 type Props = {
   className?: string;
@@ -51,11 +51,11 @@ export default function Code({ className, name = 'Code', code, lang = 'javascrip
         >
           {copy ? (
             <div className='flex items-center'>
-              <ClipboardPasteIcon className='h-5 w-5 transition-all dark:text-neutral-400 dark:hover:text-neutral-300' />
-              <span className='pl-1 text-xs text-neutral-600 dark:text-neutral-300'>Copied !</span>
+              <ClipboardPasteIcon className='h-5 w-5 transition-all text-neutral-400' />
+              <span className='pl-1 text-xs text-neutral-400'>Copied !</span>
             </div>
           ) : (
-            <ClipboardCopyIcon className='h-5 w-5 text-neutral-500 transition-all hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-300' />
+            <ClipboardCopyIcon className='h-5 w-5 text-neutral-400 transition-all hover:text-neutral-200' />
           )}
         </button>
         <pre

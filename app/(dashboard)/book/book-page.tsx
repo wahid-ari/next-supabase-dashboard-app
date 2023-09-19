@@ -8,7 +8,7 @@ import axios from 'axios';
 import { PlusIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';

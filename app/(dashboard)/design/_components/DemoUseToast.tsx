@@ -1,6 +1,6 @@
 'use client';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Code from '@/components/systems/Code';

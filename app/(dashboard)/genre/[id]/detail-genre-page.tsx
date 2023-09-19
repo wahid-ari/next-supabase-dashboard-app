@@ -5,7 +5,7 @@ import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { twMerge } from 'tailwind-merge';
 
-import { useDebounce } from '@/hooks/useDebounce';
+import { useDebounce } from '@/hooks/use-debounce';
 
 import LabeledInput from '@/components/systems/LabeledInput';
 import ReactTable from '@/components/systems/ReactTable';

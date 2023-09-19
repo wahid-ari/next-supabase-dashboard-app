@@ -30,9 +30,9 @@ import {
 } from 'recharts';
 
 import { cn } from '@/libs/utils';
-import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chartSetup';
-import { useMounted } from '@/hooks/useMounted';
-import useWindowSize from '@/hooks/useWindowSize';
+import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chart-setup';
+import { useMounted } from '@/hooks/use-mounted';
+import useWindowSize from '@/hooks/use-window-size';
 
 import Text from '@/components/systems/Text';
 

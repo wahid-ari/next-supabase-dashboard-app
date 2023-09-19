@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { z } from 'zod';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import LabeledInput from '@/components/systems/LabeledInput';

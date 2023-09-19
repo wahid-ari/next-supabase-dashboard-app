@@ -17,7 +17,7 @@ export const GlobalContext = createContext<GlobalContextType>({
   token: null,
 });
 
-export function GlobalProvider({ children, ...props }: { children: ReactNode }) {
+export function GlobalProvider({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(false);
   const [token, setToken] = useState(null);
   async function getSessionToken() {
@@ -40,7 +40,13 @@ export function GlobalProvider({ children, ...props }: { children: ReactNode }) 
 
   return (
     <GlobalContext.Provider value={{ showNav, setShowNav, token }}>
-      <ThemeProvider attribute='class' storageKey='theme' enableSystem={false} defaultTheme='light' {...props}>
+      <ThemeProvider
+        attribute='class'
+        storageKey='theme'
+        enableSystem={false}
+        defaultTheme='light'
+        disableTransitionOnChange
+      >
         <SessionProvider>{children}</SessionProvider>
       </ThemeProvider>
     </GlobalContext.Provider>

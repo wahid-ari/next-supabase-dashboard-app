@@ -8,7 +8,7 @@ import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import { signIn } from 'next-auth/react';
 
-import useToast from '@/hooks/useToast';
+import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';

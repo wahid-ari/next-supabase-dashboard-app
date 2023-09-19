@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { faker } from '@faker-js/faker';
 import { MoreHorizontal } from 'lucide-react';
 
-import { tabledata } from '@/utils/tableData';
-import { useMounted } from '@/hooks/useMounted';
+import { tabledata } from '@/utils/table-data';
+import { useMounted } from '@/hooks/use-mounted';
 
 import { Button as ButtonUi } from '@/components/ui/Button';
 import {
