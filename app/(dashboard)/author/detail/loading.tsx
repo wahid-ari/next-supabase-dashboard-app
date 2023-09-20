@@ -1,5 +1,4 @@
-import Shimmer from '@/components/ui/Shimmer';
-
+import Shimmer from '@/components/systems/Shimmer';
 import Title from '@/components/systems/Title';
 
 export default async function Loading() {
