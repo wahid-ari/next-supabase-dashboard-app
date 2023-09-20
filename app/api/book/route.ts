@@ -226,7 +226,7 @@ export async function DELETE(request: NextRequest) {
       const { error: errorBooksGenres } = await supabase.from('book_books_genres').delete().eq('book_id', id);
       const { error } = await supabase.from('book_books').delete().eq('id', id);
       if (error || errorBooksGenres) {
-        return NextResponse.json({ error: error.message }, { status: 422 });
+        return NextResponse.json({ error: error.message, detail: error.details }, { status: 422 });
       }
       // Write logs
       // const errorLogs = await writeLogs(session.user_id, 'delete', 'book', id);

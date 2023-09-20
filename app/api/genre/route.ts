@@ -144,7 +144,7 @@ export async function DELETE(request: NextRequest) {
     } else {
       const { error } = await supabase.from('book_genres').delete().eq('id', id);
       if (error) {
-        return NextResponse.json({ error: error.message }, { status: 422 });
+        return NextResponse.json({ error: error.message, detail: error.details }, { status: 422 });
       }
       // Write logs
       // const errorLogs = await writeLogs(session.user_id, 'delete', 'genre', id);
