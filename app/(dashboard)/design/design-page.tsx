@@ -378,7 +378,6 @@ export default function DesignPage() {
       <Wrapper
         id='radio'
         name='Radio'
-        variant={['disabled']}
         props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked', 'disabled']}
         noChildren
       >
