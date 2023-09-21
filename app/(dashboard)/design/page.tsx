@@ -149,7 +149,7 @@ export default function Page() {
           </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#inputdisabled'>
-              Input.disabled
+              Input disabled
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -169,7 +169,7 @@ export default function Page() {
           </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#labeledinputdisabled'>
-              LabeledInput.disabled
+              LabeledInput disabled
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -189,7 +189,7 @@ export default function Page() {
           </span>
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#textareadisabled'>
-              TextArea.disabled
+              TextArea disabled
             </Link>
           </span>
           <span className='mb-3 block underline'>
