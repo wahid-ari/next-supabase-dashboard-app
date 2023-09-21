@@ -169,14 +169,14 @@ export default function DesignPage() {
       <Wrapper
         id='checkbox'
         name='Checkbox'
-        variant={['disabled']}
-        props={['name', 'label', 'value', 'onChange', 'defaultChecked']}
+        props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked', 'disabled']}
         noChildren
       >
         <Checkbox name='checkbox-default' label='Checkbox' data-testid='checkbox' />
         <Checkbox name='checkbox-checked' label='Checkbox Checked' data-testid='checkbox-checked' defaultChecked />
-        <Checkbox.disabled name='checkbox-disabled' label='Checkbox Disabled' data-testid='checkbox-disabled' />
-        <Checkbox.disabled
+        <Checkbox disabled name='checkbox-disabled' label='Checkbox Disabled' data-testid='checkbox-disabled' />
+        <Checkbox
+          disabled
           name='checkbox-checked-disabled'
           label='Checkbox Checked Disabled'
           data-testid='checkbox-checked-disabled'
@@ -206,12 +206,17 @@ export default function DesignPage() {
         <Heading data-testid='heading-h4'>Heading 4 (default)</Heading>
       </Wrapper>
 
-      <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'onChange']}>
+      <Wrapper id='input' name='Input' props={['type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange']}>
         <Input name='inputt' placeholder='Input default' data-testid='input' />
       </Wrapper>
 
-      <Wrapper id='inputdisabled' name='Input.disabled' props={['type', 'name', 'placeholder', 'defaultValue']}>
-        <Input.disabled
+      <Wrapper
+        id='inputdisabled'
+        name='Input disabled'
+        props={['type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange']}
+      >
+        <Input
+          disabled
           name='input-disabled'
           placeholder='Input default'
           defaultValue='Has a value'
@@ -226,7 +231,7 @@ export default function DesignPage() {
       <Wrapper
         id='labeledinput'
         name='LabeledInput'
-        props={['label', 'name', 'type', 'placeholder', 'value', 'onChange', 'wrapperClassName']}
+        props={['label', 'type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'wrapperClassName']}
       >
         <LabeledInput
           label='Email'
@@ -246,10 +251,11 @@ export default function DesignPage() {
 
       <Wrapper
         id='labeledinputdisabled'
-        name='LabeledInput.disabled'
-        props={['label', 'type', 'name', 'placeholder', 'defaultValue', 'wrapperClassName']}
+        name='LabeledInput disabled'
+        props={['label', 'type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'wrapperClassName']}
       >
-        <LabeledInput.disabled
+        <LabeledInput
+          disabled
           label='Confirmation Password'
           name='confirmation'
           placeholder='confirmation'
@@ -262,7 +268,7 @@ export default function DesignPage() {
       <Wrapper
         id='input-debounce-hook'
         name='Input (Debounce Hook)'
-        props={['type', 'name', 'placeholder', 'value', 'onChange']}
+        props={['type', 'name', 'placeholder', 'value', 'defaultValue', 'onChange']}
       >
         <Input
           name='input-debounce-hook'
@@ -303,7 +309,7 @@ export default function DesignPage() {
       <Wrapper
         id='text-area'
         name='TextArea'
-        props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
+        props={['label', 'className', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'height']}
         noChildren
       >
         <TextArea label='TextArea' name='textarea' placeholder='text area' data-testid='textarea' />
@@ -311,11 +317,12 @@ export default function DesignPage() {
 
       <Wrapper
         id='textareadisabled'
-        name='TextArea.disabled'
-        props={['label', 'className', 'name', 'placeholder', 'value', 'onChange', 'height']}
+        name='TextArea disabled'
+        props={['label', 'className', 'name', 'placeholder', 'value', 'defaultValue', 'onChange', 'height']}
         noChildren
       >
-        <TextArea.disabled
+        <TextArea
+          disabled
           label='TextArea'
           name='textareadis'
           placeholder='text area'
@@ -372,13 +379,14 @@ export default function DesignPage() {
         id='radio'
         name='Radio'
         variant={['disabled']}
-        props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked']}
+        props={['name', 'label', 'value', 'onChange', 'checked', 'defaultChecked', 'disabled']}
         noChildren
       >
         <Radio name='radio' value='radio-blue' label='Blue' data-testid='radio' />
         <Radio name='radio' value='radio-red' label='Red' defaultChecked data-testid='radio-checked' />
-        <Radio.disabled name='radios' value='enable' label='Radio Disabled' data-testid='radio-disabled' />
-        <Radio.disabled
+        <Radio disabled name='radios' value='enable' label='Radio Disabled' data-testid='radio-disabled' />
+        <Radio
+          disabled
           name='radioss'
           value='disable'
           label='Radio Checked Disabled'

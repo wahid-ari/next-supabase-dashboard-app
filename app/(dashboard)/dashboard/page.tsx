@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
 
@@ -154,13 +153,10 @@ export default async function Page() {
         />
       </div>
 
-      {/* TODO Docs https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming#example */}
-      <Suspense fallback={<p>Loading charts...</p>}>
-        <DashboardPage
-          dataStatisticBookByAuthor={statisticBookByAuthor}
-          dataStatisticBookByGenre={statisticBookByGenre}
-        />
-      </Suspense>
+      <DashboardPage
+        dataStatisticBookByAuthor={statisticBookByAuthor}
+        dataStatisticBookByGenre={statisticBookByGenre}
+      />
     </>
   );
 }
