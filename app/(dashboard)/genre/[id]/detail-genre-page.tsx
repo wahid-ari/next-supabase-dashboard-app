@@ -88,7 +88,7 @@ export default function DetailGenrePage({ data }) {
   return data?.books_by_genres?.length > 0 ? (
     <>
       <LabeledInput
-        label='Search Data'
+        label='Search'
         id='caridata'
         name='caridata'
         placeholder='Keyword'

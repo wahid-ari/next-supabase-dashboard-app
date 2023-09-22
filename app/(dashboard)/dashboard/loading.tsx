@@ -45,7 +45,7 @@ export default function Loading() {
           <Text.medium>Total Book by Author (Recharts)</Text.medium>
         </div>
         <div className='m-auto p-3'>
-          <Shimmer className='rounded-xl px-8'>
+          <Shimmer className='rounded-xl'>
             <div className='flex flex-row items-end gap-2 sm:gap-4 md:gap-8 lg:gap-10'>
               <div className='h-32 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-16 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>

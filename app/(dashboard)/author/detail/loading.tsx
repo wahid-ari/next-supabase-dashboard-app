@@ -18,7 +18,7 @@ export default async function Loading() {
             <div className='h-4 mb-5 w-52 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='h-44 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
-          <Shimmer className='mt-6'>
+          <Shimmer className='mt-6 flex gap-3'>
             <div className='h-24 w-14 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div>
               <div className='h-4 mb-2 w-52 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>

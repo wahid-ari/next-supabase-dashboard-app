@@ -1,23 +1,46 @@
+import { PlusIcon } from 'lucide-react';
+
+import Button from '@/components/systems/Button';
+import LabeledInput from '@/components/systems/LabeledInput';
 import Shimmer from '@/components/systems/Shimmer';
+import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
 export default function Loading() {
   return (
     <>
-      <Title>Genre</Title>
-      <Shimmer className='mt-2 mb-4 space-y-3'>
-        <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-      </Shimmer>
-      <Shimmer className='space-y-5'>
-        <div className='h-8 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-        <div className='space-y-3'>
-          <div className='h-5 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-          <div className='h-5 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-          <div className='h-5 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-          <div className='h-5 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-          <div className='h-5 w-full rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-        </div>
-      </Shimmer>
+      <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
+        <Title className='mb-0'>Genre</Title>
+        <Button.success className='flex items-center gap-2'>
+          <PlusIcon className='h-5 w-5' />
+          Add New Genre
+        </Button.success>
+      </div>
+      <LabeledInput label='Search' id='inputdebounce' name='inputdebounce' placeholder='Search' />
+      <TableSimple
+        head={
+          <>
+            <TableSimple.th shrink>No</TableSimple.th>
+            <TableSimple.th className='text-left'>Name</TableSimple.th>
+            <TableSimple.th className='w-32'>Action</TableSimple.th>
+          </>
+        }
+      >
+        {[...Array(10).keys()].map((e, index) => (
+          <TableSimple.tr key={index}>
+            <TableSimple.td shrink>
+              <Shimmer className='p-3' />
+            </TableSimple.td>
+            <TableSimple.td>
+              <Shimmer className='p-3' />
+            </TableSimple.td>
+            <TableSimple.td className='flex gap-2'>
+              <Shimmer className='p-3 w-full' />
+              <Shimmer className='p-3 w-full' />
+            </TableSimple.td>
+          </TableSimple.tr>
+        ))}
+      </TableSimple>
     </>
   );
 }
