@@ -461,28 +461,28 @@ export default function DesignPage() {
             return (
               <Table.tr key={index}>
                 <Table.td shrink>{index + 1}</Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge>badge</Badge>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.red>badge red</Badge.red>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.dark>badge dark</Badge.dark>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.green>badge green</Badge.green>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.yellow>badge yellow</Badge.yellow>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.indigo>badge indigo</Badge.indigo>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.purple>badge purple</Badge.purple>
                 </Table.td>
-                <Table.td>
+                <Table.td className='text-center'>
                   <Badge.pink>badge pink</Badge.pink>
                 </Table.td>
               </Table.tr>
@@ -530,19 +530,19 @@ export default function DesignPage() {
             return (
               <TableSimple.tr key={index}>
                 <TableSimple.td shrink>{index + 1}</TableSimple.td>
-                <TableSimple.td>
+                <TableSimple.td className='text-center'>
                   <Badge>badge</Badge>
                 </TableSimple.td>
-                <TableSimple.td>
+                <TableSimple.td className='text-center'>
                   <Badge.red>badge red</Badge.red>
                 </TableSimple.td>
-                <TableSimple.td>
+                <TableSimple.td className='text-center'>
                   <Badge.dark>badge dark</Badge.dark>
                 </TableSimple.td>
-                <TableSimple.td>
+                <TableSimple.td className='text-center'>
                   <Badge.green>badge green</Badge.green>
                 </TableSimple.td>
-                <TableSimple.td>
+                <TableSimple.td className='text-center'>
                   <Badge.yellow>badge yellow</Badge.yellow>
                 </TableSimple.td>
               </TableSimple.tr>

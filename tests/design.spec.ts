@@ -1,5 +1,9 @@
 import { expect, test, type Page } from '@playwright/test';
 
+
+
+
+
 // make sure client component already rendered after given time
 async function waitMounted(page: Page, ms: number = 2000) {
   await page.waitForTimeout(ms);
@@ -529,7 +533,7 @@ test.describe('Testing Progress Component', () => {
     await expect(progress).toBeVisible();
     await expect(progress).toHaveClass(/h-1.5 rounded-full bg-sky-500/);
     // await expect(progress).toHaveCSS('width', '45%');
-    await expect(progress).toHaveCSS('width', '421.844px');
+    await expect(progress).toHaveCSS('width', '420.297px');
   });
   test('renders a ProgressPercentage Zero component', async ({ page }) => {
     const progress = page.getByTestId('progress-zero');
@@ -545,7 +549,7 @@ test.describe('Testing Progress Component', () => {
     await expect(progress).toHaveText('75 %');
     await expect(progress).toHaveClass(/rounded-full p-0.5 text-center text-xs font-medium leading-none/);
     // await expect(progress).toHaveCSS('width', '75%');
-    await expect(progress).toHaveCSS('width', '703.078px');
+    await expect(progress).toHaveCSS('width', '700.5px');
   });
 });
 
@@ -587,7 +591,7 @@ test.describe('Testing Table Component', () => {
   test('renders a Table component', async ({ page }) => {
     const table = page.getByTestId('table');
     await expect(table).toBeVisible();
-    await expect(table).toHaveClass(/w-full table-auto whitespace-nowrap text-neutral-700 dark:text-neutral-400/);
+    await expect(table).toHaveClass(/w-full table-auto whitespace-nowrap text-neutral-700 dark:text-neutral-100/);
   });
   test('renders a Table.tr component', async ({ page }) => {
     const table = page.getByTestId('table-tr');
@@ -599,7 +603,7 @@ test.describe('Testing Table Component', () => {
   test('renders a Table.td component', async ({ page }) => {
     const table = page.getByTestId('table-td');
     await expect(table).toBeVisible();
-    await expect(table).toHaveClass(/p-4/);
+    await expect(table).toHaveClass(/p-3/);
   });
 });
 
@@ -608,7 +612,7 @@ test.describe('Testing TableSimple Component', () => {
   test('renders a TableSimple component', async ({ page }) => {
     const table = page.getByTestId('table-simple');
     await expect(table).toBeVisible();
-    await expect(table).toHaveClass(/w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300/);
+    await expect(table).toHaveClass(/w-full whitespace-nowrap text-neutral-800 dark:text-neutral-100/);
   });
   test('renders a TableSimple.tr component', async ({ page }) => {
     const table = page.getByTestId('tablesimple-tr');
@@ -780,7 +784,7 @@ test.describe('Testing RactTable Component', () => {
   test('renders a RactTable component', async ({ page }) => {
     const reacttable = page.getByTestId('reacttable');
     await expect(reacttable).toBeVisible();
-    await expect(reacttable).toHaveClass('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300');
+    await expect(reacttable).toHaveClass('w-full whitespace-nowrap text-neutral-800 dark:text-neutral-100');
     // Head
     await expect(reacttable).toContainText('No');
     await expect(reacttable).toContainText('Name');

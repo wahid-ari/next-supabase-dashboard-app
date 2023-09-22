@@ -13,7 +13,7 @@ export default function DemoDropdownMenu() {
           <Menu.Button
             className={twMerge(
               'flex items-center rounded font-medium text-neutral-600 transition-all hover:text-neutral-900',
-              'focus:outline-none dark:text-neutral-300 dark:hover:text-neutral-100',
+              'dark:text-neutral-300 dark:hover:text-neutral-100',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
           >

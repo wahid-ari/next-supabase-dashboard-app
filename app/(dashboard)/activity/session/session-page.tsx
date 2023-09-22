@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { TrashIcon } from 'lucide-react';
 
+import { cn } from '@/libs/utils';
 import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
@@ -84,7 +85,7 @@ export default function SessionPage({ data }) {
           <>
             <TableSimple.td shrink>No</TableSimple.td>
             <TableSimple.td shrink>ID</TableSimple.td>
-            <TableSimple.td>Name</TableSimple.td>
+            <TableSimple.td className={cn(filteredData.length < 1 && 'w-32 text-center')}>Name</TableSimple.td>
             <TableSimple.td>Token</TableSimple.td>
             <TableSimple.td shrink>Date</TableSimple.td>
             <TableSimple.td shrink>Time</TableSimple.td>
