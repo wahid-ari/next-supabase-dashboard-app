@@ -1,3 +1,4 @@
+import LabeledInput from '@/components/systems/LabeledInput';
 import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
@@ -6,9 +7,7 @@ export default function Loading() {
   return (
     <>
       <Title>Session</Title>
-      <Shimmer className='mt-2 mb-4 space-y-3'>
-        <div className='h-6 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
-      </Shimmer>
+      <LabeledInput label='Search' id='inputdebounce' name='inputdebounce' placeholder='Search' />
       <TableSimple
         head={
           <>
