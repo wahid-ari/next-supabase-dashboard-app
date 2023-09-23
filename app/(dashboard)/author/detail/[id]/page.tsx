@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
+import { twMerge } from 'tailwind-merge';
 
 import { siteConfig } from '@/config/site';
 
@@ -162,9 +163,15 @@ export default async function Page({ params }) {
           {data?.quotes?.length > 0 ? (
             <div className='mt-6'>
               <Heading>{data?.name} Quotes</Heading>
-              {data?.quotes.map((item: any) => {
+              {data?.quotes.map((item: any, index: number) => {
                 return (
-                  <div key={item.id} className='mb-4 border-b pb-2 dark:border-b-neutral-700'>
+                  <div
+                    key={item.id}
+                    className={twMerge(
+                      'mb-4 pb-4',
+                      index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800',
+                    )}
+                  >
                     <p className='text-[15px] font-medium text-neutral-900 dark:text-neutral-100'>
                       &#8220;{item.quote}&#8221;
                     </p>

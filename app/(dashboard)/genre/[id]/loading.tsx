@@ -1,6 +1,5 @@
-import { ChevronsUpDownIcon, ChevronUpIcon, PlusIcon } from 'lucide-react';
+import { ChevronsUpDownIcon, ChevronUpIcon } from 'lucide-react';
 
-import Button from '@/components/systems/Button';
 import LabeledInput from '@/components/systems/LabeledInput';
 import Shimmer from '@/components/systems/Shimmer';
 import TableSimple from '@/components/systems/TableSimple';
@@ -9,13 +8,7 @@ import Title from '@/components/systems/Title';
 export default function Loading() {
   return (
     <>
-      <div className='mb-4 flex flex-wrap items-center justify-between gap-y-3'>
-        <Title className='mb-0'>Genre</Title>
-        <Button.success className='flex items-center gap-2'>
-          <PlusIcon className='h-5 w-5' />
-          Add New Genre
-        </Button.success>
-      </div>
+      <Title>Genre</Title>
       <LabeledInput label='Search' id='inputdebounce' name='inputdebounce' placeholder='Search' />
       <TableSimple
         head={
