@@ -208,8 +208,8 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
-            <Link className={tocClass} href='#shimer'>
-              Shimer
+            <Link className={tocClass} href='#shimmer'>
+              Shimmer
             </Link>
           </span>
           <span className='mb-3 block underline'>
