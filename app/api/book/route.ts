@@ -1,4 +1,3 @@
-import { revalidatePath } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 import slug from 'slug';
 
@@ -128,7 +127,6 @@ export async function POST(request: NextRequest) {
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
-      revalidatePath(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
       return NextResponse.json({ message: 'Success add book' }, { status: 200 });
     }
   } else {
@@ -200,7 +198,6 @@ export async function PUT(request: NextRequest) {
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
-      revalidatePath(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
       return NextResponse.json({ message: 'Success update book' }, { status: 201 });
     }
   } else {
@@ -233,7 +230,6 @@ export async function DELETE(request: NextRequest) {
       // if (errorLogs) {
       //   return NextResponse.json({ error: error.message }, { status: 422 });
       // }
-      revalidatePath(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/book`);
       return NextResponse.json({ message: 'Success delete book' }, { status: 200 });
     }
   } else {
