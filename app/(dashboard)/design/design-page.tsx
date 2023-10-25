@@ -277,6 +277,7 @@ export default function DesignPage() {
           onChange={(e) => setInputDebounce(e.target.value)}
         />
         <Text data-testid='input-debounce-hook-text'>{debouncedValue}</Text>
+        <Text>Slower</Text>
       </Wrapper>
 
       <Wrapper
@@ -304,6 +305,7 @@ export default function DesignPage() {
           data-testid='inputdebounce'
         />
         <Text data-testid='inputdebounce-text'>{inputDebounceValue}</Text>
+        <Text>Faster</Text>
       </Wrapper>
 
       <Wrapper
