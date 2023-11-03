@@ -148,6 +148,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-debounce'>
+              InputDebounce
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#label'>
               Label
             </Link>

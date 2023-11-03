@@ -118,6 +118,7 @@ import {
 import { Heading } from '@/components/ui/Heading';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/HoverCard';
 import { Input } from '@/components/ui/Input';
+import { InputDebounce } from '@/components/ui/InputDebounce';
 import { Label } from '@/components/ui/Label';
 import {
   Menubar,
@@ -177,6 +178,7 @@ import Wrapper from '@/components/systems/Wrapper';
 export default function UiPage() {
   const router = useRouter();
 
+  const [inputDebounceValue, setInputDebounceValue] = useState();
   const [checkboxValue, setCheckboxValue] = useState(true);
   function handleCheckboxChange() {
     checkboxValue == true ? setCheckboxValue(false) : setCheckboxValue(true);
@@ -602,6 +604,7 @@ export default function UiPage() {
                 {frameworks.map((framework) => (
                   <CommandItem
                     key={framework.value}
+                    value={framework.value}
                     onSelect={(currentValue) => {
                       setComboboxValue(currentValue === comboboxValue ? '' : currentValue);
                       setOpenCombobox(false);
@@ -977,6 +980,21 @@ export default function UiPage() {
 
       <Wrapper id='input' name='Input' props={['type']} docs='https://ui.shadcn.com/docs/components/input' noChildren>
         <Input type='email' placeholder='Email' />
+      </Wrapper>
+
+      <Wrapper
+        id='input-debounce'
+        name='InputDebounce'
+        props={['value', 'defaultValue', 'className', 'type', 'onChange', 'debounce']}
+        noChildren
+      >
+        <InputDebounce
+          type='text'
+          placeholder='Input Debounce'
+          value={inputDebounceValue}
+          onChange={(value) => setInputDebounceValue(value)}
+        />
+        {inputDebounceValue && <Text size='sm'>{inputDebounceValue}</Text>}
       </Wrapper>
 
       <Wrapper id='label' name='Label' docs='https://ui.shadcn.com/docs/components/label'>
