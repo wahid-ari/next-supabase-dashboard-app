@@ -119,8 +119,7 @@ export default function AddBookPage({ authors, genres }) {
           placeholder='Search and Select Author'
           onChange={setSelectedAuthor}
           onChangeQuery={(e) => setQueryAuthor(e.target.value)}
-          afterLeave={() => setQueryAuthor('')}
-          filtered={filteredAuthor}
+          options={filteredAuthor}
           query={queryAuthor}
         />
 

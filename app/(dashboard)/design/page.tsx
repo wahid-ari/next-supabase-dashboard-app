@@ -13,6 +13,7 @@ import DemoModal from './_components/DemoModal';
 import DemoReactSelect from './_components/DemoReactSelect';
 import DemoReactTable from './_components/DemoReactTable';
 import DemoSearchbox from './_components/DemoSearchbox';
+import DemoSelectbox from './_components/DemoSelectbox';
 import DemoUseToast from './_components/DemoUseToast';
 import DemoValidation from './_components/DemoValidation';
 import DemoValidationZod from './_components/DemoValidationZod';
@@ -75,6 +76,11 @@ export default function Page() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#modal'>
               Modal
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#selectbox'>
+              SelectBox
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -341,12 +347,21 @@ export default function Page() {
       </Wrapper>
 
       <Wrapper
+        id='selectbox'
+        name='SelectBox'
+        noClassName
+        noChildren
+        props={['label', 'name', 'value', 'placeholder', 'onChange', 'options']}
+      >
+        <DemoSelectbox />
+      </Wrapper>
+
+      <Wrapper
         id='searchbox'
         name='SearchBox'
         noClassName
-        noProps
         noChildren
-        props={['label', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'afterLeave', 'filtered']}
+        props={['label', 'name', 'value', 'placeholder', 'onChange', 'query', 'onChangeQuery', 'options']}
       >
         <DemoSearchbox />
       </Wrapper>

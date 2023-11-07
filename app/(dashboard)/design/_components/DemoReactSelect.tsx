@@ -31,19 +31,16 @@ export default function DemoReactSelect() {
         id='reactselect'
         instanceId='reactselect'
         aria-label='React Select'
-        // @ts-ignore
-        options={reactSelectData}
-        isMulti
+        placeholder='Search or Select'
+        name='reactselect'
+        classNamePrefix='react-select'
         noOptionsMessage={() => 'Not Found'}
         value={reactSelect}
         // @ts-ignore
+        options={reactSelectData}
+        // @ts-ignore
         onChange={setReactSelect}
-        placeholder='Search or Select'
-        name='reactselect'
-        classNames={{
-          option: (option) => (option.isSelected ? '!border-red-600' : '!border-grey-300'),
-        }}
-        classNamePrefix='react-select'
+        isMulti
         theme={(theme) => ({
           ...theme,
           colors: {

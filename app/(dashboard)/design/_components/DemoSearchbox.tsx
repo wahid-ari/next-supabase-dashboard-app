@@ -36,8 +36,7 @@ export default function DemoSearchbox() {
       placeholder='Search or Select'
       onChange={setSelectedSearchBox}
       onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
-      afterLeave={() => setQuerySearchBox('')}
-      filtered={filteredSearchBox}
+      options={filteredSearchBox}
       query={querySearchBox}
     />
   );
