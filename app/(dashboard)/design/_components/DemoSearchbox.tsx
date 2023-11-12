@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import SearchBox from '@/components/systems/SearchBox';
+import Text from '@/components/systems/Text';
 
 export default function DemoSearchbox() {
   const searchBoxData = [
@@ -19,7 +20,7 @@ export default function DemoSearchbox() {
       name: 'Option 3',
     },
   ];
-  const [selectedSearchBox, setSelectedSearchBox] = useState();
+  const [selectedSearchBox, setSelectedSearchBox] = useState(null);
   const [querySearchBox, setQuerySearchBox] = useState('');
   const filteredSearchBox =
     querySearchBox === ''
@@ -29,15 +30,18 @@ export default function DemoSearchbox() {
         );
 
   return (
-    <SearchBox
-      data-testid='searchbox'
-      label='Search Box'
-      value={selectedSearchBox}
-      placeholder='Search or Select'
-      onChange={setSelectedSearchBox}
-      onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
-      options={filteredSearchBox}
-      query={querySearchBox}
-    />
+    <>
+      <SearchBox
+        data-testid='searchbox'
+        label='Search Box'
+        value={selectedSearchBox}
+        placeholder='Search or Select'
+        onChange={setSelectedSearchBox}
+        onChangeQuery={(e) => setQuerySearchBox(e.target.value)}
+        options={filteredSearchBox}
+        query={querySearchBox}
+      />
+      <Text data-testid='searchbox-value'>{selectedSearchBox?.name}</Text>
+    </>
   );
 }
