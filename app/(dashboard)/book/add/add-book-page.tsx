@@ -15,7 +15,7 @@ import TextArea from '@/components/systems/TextArea';
 
 export default function AddBookPage({ authors, genres }) {
   const router = useRouter();
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     author_id: null,
     title: '',
@@ -71,7 +71,20 @@ export default function AddBookPage({ authors, genres }) {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 

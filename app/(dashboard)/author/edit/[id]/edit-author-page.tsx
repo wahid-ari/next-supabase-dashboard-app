@@ -11,7 +11,7 @@ import LabeledInput from '@/components/systems/LabeledInput';
 import TextArea from '@/components/systems/TextArea';
 
 export default function EditAuthorPage({ data }) {
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
   const [editItem, setEditItem] = useState({
     name: data.name,
     link: data.link,
@@ -37,7 +37,20 @@ export default function EditAuthorPage({ data }) {
       }
     } catch (error) {
       console.error(error);
-      updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      if (Array.isArray(error?.response?.data?.error)) {
+        const errors = [...error?.response?.data?.error].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+      }
     }
   }
 
