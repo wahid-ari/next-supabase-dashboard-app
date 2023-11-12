@@ -1,5 +1,5 @@
+import { ImageResponse } from 'next/og';
 import type { NextRequest } from 'next/server';
-import { ImageResponse } from 'next/server';
 
 export const runtime = 'edge';
 const interMedium = fetch(new URL('./Inter-Medium.ttf', import.meta.url)).then((res) => res.arrayBuffer());
