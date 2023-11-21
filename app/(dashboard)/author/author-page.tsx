@@ -41,7 +41,7 @@ export default function AuthorPage({ data }: { data: any }) {
       if (detail) {
         updateToast({ toastId, message: detail, isError: true });
       } else {
-        updateToast({ toastId, message: error?.response?.data?.error, isError: true });
+        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
       }
     }
   }
