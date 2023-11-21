@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
       .eq(column, param)
       .order('id');
     if (error || data.length < 1) {
-      return NextResponse.json({ error: 'Not Found' }, { status: 404 });
+      return NextResponse.json({ message: 'Not Found' }, { status: 404 });
     }
     const { book_books, book_quotes } = data[0];
     delete data[0].book_books;
@@ -47,14 +47,14 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   // Get Request Header Token
   const { authorization, token } = getAppHeader();
-  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  if (!authorization) return NextResponse.json({ message: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Body, Extract the body of the request
   const { name, link, image, born, web, bio } = await request.json();
   // Check Session if Token is Valid
   const session = await getAppSessionToken(token);
   if (session) {
     if (!name) {
-      return NextResponse.json({ error: 'Name required' }, { status: 422 });
+      return NextResponse.json({ message: 'Name required' }, { status: 422 });
     } else {
       let nameSlug = slug(name);
       const { data: isSlugExist } = await supabase.from('book_authors').select(`*`).eq('slug', nameSlug).order('id');
@@ -75,31 +75,31 @@ export async function POST(request: NextRequest) {
         },
       ]);
       if (error) {
-        return NextResponse.json({ error: error.message }, { status: 422 });
+        return NextResponse.json({ message: error.message }, { status: 422 });
       }
       // Write logs
       // const errorLogs = await writeLogs(session.user_id, 'create', 'author');
       // if (errorLogs) {
-      //   return NextResponse.json({ error: error.message }, { status: 422 });
+      //   return NextResponse.json({ message: error.message }, { status: 422 });
       // }
       return NextResponse.json({ message: 'Success add author' }, { status: 200 });
     }
   } else {
-    return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
+    return NextResponse.json({ message: 'Token invalid' }, { status: 401 });
   }
 }
 
 export async function PUT(request: NextRequest) {
   // Get Request Header Token
   const { authorization, token } = getAppHeader();
-  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  if (!authorization) return NextResponse.json({ message: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Body, Extract the body of the request
   const { id, name, link, image, born, web, bio } = await request.json();
   // Check Session if Token is Valid
   const session = await getAppSessionToken(token);
   if (session) {
     if (!name) {
-      return NextResponse.json({ error: 'Name required' }, { status: 422 });
+      return NextResponse.json({ message: 'Name required' }, { status: 422 });
     } else {
       const { error } = await supabase
         .from('book_authors')
@@ -113,17 +113,17 @@ export async function PUT(request: NextRequest) {
         })
         .eq('id', id);
       if (error) {
-        return NextResponse.json({ error: error.message }, { status: 422 });
+        return NextResponse.json({ message: error.message }, { status: 422 });
       }
       // Write logs
       // const errorLogs = await writeLogs(session.user_id, 'update', 'author', id);
       // if (errorLogs) {
-      //   return NextResponse.json({ error: error.message }, { status: 422 });
+      //   return NextResponse.json({ message: error.message }, { status: 422 });
       // }
       return NextResponse.json({ message: 'Success update author' }, { status: 201 });
     }
   } else {
-    return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
+    return NextResponse.json({ message: 'Token invalid' }, { status: 401 });
   }
 }
 
@@ -131,7 +131,7 @@ export async function PUT(request: NextRequest) {
 export async function DELETE(request: NextRequest) {
   // Get Request Header Token
   const { authorization, token } = getAppHeader();
-  if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  if (!authorization) return NextResponse.json({ message: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Query
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
@@ -139,20 +139,20 @@ export async function DELETE(request: NextRequest) {
   const session = await getAppSessionToken(token);
   if (session) {
     if (!id) {
-      return NextResponse.json({ error: 'Id required' }, { status: 422 });
+      return NextResponse.json({ message: 'Id required' }, { status: 422 });
     } else {
       const { error } = await supabase.from('book_authors').delete().eq('id', id);
       if (error) {
-        return NextResponse.json({ error: error.message, detail: error.details }, { status: 422 });
+        return NextResponse.json({ message: error.message, detail: error.details }, { status: 422 });
       }
       // Write logs
       // const errorLogs = await writeLogs(session.user_id, 'delete', 'author', id);
       // if (errorLogs) {
-      //   return NextResponse.json({ error: error.message }, { status: 422 });
+      //   return NextResponse.json({ message: error.message }, { status: 422 });
       // }
       return NextResponse.json({ message: 'Success delete author' }, { status: 200 });
     }
   } else {
-    return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
+    return NextResponse.json({ message: 'Token invalid' }, { status: 401 });
   }
 }

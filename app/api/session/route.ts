@@ -13,7 +13,7 @@ export async function GET() {
 export async function DELETE(request: NextRequest) {
   // Get Request Header Token
   // const { authorization, token } = getAppHeader();
-  // if (!authorization) return NextResponse.json({ error: 'Please provide bearer token in headers' }, { status: 401 });
+  // if (!authorization) return NextResponse.json({ message: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Query
   const { searchParams } = new URL(request.url);
   const id = searchParams.get('id');
@@ -25,18 +25,18 @@ export async function DELETE(request: NextRequest) {
     for (const item of data) {
       const { error } = await supabase.from('book_sessions').delete().eq('id', item.id);
       if (error) {
-        return NextResponse.json({ error: error.message }, { status: 422 });
+        return NextResponse.json({ message: error.message }, { status: 422 });
       }
     }
     return NextResponse.json({ message: 'Success delete all session' }, { status: 200 });
   } else {
     const { error } = await supabase.from('book_sessions').delete().eq('id', id);
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 422 });
+      return NextResponse.json({ message: error.message }, { status: 422 });
     }
     return NextResponse.json({ message: 'Success delete session' }, { status: 200 });
   }
   // } else {
-  //   return NextResponse.json({ error: 'Token invalid' }, { status: 401 });
+  //   return NextResponse.json({ message: 'Token invalid' }, { status: 401 });
   // }
 }

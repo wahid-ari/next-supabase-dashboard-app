@@ -27,9 +27,9 @@ export async function POST(request: NextRequest) {
   // Get Request Body, Extract the body of the request
   const { username, password } = await request.json();
   if (!username) {
-    return NextResponse.json({ error: 'Username required' }, { status: 422 });
+    return NextResponse.json({ message: 'Username required' }, { status: 422 });
   } else if (!password) {
-    return NextResponse.json({ error: 'Password required' }, { status: 422 });
+    return NextResponse.json({ message: 'Password required' }, { status: 422 });
   } else {
     const { data, error } = await supabase
       .from('book_users')
@@ -38,11 +38,11 @@ export async function POST(request: NextRequest) {
       .limit(1)
       .single();
     if (error) {
-      return NextResponse.json({ error: 'User not found' }, { status: 422 });
+      return NextResponse.json({ message: 'User not found' }, { status: 422 });
     }
     const isMatch = await compare(password, data?.password);
     if (!isMatch) {
-      return NextResponse.json({ error: 'Password mismatch' }, { status: 422 });
+      return NextResponse.json({ message: 'Password mismatch' }, { status: 422 });
     }
     delete data.password;
     delete data.created_at;
