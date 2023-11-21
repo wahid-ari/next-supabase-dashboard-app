@@ -17,9 +17,10 @@ export default function LoginPage() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl');
   const [form, setForm] = useState({ username: 'develop', password: '' });
+  const formFilled = form.username !== '' && form.password !== '';
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { updateToast, pushToast } = useToast();
+  const { updateToast, pushToast, dismissToast } = useToast();
 
   const handleChange = (e: any) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -28,56 +29,51 @@ export default function LoginPage() {
   async function handleSubmit(e: any) {
     e.preventDefault();
     setLoading(true);
-    let isError = false;
-    if (!form.username) {
-      isError = true;
-      pushToast({ message: "Username can't be empty", isError: true });
-    }
-    if (!form.password) {
-      isError = true;
-      pushToast({ message: "Password can't be empty", isError: true });
-    }
-
-    // if no error error save data
-    if (!isError) {
-      const toastId = pushToast({
-        message: 'Login...',
-        isLoading: true,
-      });
-      try {
-        const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
-        if (res.status == 200) {
-          // NextAuth
-          const { id, username, name, type, token } = res.data;
-          signIn('credentials', {
-            id,
-            username,
-            name,
-            type,
-            token,
-            callbackUrl: callbackUrl || '/dashboard',
-          });
-          updateToast({
-            toastId,
-            message: 'Success Login',
-            isError: false,
-          });
-        }
-      } catch (error) {
-        console.error(error);
-        const { detail } = error?.response?.data;
-        if (detail) {
-          updateToast({ toastId, message: detail, isError: true });
-        } else {
-          updateToast({
-            toastId,
-            message: error?.response?.data?.message,
-            isError: true,
-          });
-        }
-        setLoading(false);
+    const toastId = pushToast({
+      message: 'Login...',
+      isLoading: true,
+    });
+    try {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
+      if (res.status == 200) {
+        // NextAuth
+        const { id, username, name, type, token } = res.data;
+        signIn('credentials', {
+          id,
+          username,
+          name,
+          type,
+          token,
+          callbackUrl: callbackUrl || '/dashboard',
+        });
+        updateToast({
+          toastId,
+          message: 'Success Login',
+          isError: false,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      if (Array.isArray(error?.response?.data?.message)) {
+        const errors = [...error?.response?.data?.message].reverse();
+        // show all error
+        dismissToast();
+        errors.forEach((item: any) => {
+          pushToast({ message: item?.message, isError: true });
+        });
+        // only show one error
+        // errors.map((item: any) => {
+        //   updateToast({ toastId, message: item?.message, isError: true });
+        // })
+      } else {
+        updateToast({
+          toastId,
+          message: error?.response?.data?.message,
+          isError: true,
+        });
       }
     }
+    setLoading(false);
   }
 
   return (
@@ -167,7 +163,7 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <Button type='submit' className='w-full !text-base' disabled={loading}>
+            <Button type='submit' className='w-full !text-base' disabled={!formFilled || loading}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
           </form>

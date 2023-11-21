@@ -1,8 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { compare, hash } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import { z } from 'zod';
 
 import { supabase } from '@/libs/supabase';
+
+const schema = z.object({
+  username: z
+    .string()
+    .min(1, { message: 'Username is required' })
+    .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+  password: z.string().min(1, { message: 'Password is required' }),
+});
 
 // async function pass() {
 //   let hashed = await hash('password', 8);
@@ -26,10 +35,16 @@ import { supabase } from '@/libs/supabase';
 export async function POST(request: NextRequest) {
   // Get Request Body, Extract the body of the request
   const { username, password } = await request.json();
-  if (!username) {
-    return NextResponse.json({ message: 'Username required' }, { status: 422 });
-  } else if (!password) {
-    return NextResponse.json({ message: 'Password required' }, { status: 422 });
+  // if (!username) {
+  //   return NextResponse.json({ message: 'Username required' }, { status: 422 });
+  // } else if (!password) {
+  //   return NextResponse.json({ message: 'Password required' }, { status: 422 });
+  // }
+  const body = await request.json();
+  const isValid = schema.safeParse(body);
+  // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
+  if (isValid.success == false) {
+    return NextResponse.json({ message: isValid.error.issues }, { status: 422 });
   } else {
     const { data, error } = await supabase
       .from('book_users')
