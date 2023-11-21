@@ -29,8 +29,8 @@ import {
   YAxis,
 } from 'recharts';
 
-import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/utils/chart-setup';
-import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/utils/recharts-setup';
+import { options, optionsBarChart, optionsHorizontalBarChart, populateData } from '@/libs/chart-setup';
+import { CustomTooltip, CustomXAxisTick, RECHARTS_COLORS, renderColorfulLegendText } from '@/libs/recharts-setup';
 import { useMounted } from '@/hooks/use-mounted';
 import useWindowSize from '@/hooks/use-window-size';
 
