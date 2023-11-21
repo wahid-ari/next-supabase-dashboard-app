@@ -64,8 +64,17 @@ export default function LoginPage() {
           });
         }
       } catch (error) {
-        updateToast({ toastId, message: error?.response?.data?.message, isError: true });
         console.error(error);
+        const { detail } = error?.response?.data;
+        if (detail) {
+          updateToast({ toastId, message: detail, isError: true });
+        } else {
+          updateToast({
+            toastId,
+            message: error?.response?.data?.message,
+            isError: true,
+          });
+        }
         setLoading(false);
       }
     }
