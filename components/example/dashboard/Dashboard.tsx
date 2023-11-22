@@ -25,6 +25,7 @@ export default function DashboardPage() {
           height={300}
           alt='Dashboard'
           className='block dark:hidden mx-auto rounded-lg'
+          unoptimized
         />
         <Image
           src='https://github.com/vercel.png'
@@ -32,6 +33,7 @@ export default function DashboardPage() {
           height={300}
           alt='Dashboard'
           className='hidden dark:block mx-auto rounded-lg'
+          unoptimized
         />
       </div>
       <div className='flex-col md:flex'>
