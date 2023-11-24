@@ -2558,9 +2558,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistics/book-by-author",
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistic/book-by-author",
               "host": ["{{NEXT_SUPABASE_BOOK}}"],
-              "path": ["api", "statistics", "book-by-author"]
+              "path": ["api", "statistic", "book-by-author"]
             }
           },
           "response": [
@@ -2570,9 +2570,9 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistics/book-by-author",
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistic/book-by-author",
                   "host": ["{{NEXT_SUPABASE_BOOK}}"],
-                  "path": ["api", "statistics", "book-by-author"]
+                  "path": ["api", "statistic", "book-by-author"]
                 }
               },
               "status": "OK",
@@ -2580,51 +2580,27 @@
               "_postman_previewlanguage": "json",
               "header": [
                 {
-                  "key": "access-control-allow-credentials",
-                  "value": "true"
-                },
-                {
-                  "key": "access-control-allow-origin",
-                  "value": "*"
-                },
-                {
-                  "key": "access-control-allow-methods",
-                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-                },
-                {
-                  "key": "access-control-allow-headers",
-                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-                },
-                {
-                  "key": "cache-control",
-                  "value": "public, s-maxage=10, stale-while-revalidate=59"
+                  "key": "vary",
+                  "value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url"
                 },
                 {
                   "key": "content-type",
-                  "value": "application/json; charset=utf-8"
+                  "value": "application/json"
                 },
                 {
-                  "key": "etag",
-                  "value": "\"odm3wt7u1jcc\""
+                  "key": "Date",
+                  "value": "Fri, 24 Nov 2023 12:54:41 GMT"
                 },
                 {
-                  "key": "vary",
-                  "value": "Accept-Encoding"
+                  "key": "Connection",
+                  "value": "keep-alive"
                 },
                 {
-                  "key": "date",
-                  "value": "Mon, 29 May 2023 07:11:57 GMT"
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
                 },
                 {
-                  "key": "content-encoding",
-                  "value": "gzip"
-                },
-                {
-                  "key": "connection",
-                  "value": "close"
-                },
-                {
-                  "key": "transfer-encoding",
+                  "key": "Transfer-Encoding",
                   "value": "chunked"
                 }
               ],
@@ -2639,9 +2615,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistics/book-by-genre",
+              "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistic/book-by-genre",
               "host": ["{{NEXT_SUPABASE_BOOK}}"],
-              "path": ["api", "statistics", "book-by-genre"]
+              "path": ["api", "statistic", "book-by-genre"]
             }
           },
           "response": [
@@ -2651,9 +2627,9 @@
                 "method": "GET",
                 "header": [],
                 "url": {
-                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistics/book-by-genre",
+                  "raw": "{{NEXT_SUPABASE_BOOK}}/api/statistic/book-by-genre",
                   "host": ["{{NEXT_SUPABASE_BOOK}}"],
-                  "path": ["api", "statistics", "book-by-genre"]
+                  "path": ["api", "statistic", "book-by-genre"]
                 }
               },
               "status": "OK",
@@ -2661,51 +2637,27 @@
               "_postman_previewlanguage": "json",
               "header": [
                 {
-                  "key": "access-control-allow-credentials",
-                  "value": "true"
-                },
-                {
-                  "key": "access-control-allow-origin",
-                  "value": "*"
-                },
-                {
-                  "key": "access-control-allow-methods",
-                  "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT"
-                },
-                {
-                  "key": "access-control-allow-headers",
-                  "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-                },
-                {
-                  "key": "cache-control",
-                  "value": "public, s-maxage=10, stale-while-revalidate=59"
+                  "key": "vary",
+                  "value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url"
                 },
                 {
                   "key": "content-type",
-                  "value": "application/json; charset=utf-8"
+                  "value": "application/json"
                 },
                 {
-                  "key": "etag",
-                  "value": "\"9zsm0p9qbyb8\""
+                  "key": "Date",
+                  "value": "Fri, 24 Nov 2023 12:54:11 GMT"
                 },
                 {
-                  "key": "vary",
-                  "value": "Accept-Encoding"
+                  "key": "Connection",
+                  "value": "keep-alive"
                 },
                 {
-                  "key": "date",
-                  "value": "Mon, 29 May 2023 07:12:41 GMT"
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
                 },
                 {
-                  "key": "content-encoding",
-                  "value": "gzip"
-                },
-                {
-                  "key": "connection",
-                  "value": "close"
-                },
-                {
-                  "key": "transfer-encoding",
+                  "key": "Transfer-Encoding",
                   "value": "chunked"
                 }
               ],
