@@ -40,8 +40,7 @@ export async function POST(request: NextRequest) {
   // } else if (!password) {
   //   return NextResponse.json({ message: 'Password required' }, { status: 422 });
   // }
-  const body = await request.json();
-  const isValid = schema.safeParse(body);
+  const isValid = schema.safeParse({ username, password });
   // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
   if (isValid.success == false) {
     return NextResponse.json({ message: isValid.error.issues }, { status: 422 });
