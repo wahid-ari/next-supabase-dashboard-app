@@ -37,7 +37,7 @@ export default function DetailGenrePage({ data }) {
             <HoverCard.Root>
               <HoverCard.Trigger asChild>
                 <Link
-                  href={`/book/${values.id}`}
+                  href={`/book/detail/${values.id}`}
                   className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   {text}
@@ -67,7 +67,7 @@ export default function DetailGenrePage({ data }) {
           const { values, original } = row.cell.row;
           return (
             <Link
-              href={`/author/${original.book_authors?.id}`}
+              href={`/author/detail/${original.book_authors?.id}`}
               className='rounded text-sm font-medium transition-all duration-200 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
             >
               {original.book_authors?.name}
