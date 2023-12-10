@@ -102,7 +102,7 @@ export default async function Page({ params }) {
                           <>
                             <Link
                               key={index + 1}
-                              href={`/genre/detail/${item.id}`}
+                              href={`/genre/${item.id}`}
                               className='rounded text-[15px] font-medium text-sky-500 transition-all duration-200 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                             >
                               {item.name}
