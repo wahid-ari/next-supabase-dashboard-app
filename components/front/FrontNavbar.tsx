@@ -101,7 +101,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                     <Popover.Panel
                       className={cn(
                         'absolute top-8 z-[11] flex w-40 flex-col space-y-2.5 rounded px-4 py-4 shadow',
-                        'dark:border dark:border-neutral-800 bg-white dark:bg-neutral-900',
+                        'bg-white dark:border dark:border-neutral-800 dark:bg-neutral-900',
                       )}
                     >
                       <CustomActiveLink href='/#'>Studios</CustomActiveLink>
@@ -154,8 +154,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
               {status == 'loading' ? (
                 <div
                   className={cn(
-                    'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                    'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                    'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                   )}
                 >
                   <span>Loading</span>
@@ -164,8 +164,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <Link
                   href='/dashboard'
                   className={cn(
-                    'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                    'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                    'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}
                   passHref
@@ -176,8 +176,8 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                 <Link
                   href='/login'
                   className={cn(
-                    'rounded-md text-sm border dark:border-neutral-700 px-3 py-1 font-medium transition-all duration-200',
-                    'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200',
+                    'rounded-md border px-3 py-1 text-sm font-medium transition-all duration-200 dark:border-neutral-700',
+                    'text-neutral-700 hover:bg-neutral-100 dark:text-neutral-200 dark:hover:bg-neutral-800',
                     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
                   )}
                   passHref
@@ -261,7 +261,7 @@ export default function FrontNavbar({ className, ...props }: { className?: strin
                       <Menu.Button
                         className={cn(
                           'w-full rounded px-3 py-1.5 text-[15px] font-medium text-neutral-600 dark:text-neutral-200',
-                          'dark:hover:bg-neutral-800 focus-visible:outline-none hover:bg-neutral-100 focus-visible:ring-2 focus-visible:ring-sky-500',
+                          'hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:bg-neutral-800',
                         )}
                       >
                         <div className='flex items-center justify-between'>

@@ -205,7 +205,7 @@ export default function AddBookPage({ authors, genres }) {
           placeholder='https://www.goodreads.com/book/show/2767052-the-hunger-games'
         />
 
-        <Button.success type='submit' className='mt-2 py-2 w-full'>
+        <Button.success type='submit' className='mt-2 w-full py-2'>
           Save
         </Button.success>
       </div>

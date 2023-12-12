@@ -46,12 +46,12 @@ export default function Code({ className, name = 'Code', code, lang = 'javascrip
           onClick={copyText}
           className={twMerge(
             'absolute right-0 m-3 mt-4 rounded-md border border-neutral-700 px-1 py-1 transition-all',
-            'dark:bg-neutral-800 dark:hover:bg-neutral-700 focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:bg-neutral-800 dark:hover:bg-neutral-700',
           )}
         >
           {copy ? (
             <div className='flex items-center'>
-              <ClipboardPasteIcon className='h-5 w-5 transition-all text-neutral-400' />
+              <ClipboardPasteIcon className='h-5 w-5 text-neutral-400 transition-all' />
               <span className='pl-1 text-xs text-neutral-400'>Copied !</span>
             </div>
           ) : (
@@ -60,8 +60,8 @@ export default function Code({ className, name = 'Code', code, lang = 'javascrip
         </button>
         <pre
           className={twMerge(
-            'line-numbers scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800',
-            'focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:outline-none',
+            'line-numbers scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-800 dark:scrollbar-thumb-neutral-800',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
           )}
         >
           <code className={`language-${lang}`}>{code}</code>

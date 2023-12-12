@@ -13,18 +13,18 @@ export default function Loading() {
       <TableSimple
         head={
           <>
-            <TableSimple.th className='flex gap-1 items-center'>
-              No <ChevronUpIcon className='w-4 h-4 opacity-50' />
+            <TableSimple.th className='flex items-center gap-1'>
+              No <ChevronUpIcon className='h-4 w-4 opacity-50' />
             </TableSimple.th>
             <TableSimple.th className='text-left'>
-              <div className='flex gap-1 items-center'>
-                Title <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+              <div className='flex items-center gap-1'>
+                Title <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
               </div>
             </TableSimple.th>
             <TableSimple.th className='sm:w-48 md:w-64 lg:w-80'>
-              <div className='flex gap-1 items-center'>
+              <div className='flex items-center gap-1'>
                 Author
-                <ChevronsUpDownIcon className='w-4 h-4 opacity-50' />
+                <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
               </div>
             </TableSimple.th>
           </>

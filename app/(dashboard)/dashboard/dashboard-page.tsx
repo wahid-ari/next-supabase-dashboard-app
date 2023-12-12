@@ -75,7 +75,7 @@ export default function DashboardPage({
             <ResponsiveContainer width='99%' height={350}>
               <PieChart data={dataStatisticBookByGenre}>
                 <PieRecharts
-                  className='focus:outline-1 dark:focus:!outline-1 focus:outline-sky-600 dark:focus:!outline-sky-500 mb-4'
+                  className='mb-4 focus:outline-1 focus:outline-sky-600 dark:focus:!outline-1 dark:focus:!outline-sky-500'
                   data={dataStatisticBookByGenre}
                   dataKey='total'
                   type='monotone'
@@ -108,11 +108,11 @@ export default function DashboardPage({
             </ResponsiveContainer>
           </div>
         ) : (
-          <div className='py-3 w-80 m-auto'>
-            <Shimmer className='w-64 h-64 m-auto rounded-full'>
+          <div className='m-auto w-80 py-3'>
+            <Shimmer className='m-auto h-64 w-64 rounded-full'>
               <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             </Shimmer>
-            <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+            <div className='mx-auto mb-3 mt-3 flex w-64 flex-wrap justify-center gap-x-4 gap-y-2'>
               <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
               <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
@@ -199,7 +199,7 @@ export default function DashboardPage({
           <Text.medium>Total Book by Genre</Text.medium>
         </div>
         {mounted ? (
-          <div className='m-auto w-72 sm:w-80 py-3'>
+          <div className='m-auto w-72 py-3 sm:w-80'>
             <Pie options={options} data={dataBookByGenre} />
           </div>
         ) : (

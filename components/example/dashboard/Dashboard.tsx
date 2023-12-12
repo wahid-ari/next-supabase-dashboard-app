@@ -24,7 +24,7 @@ export default function DashboardPage() {
           width={300}
           height={300}
           alt='Dashboard'
-          className='block dark:hidden mx-auto rounded-lg'
+          className='mx-auto block rounded-lg dark:hidden'
           unoptimized
         />
         <Image
@@ -32,7 +32,7 @@ export default function DashboardPage() {
           width={300}
           height={300}
           alt='Dashboard'
-          className='hidden dark:block mx-auto rounded-lg'
+          className='mx-auto hidden rounded-lg dark:block'
           unoptimized
         />
       </div>

@@ -18,17 +18,17 @@ export default function ErrorPage({
   ...props
 }: Props) {
   return (
-    <div className={cn('h-[500px] flex items-center justify-center', className)} {...props}>
+    <div className={cn('flex h-[500px] items-center justify-center', className)} {...props}>
       <div className='text-center'>
-        <h2 className='text-5xl font-semibold mb-4'>{status}</h2>
+        <h2 className='mb-4 text-5xl font-semibold'>{status}</h2>
         <p className='text-lg font-medium'>{title}</p>
-        <p className='text-base mb-4'>Message : {message}</p>
+        <p className='mb-4 text-base'>Message : {message}</p>
         <button
           onClick={
             // Attempt to recover by trying to re-render the segment
             () => reset()
           }
-          className='text-white bg-sky-600 transition-all hover:bg-sky-500 rounded px-3 py-1.5 font-medium text-sm'
+          className='rounded bg-sky-600 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-sky-500'
         >
           Try Again
         </button>

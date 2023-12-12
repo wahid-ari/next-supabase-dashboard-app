@@ -22,11 +22,11 @@ export default function Loading() {
         <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
           <Text.medium>Total Book by Genre (Recharts)</Text.medium>
         </div>
-        <div className='py-3 w-80 m-auto'>
-          <Shimmer className='w-64 h-64 m-auto rounded-full'>
+        <div className='m-auto w-80 py-3'>
+          <Shimmer className='m-auto h-64 w-64 rounded-full'>
             <div className='h-full w-full rounded-full bg-neutral-300/70 dark:bg-neutral-700/50'></div>
           </Shimmer>
-          <div className='mt-3 w-64 mx-auto flex flex-wrap justify-center gap-y-2 gap-x-4 mb-3'>
+          <div className='mx-auto mb-3 mt-3 flex w-64 flex-wrap justify-center gap-x-4 gap-y-2'>
             <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='h-4 w-16 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>
             <div className='h-4 w-12 rounded bg-neutral-300/70 dark:bg-neutral-700/50'></div>

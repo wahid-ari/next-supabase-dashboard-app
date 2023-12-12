@@ -86,9 +86,9 @@ export default function BookPage({ data }: { data: any }) {
                 <HoverCard.Content
                   side='top'
                   className={twMerge(
-                    'z-50 text-sm max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
+                    'z-50 max-h-40 max-w-sm overflow-auto rounded-md border text-sm shadow-md',
                     'bg-white p-2.5 font-medium leading-5 text-neutral-700',
-                    'scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
+                    'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
                   )}
                 >
                   {values.title}

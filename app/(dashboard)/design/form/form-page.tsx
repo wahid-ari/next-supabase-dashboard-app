@@ -502,7 +502,7 @@ export default function FormPage() {
                         <FormControl>
                           <RadioGroupItem value='light' aria-label='light' className='sr-only' />
                         </FormControl>
-                        <div className='items-center rounded-md border-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:border-neutral-700 p-1'>
+                        <div className='items-center rounded-md border-2 p-1 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800'>
                           <div className='space-y-2 rounded-sm bg-[#ecedef] p-2'>
                             <div className='space-y-2 rounded-md bg-white p-2 shadow-sm'>
                               <div className='h-2 w-[80px] rounded-lg bg-[#ecedef]' />
@@ -522,7 +522,7 @@ export default function FormPage() {
                         <FormControl>
                           <RadioGroupItem value='dark' aria-label='dark' className='sr-only' />
                         </FormControl>
-                        <div className='items-center rounded-md border-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:border-neutral-700 p-1'>
+                        <div className='items-center rounded-md border-2 p-1 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800'>
                           <div className='space-y-2 rounded-sm bg-slate-950 p-2'>
                             <div className='space-y-2 rounded-md bg-slate-800 p-2 shadow-sm'>
                               <div className='h-2 w-[80px] rounded-lg bg-slate-400' />

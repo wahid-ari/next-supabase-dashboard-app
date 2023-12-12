@@ -112,7 +112,7 @@ export const ReactTable = forwardRef(
 
     return (
       <div className={twMerge('w-full rounded border dark:border-neutral-800', className)}>
-        <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
+        <div className='scrollbar-thumb-rounded overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
           <table
             {...getTableProps()}
             {...props}
@@ -294,7 +294,7 @@ export const ReactTable = forwardRef(
               }}
               className={twMerge(
                 'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
-                'transition-all focus:border-transparent dark:focus:border-transparent focus:outline-none focus:ring-1',
+                'transition-all focus:border-transparent focus:outline-none focus:ring-1 dark:focus:border-transparent',
                 'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
               )}
               placeholder='1'
@@ -307,7 +307,7 @@ export const ReactTable = forwardRef(
               }}
               className={twMerge(
                 'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
-                'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent dark:focus:border-transparent focus:outline-none',
+                'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
                 'focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
               )}
             >

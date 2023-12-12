@@ -36,7 +36,7 @@ export default function Wrapper({
 }: Props) {
   return (
     <section id={id} className={twMerge('pt-8', className)}>
-      <Heading h2 className='group flex transition-all duration-500 text-lg'>
+      <Heading h2 className='group flex text-lg transition-all duration-500'>
         <span className='mr-2 text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
           #
         </span>{' '}

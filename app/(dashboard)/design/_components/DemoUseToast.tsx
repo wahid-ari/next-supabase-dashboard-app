@@ -57,7 +57,7 @@ function dissmissAllToast() {
   dismissToast()
 }`}
       />
-      <div className='flex flex-wrap items-center gap-2 mt-4'>
+      <div className='mt-4 flex flex-wrap items-center gap-2'>
         <Button data-testid='toastbutton' onClick={addToast}>
           Show Me Toast
         </Button>
