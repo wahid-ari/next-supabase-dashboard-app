@@ -421,8 +421,8 @@ export default function DesignPage() {
         <Shimmer className='max-w-[15rem]' />
       </Wrapper>
 
-      <Wrapper id='tabs' name='Tabs' props={['items']}>
-        <Tabs items={['Tab A', 'Tab B', 'Tab C']} data-testid='tabs'>
+      <Wrapper id='tabs' name='Tabs' props={['items', 'name']}>
+        <Tabs items={['Tab A', 'Tab B', 'Tab C']} name='tabs' data-testid='tabs'>
           <Tabs.panel>
             <Heading h2 className='mb-0 text-lg'>
               Tab Content A
