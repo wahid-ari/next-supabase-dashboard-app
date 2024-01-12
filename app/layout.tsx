@@ -9,6 +9,7 @@ import '@/styles/prism.css';
 
 import { siteConfig } from '@/config/site';
 
+import { Toaster as SonnerToaster } from '@/components/ui/Sonner';
 import { Toaster } from '@/components/ui/Toaster';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -68,6 +69,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body className={inter.className}>
         <GlobalProvider>
           <Toaster />
+          <SonnerToaster
+            closeButton={false}
+            visibleToasts={5}
+            offset={'16px'}
+            gap={10}
+            richColors
+            position='top-right'
+          />
           <ReactHotToast
             gutter={4}
             toastOptions={{
