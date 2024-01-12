@@ -93,6 +93,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#carousel'>
+              Carousel
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#checkbox'>
               Checkbox
             </Link>
@@ -133,6 +138,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#drawer'>
+              Drawer
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#dropdownmenu'>
               DropdownMenu
             </Link>
@@ -168,6 +178,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#pagination'>
+              Pagination
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#popover'>
               Popover
             </Link>
@@ -180,6 +195,11 @@ export default function Page() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#radiogroup'>
               RadioGroup
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#resizable'>
+              Resizable
             </Link>
           </span>
           <span className='mb-3 block underline'>
@@ -210,6 +230,11 @@ export default function Page() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#slider'>
               Slider
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#sonner'>
+              Sonner (Toast)
             </Link>
           </span>
           <span className='mb-3 block underline'>

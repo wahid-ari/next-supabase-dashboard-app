@@ -389,7 +389,17 @@ export default function Page() {
       <Wrapper
         id='reacttable'
         name='React Table'
-        props={['columns', 'data', 'page_size', 'bordered', 'itemPerPage', 'keyword', 'showInfo', 'filteredLength']}
+        props={[
+          'columns',
+          'data',
+          'page_size',
+          'bordered',
+          'noHover',
+          'itemPerPage',
+          'keyword',
+          'showInfo',
+          'filteredLength',
+        ]}
         noProps
         noWrap
       >
