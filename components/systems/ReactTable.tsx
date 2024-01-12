@@ -16,6 +16,7 @@ type Props = {
   page_size?: number;
   className?: string;
   bordered?: boolean;
+  noHover?: boolean;
   itemPerPage?: number[];
   keyword?: string;
   showInfo?: boolean;
@@ -31,6 +32,7 @@ export const ReactTable = forwardRef(
       page_size = 5,
       className,
       bordered,
+      noHover = false,
       itemPerPage = [5, 10, 20],
       keyword,
       showInfo,
@@ -181,7 +183,10 @@ export const ReactTable = forwardRef(
                   <tr
                     key={i + 1}
                     {...restRowProps}
-                    className='border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200'
+                    className={twMerge(
+                      'border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200',
+                      noHover ? '' : 'transition-all hover:bg-neutral-200/40 dark:hover:bg-neutral-800/40',
+                    )}
                   >
                     {row.cells.map((cell: any, i: number) => {
                       const { key, ...restCellProps } = cell.getCellProps();
@@ -219,6 +224,45 @@ export const ReactTable = forwardRef(
 
         <div className='grid grid-cols-1 gap-4 pb-5 pt-3 sm:grid-cols-2 sm:p-3'>
           <div className='flex items-center justify-center gap-2 sm:justify-start'>
+            <span className='text-sm text-neutral-800 dark:text-neutral-200'>Go to page</span>
+            <input
+              title='Page'
+              type='number'
+              min={1}
+              max={pageOptions.length}
+              defaultValue={pageIndex + 1}
+              onChange={(e) => {
+                const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                gotoPage(page);
+              }}
+              className={twMerge(
+                'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
+                'transition-all focus:border-transparent focus:outline-none focus:ring-1 dark:focus:border-transparent',
+                'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
+              )}
+              placeholder='1'
+            />
+            <select
+              title='Data'
+              value={pageSize}
+              onChange={(e) => {
+                setPageSize(Number(e.target.value));
+              }}
+              className={twMerge(
+                'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
+                'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
+                'focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
+              )}
+            >
+              {itemPerPage.map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  Show {pageSize}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className='flex items-center justify-center gap-2 sm:justify-end'>
             <button
               onClick={() => gotoPage(0)}
               disabled={!canPreviousPage}
@@ -278,45 +322,6 @@ export const ReactTable = forwardRef(
             >
               <ChevronsRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
-          </div>
-
-          <div className='flex items-center justify-center gap-2 sm:justify-end'>
-            <span className='text-sm text-neutral-800 dark:text-neutral-200'>Go to page</span>
-            <input
-              title='Page'
-              type='number'
-              min={1}
-              max={pageOptions.length}
-              defaultValue={pageIndex + 1}
-              onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                gotoPage(page);
-              }}
-              className={twMerge(
-                'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
-                'transition-all focus:border-transparent focus:outline-none focus:ring-1 dark:focus:border-transparent',
-                'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
-              )}
-              placeholder='1'
-            />
-            <select
-              title='Data'
-              value={pageSize}
-              onChange={(e) => {
-                setPageSize(Number(e.target.value));
-              }}
-              className={twMerge(
-                'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
-                'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
-                'focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
-              )}
-            >
-              {itemPerPage.map((pageSize) => (
-                <option key={pageSize} value={pageSize}>
-                  Show {pageSize}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
       </div>
