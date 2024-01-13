@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { BookIcon, LayoutListIcon, UsersIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
 import { compareSearchResult, useSearchHistory } from '@/store/use-search-history';
 import { useSearchData } from '@/libs/swr';
+import { cn } from '@/libs/utils';
 
 import AuthorListItem from '@/components/dashboard/AuthorListItem';
 import BookListItem from '@/components/dashboard/BookListItem';
@@ -184,7 +184,7 @@ export default function BrowsePage() {
                         />
                         <button
                           onClick={() => removeBooksHistory(item.id)}
-                          className={twMerge(
+                          className={cn(
                             'absolute -left-1 -top-1 rounded px-1.5 py-0.5 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',
@@ -224,7 +224,7 @@ export default function BrowsePage() {
                         />
                         <button
                           onClick={() => removeAuthorsHistory(item.id)}
-                          className={twMerge(
+                          className={cn(
                             'absolute -left-1 -top-1 rounded-full px-1.5 py-0.5 text-xs font-medium',
                             'bg-red-500 text-white transition-all hover:bg-red-600',
                             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400',

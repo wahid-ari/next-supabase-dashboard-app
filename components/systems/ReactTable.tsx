@@ -8,7 +8,8 @@ import {
   ChevronUpIcon,
 } from 'lucide-react';
 import { useFilters, useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 type Props = {
   columns: any;
@@ -113,7 +114,7 @@ export const ReactTable = forwardRef(
     } data`;
 
     return (
-      <div className={twMerge('w-full rounded border dark:border-neutral-800', className)}>
+      <div className={cn('w-full rounded border dark:border-neutral-800', className)}>
         <div className='scrollbar-thumb-rounded overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800'>
           <table
             {...getTableProps()}
@@ -135,7 +136,7 @@ export const ReactTable = forwardRef(
                         <th
                           key={i + 1}
                           {...restHeaderGroupProps}
-                          className={twMerge(
+                          className={cn(
                             'p-3 font-medium first:w-1',
                             column.Header == 'Action' && 'w-1',
                             bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800',
@@ -183,7 +184,7 @@ export const ReactTable = forwardRef(
                   <tr
                     key={i + 1}
                     {...restRowProps}
-                    className={twMerge(
+                    className={cn(
                       'border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200',
                       noHover ? '' : 'transition-all hover:bg-neutral-200/40 dark:hover:bg-neutral-800/40',
                     )}
@@ -194,7 +195,7 @@ export const ReactTable = forwardRef(
                         <td
                           key={i + 1}
                           {...restCellProps}
-                          className={twMerge(
+                          className={cn(
                             'p-3',
                             bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800',
                           )}
@@ -235,7 +236,7 @@ export const ReactTable = forwardRef(
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 gotoPage(page);
               }}
-              className={twMerge(
+              className={cn(
                 'w-[72px] rounded-md border border-neutral-300 bg-white px-3 py-[0.4rem] text-sm outline-none',
                 'transition-all focus:border-transparent focus:outline-none focus:ring-1 dark:focus:border-transparent',
                 'focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
@@ -248,7 +249,7 @@ export const ReactTable = forwardRef(
               onChange={(e) => {
                 setPageSize(Number(e.target.value));
               }}
-              className={twMerge(
+              className={cn(
                 'block w-[110px] cursor-pointer rounded-md border border-neutral-300 bg-white px-3',
                 'py-[0.4rem] text-sm outline-none transition-all focus:border-transparent focus:outline-none dark:focus:border-transparent',
                 'focus:ring-1 focus:ring-sky-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white',
@@ -268,7 +269,7 @@ export const ReactTable = forwardRef(
               disabled={!canPreviousPage}
               aria-label='First'
               title='First'
-              className={twMerge(
+              className={cn(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canPreviousPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
@@ -282,7 +283,7 @@ export const ReactTable = forwardRef(
               disabled={!canPreviousPage}
               aria-label='Prev'
               title='Prev'
-              className={twMerge(
+              className={cn(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canPreviousPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
@@ -299,7 +300,7 @@ export const ReactTable = forwardRef(
               disabled={!canNextPage}
               aria-label='Next'
               title='Next'
-              className={twMerge(
+              className={cn(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canNextPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'
@@ -313,7 +314,7 @@ export const ReactTable = forwardRef(
               disabled={!canNextPage}
               aria-label='Last'
               title='Last'
-              className={twMerge(
+              className={cn(
                 'rounded border border-transparent p-1 transition-all duration-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500',
                 canNextPage
                   ? 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700'

@@ -1,7 +1,8 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+
+import { cn } from '@/libs/utils';
 
 import Badge from '@/components/systems/Badge';
 import Heading from '@/components/systems/Heading';
@@ -35,7 +36,7 @@ export default function Wrapper({
   noWrap,
 }: Props) {
   return (
-    <section id={id} className={twMerge('pt-8', className)}>
+    <section id={id} className={cn('pt-8', className)}>
       <Heading h2 className='group flex text-lg transition-all duration-500'>
         <span className='mr-2 text-neutral-500 transition-all duration-500 group-hover:text-black dark:group-hover:text-white'>
           #
@@ -50,7 +51,7 @@ export default function Wrapper({
           <a
             aria-label={docs}
             href={docs}
-            className={twMerge(
+            className={cn(
               'ml-2 flex items-center justify-center rounded text-sm font-medium transition-all duration-200',
               'text-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}

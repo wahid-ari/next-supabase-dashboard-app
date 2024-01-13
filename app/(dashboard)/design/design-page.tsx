@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
 import { tabledata } from '@/libs/table-data';
+import { cn } from '@/libs/utils';
 import { useDebounce } from '@/hooks/use-debounce';
 
 import Badge from '@/components/systems/Badge';
@@ -88,7 +88,7 @@ export default function DesignPage() {
             <HoverCard.Content
               side='top'
               data-testid='hovercard-content'
-              className={twMerge(
+              className={cn(
                 'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                 'bg-white p-2.5 !text-[15px] leading-5 text-neutral-700',
                 'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',

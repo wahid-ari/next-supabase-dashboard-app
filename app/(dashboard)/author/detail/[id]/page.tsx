@@ -3,9 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowUpRightIcon, ImageIcon } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
 
 import { siteConfig } from '@/config/site';
+import { cn } from '@/libs/utils';
 
 import Heading from '@/components/systems/Heading';
 import Title from '@/components/systems/Title';
@@ -167,10 +167,7 @@ export default async function Page({ params }) {
                 return (
                   <div
                     key={item.id}
-                    className={twMerge(
-                      'mb-4 pb-4',
-                      index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800',
-                    )}
+                    className={cn('mb-4 pb-4', index < data?.quotes.length - 1 && 'border-b dark:border-b-neutral-800')}
                   >
                     <p className='text-[15px] font-medium text-neutral-900 dark:text-neutral-100'>
                       &#8220;{item.quote}&#8221;

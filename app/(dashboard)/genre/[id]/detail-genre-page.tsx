@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
-import { twMerge } from 'tailwind-merge';
 
+import { cn } from '@/libs/utils';
 import { useDebounce } from '@/hooks/use-debounce';
 
 import LabeledInput from '@/components/systems/LabeledInput';
@@ -46,7 +46,7 @@ export default function DetailGenrePage({ data }) {
               <HoverCard.Portal>
                 <HoverCard.Content
                   side='top'
-                  className={twMerge(
+                  className={cn(
                     'z-50 max-h-40 max-w-sm overflow-auto rounded-md border shadow-md',
                     'bg-white p-2.5 !text-[15px] font-medium leading-5 text-neutral-700',
                     'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white dark:scrollbar-thumb-neutral-800',
