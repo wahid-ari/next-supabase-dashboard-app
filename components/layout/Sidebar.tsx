@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   BookIcon,
@@ -15,6 +16,7 @@ import {
   LayoutPanelLeftIcon,
   ListTodoIcon,
   ListTreeIcon,
+  LogInIcon,
   LogOutIcon,
   SearchIcon,
   SettingsIcon,
@@ -22,9 +24,10 @@ import {
   UsersIcon,
   XIcon,
 } from 'lucide-react';
-import { twMerge } from 'tailwind-merge';
+import { useSession } from 'next-auth/react';
 
 import { useShowNav } from '@/context/GlobalContext';
+import { cn } from '@/libs/utils';
 
 import NavAccordion from '@/components/layout/NavAccordion';
 import NavLink from '@/components/layout/NavLink';
@@ -34,6 +37,7 @@ import Modal from '@/components/systems/Modal';
 
 export default function Sidebar({ className, ...props }: { className?: string }) {
   const router = useRouter();
+  const { data: session }: { data: any } = useSession();
   const pathname = usePathname();
   const [openModal, setOpenModal] = useState(false);
   const { showNav, setShowNav } = useShowNav();
@@ -62,7 +66,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
     <>
       <aside
         {...props}
-        className={twMerge(
+        className={cn(
           'z-50 flex h-full w-screen flex-col flex-nowrap border-r dark:border-neutral-800',
           // 'bg-white dark:bg-neutral-900',
           'bg-white/80 dark:bg-neutral-900/80',
@@ -74,7 +78,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
       >
         <div className='flex items-center justify-between gap-2 px-5'>
           <button
-            className={twMerge(
+            className={cn(
               'rounded border p-0.5 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800 lg:hidden',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
             )}
@@ -94,7 +98,7 @@ export default function Sidebar({ className, ...props }: { className?: string })
         </div>
 
         <div
-          className={twMerge(
+          className={cn(
             'flex flex-col flex-nowrap gap-1 overflow-auto border-t px-4 pt-3.5 dark:border-neutral-800 lg:flex-grow',
             'scrollbar-thumb-rounded scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-800',
           )}
@@ -179,18 +183,32 @@ export default function Sidebar({ className, ...props }: { className?: string })
         <hr className='mx-7 mt-2 dark:border-neutral-800 lg:mx-0' />
 
         <div className='px-4 py-1.5'>
-          <button
-            data-testid='button-logout'
-            onClick={() => setOpenModal(true)}
-            className={twMerge(
-              'group flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
-              'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
-            )}
-          >
-            <LogOutIcon className='mr-0.5 h-[18px] w-[18px]' />
-            Logout
-          </button>
+          {session == null ? (
+            <Link
+              href='/login'
+              className={cn(
+                'flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
+                'rounded text-emerald-600 hover:bg-emerald-100 dark:hover:bg-neutral-800',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500',
+              )}
+            >
+              <LogInIcon className='mr-0.5 h-[18px] w-[18px]' />
+              Login
+            </Link>
+          ) : (
+            <button
+              data-testid='button-logout'
+              onClick={() => setOpenModal(true)}
+              className={cn(
+                'group flex w-full items-center justify-start gap-2 px-4 py-1.5 text-sm font-medium transition-all',
+                'rounded text-red-600 hover:bg-red-100 dark:hover:bg-neutral-800',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
+              )}
+            >
+              <LogOutIcon className='mr-0.5 h-[18px] w-[18px]' />
+              Logout
+            </button>
+          )}
         </div>
       </aside>
       <Modal
