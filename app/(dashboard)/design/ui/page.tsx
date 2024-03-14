@@ -78,6 +78,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#breadcrumb'>
+              Breadcrumb
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#button'>
               Button
             </Link>
@@ -160,6 +165,11 @@ export default function Page() {
           <span className='mb-3 block underline'>
             <Link className={tocClass} href='#input-debounce'>
               InputDebounce
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-otp'>
+              InputOtp
             </Link>
           </span>
           <span className='mb-3 block underline'>
