@@ -11,7 +11,10 @@ const ToggleGroup = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
-    className={cn('inline-flex space-x-px rounded border dark:divide-neutral-700 dark:border-neutral-700', className)}
+    className={cn(
+      'inline-flex space-x-px divide-x rounded border dark:divide-neutral-700 dark:border-neutral-700',
+      className,
+    )}
     {...props}
   />
 ));
