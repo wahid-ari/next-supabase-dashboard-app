@@ -592,7 +592,6 @@ export default function UiPage() {
             className='rounded-md border dark:border-neutral-700'
           />
         </div>
-        <br />
         <Text>{date ? format(date, 'PPP') : 'Select Date'}</Text>
       </Wrapper>
 
@@ -752,7 +751,6 @@ export default function UiPage() {
             <p className='text-sm text-neutral-400'>You agree to our Terms of Service and Privacy Policy.</p>
           </div>
         </div>
-        <br />
         <Text>{checkboxValue ? 'true' : 'false'}</Text>
       </Wrapper>
 
@@ -1544,7 +1542,6 @@ export default function UiPage() {
             <Label htmlFor='r3'>Compact</Label>
           </div>
         </RadioGroup>
-        <br />
         <Text>{radiogroupValue}</Text>
       </Wrapper>
 
@@ -1673,8 +1670,8 @@ export default function UiPage() {
         <div className='flex items-center space-x-4'>
           <Skeleton className='h-12 w-12 rounded-full' />
           <div className='space-y-2'>
-            <Skeleton className='h-4 w-[250px]' />
-            <Skeleton className='h-4 w-[200px]' />
+            <Skeleton className='h-4 w-32 sm:w-64' />
+            <Skeleton className='h-4 w-24 sm:w-44' />
           </div>
         </div>
       </Wrapper>
@@ -1694,7 +1691,6 @@ export default function UiPage() {
           step={1}
           className='w-[60%]'
         />
-        <br />
         <Text>{sliderValue}</Text>
       </Wrapper>
 
@@ -1993,7 +1989,6 @@ export default function UiPage() {
           <Italic className='h-4 w-4' />
         </Toggle>
         <br />
-        <br />
         <Text>{toggleValue == true ? 'true' : 'false'}</Text>
       </Wrapper>
 
@@ -2001,7 +1996,7 @@ export default function UiPage() {
         id='togglegroup'
         name='ToggleGroup'
         props={['type', 'value', 'defaultValue', 'onValueChange']}
-        docs='https://www.radix-ui.com/docs/primitives/components/toggle-group'
+        docs='https://ui.shadcn.com/docs/components/toggle-group'
       >
         <ToggleGroup
           type='single'
@@ -2016,11 +2011,10 @@ export default function UiPage() {
           <ToggleGroupItem value='center' aria-label='Center aligned' title='Center aligned'>
             <AlignCenterIcon className='h-4 w-4' />
           </ToggleGroupItem>
-          <ToggleGroupItem value='right' aria-label='Right aligned' title='Right aligned' disabled>
+          <ToggleGroupItem value='right' aria-label='Right aligned disabled' title='Right aligned disabled' disabled>
             <AlignRightIcon className='h-4 w-4' />
           </ToggleGroupItem>
         </ToggleGroup>
-        <br />
         <br />
         <Text>{toggleGroupValue}</Text>
       </Wrapper>
