@@ -1,9 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import slug from 'slug';
+import { z } from 'zod';
 
 import { getAppHeader, getAppSessionToken, supabase, writeLogs } from '@/libs/supabase';
 
 export const dynamic = 'force-dynamic';
+const schema = z.object({
+  name: z.string().min(1, { message: 'Name required' }),
+});
 
 // /api/author?id=1&slug=title&seo=true
 export async function GET(request: NextRequest) {
@@ -49,12 +53,14 @@ export async function POST(request: NextRequest) {
   const { authorization, token } = getAppHeader();
   if (!authorization) return NextResponse.json({ message: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Body, Extract the body of the request
-  const { name, link, image, born, web, bio } = await request.json();
+  const body = await request.json();
+  const { name, link, image, born, web, bio } = body;
   // Check Session if Token is Valid
   const session = await getAppSessionToken(token);
   if (session) {
-    if (!name) {
-      return NextResponse.json({ message: 'Name required' }, { status: 422 });
+    const isValid = schema.safeParse(body);
+    if (!isValid.success) {
+      return NextResponse.json({ message: isValid?.error?.issues }, { status: 422 });
     } else {
       let nameSlug = slug(name);
       const { data: isSlugExist } = await supabase.from('book_authors').select(`*`).eq('slug', nameSlug).order('id');
@@ -94,12 +100,14 @@ export async function PUT(request: NextRequest) {
   const { authorization, token } = getAppHeader();
   if (!authorization) return NextResponse.json({ message: 'Please provide bearer token in headers' }, { status: 401 });
   // Get Request Body, Extract the body of the request
-  const { id, name, link, image, born, web, bio } = await request.json();
+  const body = await request.json();
+  const { id, name, link, image, born, web, bio } = body;
   // Check Session if Token is Valid
   const session = await getAppSessionToken(token);
   if (session) {
-    if (!name) {
-      return NextResponse.json({ message: 'Name required' }, { status: 422 });
+    const isValid = schema.safeParse(body);
+    if (!isValid.success) {
+      return NextResponse.json({ message: isValid?.error?.issues }, { status: 422 });
     } else {
       const { error } = await supabase
         .from('book_authors')

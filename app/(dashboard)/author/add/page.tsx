@@ -4,7 +4,7 @@ import { siteConfig } from '@/config/site';
 
 import Title from '@/components/systems/Title';
 
-import AddAuthorPage from './add-author-page';
+import AddPage from './add-page';
 
 export const metadata: Metadata = {
   title: 'Add Author',
@@ -33,9 +33,9 @@ export const metadata: Metadata = {
 export default async function Page() {
   return (
     <>
-      <Title>Create Author</Title>
+      <Title className='mb-6'>Create Author</Title>
 
-      <AddAuthorPage />
+      <AddPage />
     </>
   );
 }

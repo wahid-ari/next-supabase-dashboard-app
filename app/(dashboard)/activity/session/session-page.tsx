@@ -3,29 +3,33 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { TrashIcon } from 'lucide-react';
+import { useDebounce } from 'use-debounce';
 
 import { cn } from '@/libs/utils';
 import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
+import Input from '@/components/systems/Input';
 import InputDebounce from '@/components/systems/InputDebounce';
+import Label from '@/components/systems/Label';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
 export default function SessionPage({ data }) {
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
   const { updateToast, pushToast } = useToast();
   const [openDeleteAllDialog, setOpenDeleteAllDialog] = useState(false);
 
   const filteredData =
-    inputDebounceValue === ''
+    searchDebounce === ''
       ? data
       : data.filter((item: any) =>
           item.book_users.name
             .toLowerCase()
             .replace(/\s+/g, '')
-            .includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
+            .includes(searchDebounce.toLowerCase().replace(/\s+/g, '')),
         );
 
   async function handleDeleteAll() {
@@ -80,14 +84,8 @@ export default function SessionPage({ data }) {
         <div className='mt-5 text-center sm:text-left'>Are you sure want to delete All Session ?</div>
       </Dialog>
 
-      <InputDebounce
-        label='Search'
-        id='inputdebounce'
-        name='inputdebounce'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => setInputDebounceValue(value)}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
       <TableSimple
         head={

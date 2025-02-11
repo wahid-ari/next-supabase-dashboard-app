@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import { ArrowRightIcon } from 'lucide-react';
+import { useDebounce as useDebouncePackage } from 'use-debounce';
 
 import { tabledata } from '@/libs/table-data';
 import { cn } from '@/libs/utils';
@@ -37,7 +38,9 @@ import Wrapper from '@/components/systems/Wrapper';
 
 export default function DesignPage() {
   const [inputDebounce, setInputDebounce] = useState('');
-  const debouncedValue = useDebounce(inputDebounce, 500);
+  const debouncedValue = useDebounce(inputDebounce, 300);
+  const [inputDebouncePackage, setInputDebouncePackage] = useState('');
+  const [debouncedPackageValue] = useDebouncePackage(inputDebouncePackage, 300);
   const [inputDebounceValue, setInputDebounceValue] = useState();
 
   const [file, setFile] = useState({ name: '' });
@@ -300,6 +303,21 @@ export default function DesignPage() {
       </Wrapper>
 
       <Wrapper
+        id='input-debounce-package'
+        name='Input (use-debounce Package)'
+        props={['type', 'name', 'placeholder', 'value', 'onChange']}
+      >
+        <Input
+          name='input-debounce-package'
+          placeholder='Input debounce package'
+          data-testid='input-debounce-package'
+          onChange={(e) => setInputDebouncePackage(e.target.value)}
+        />
+        <Text data-testid='input-debounce-package-text'>{debouncedPackageValue}</Text>
+        <Text>Slower</Text>
+      </Wrapper>
+
+      <Wrapper
         id='input-debounce'
         name='InputDebounce'
         props={[
@@ -480,7 +498,7 @@ export default function DesignPage() {
           {slicedTableData.map((item, index) => {
             return (
               <Table.tr key={index}>
-                <Table.td small>{item.id}</Table.td>
+                <Table.td>{item.id}</Table.td>
                 <Table.td>{item.email}</Table.td>
                 <Table.td>{item.name}</Table.td>
                 <Table.td>{item.age}</Table.td>

@@ -11,7 +11,7 @@ import Heading from '@/components/systems/Heading';
 import Title from '@/components/systems/Title';
 
 async function getData(id: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author?id=${id}`, { cache: 'no-store' });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/author?id=${id}`);
   if (res.status == 404) {
     notFound();
   }
@@ -52,7 +52,9 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Title>{data?.name}</Title>
+      <div className='mb-6'>
+        <Title>{data?.name}</Title>
+      </div>
 
       <div className='gap-6 sm:flex'>
         {data?.image ? (

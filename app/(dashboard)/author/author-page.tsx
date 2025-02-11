@@ -1,26 +1,33 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
-import { ArrowUpRightIcon, PlusIcon } from 'lucide-react';
+import { ArrowUpRightIcon, ChevronsUpDownIcon, ChevronUpIcon, PlusIcon } from 'lucide-react';
+import { useDebounce } from 'use-debounce';
 
+import { useAuthorsData } from '@/libs/swr';
 import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
-import InputDebounce from '@/components/systems/InputDebounce';
+import Input from '@/components/systems/Input';
+import Label from '@/components/systems/Label';
 import LinkButton from '@/components/systems/LinkButton';
 import ReactTable from '@/components/systems/ReactTable';
+import Shimmer from '@/components/systems/Shimmer';
+import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
 
-export default function AuthorPage({ data }: { data: any }) {
+export default function AuthorPage() {
+  const { data } = useAuthorsData();
   const router = useRouter();
   const { updateToast, pushToast } = useToast();
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const [deleteItem, setDeleteItem] = useState({ id: null, name: '' });
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
 
   async function handleDelete() {
     const toastId = pushToast({
@@ -143,6 +150,9 @@ export default function AuthorPage({ data }: { data: any }) {
   );
 
   const tableInstance = useRef(null);
+  useEffect(() => {
+    tableInstance?.current?.setGlobalFilter(searchDebounce);
+  }, [searchDebounce]);
 
   return (
     <>
@@ -154,19 +164,50 @@ export default function AuthorPage({ data }: { data: any }) {
         </LinkButton>
       </div>
 
-      <InputDebounce
-        label='Search'
-        name='search'
-        id='search'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => {
-          setInputDebounceValue(value);
-          tableInstance?.current?.setGlobalFilter(value);
-        }}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
-      <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[10, 20, 50, 100]} />
+      {data ? (
+        <ReactTable columns={column} data={data} ref={tableInstance} page_size={20} itemPerPage={[10, 20, 50, 100]} />
+      ) : (
+        <TableSimple
+          head={
+            <>
+              <TableSimple.th className='flex items-center gap-1'>
+                No <ChevronUpIcon className='h-4 w-4 opacity-50' />
+              </TableSimple.th>
+              <TableSimple.th className='w-64 md:w-80'>
+                <div className='flex items-center gap-1'>
+                  Name <ChevronsUpDownIcon className='h-4 w-4 opacity-50' />
+                </div>
+              </TableSimple.th>
+              <TableSimple.th className='w-80 text-left'>Born</TableSimple.th>
+              <TableSimple.th className='w-44 text-left'>Web</TableSimple.th>
+              <TableSimple.th className='w-32 text-left'>Action</TableSimple.th>
+            </>
+          }
+        >
+          {[...Array(10).keys()].map((e, index) => (
+            <TableSimple.tr key={index}>
+              <TableSimple.td shrink>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+              <TableSimple.td>
+                <Shimmer className='p-3' />
+              </TableSimple.td>
+            </TableSimple.tr>
+          ))}
+        </TableSimple>
+      )}
 
       <Dialog
         title='Delete Author'

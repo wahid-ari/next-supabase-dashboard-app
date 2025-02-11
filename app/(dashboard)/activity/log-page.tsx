@@ -1,13 +1,16 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useDebounce } from 'use-debounce';
 
 import Badge from '@/components/systems/Badge';
-import InputDebounce from '@/components/systems/InputDebounce';
+import Input from '@/components/systems/Input';
+import Label from '@/components/systems/Label';
 import ReactTable from '@/components/systems/ReactTable';
 
 export default function LogPage({ data }) {
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
 
   const column = useMemo(
     () => [
@@ -82,24 +85,14 @@ export default function LogPage({ data }) {
   );
 
   const tableInstance = useRef(null);
-  const [filteredLength, setFilteredLength] = useState(0);
   useEffect(() => {
-    setFilteredLength(tableInstance?.current?.rows?.length);
-  }, [inputDebounceValue]);
+    tableInstance?.current?.setGlobalFilter(searchDebounce);
+  }, [searchDebounce]);
 
   return (
     <>
-      <InputDebounce
-        label='Search'
-        id='inputdebounce'
-        name='inputdebounce'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => {
-          setInputDebounceValue(value);
-          tableInstance?.current?.setGlobalFilter(value);
-        }}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
       <ReactTable
         columns={column}
@@ -107,9 +100,8 @@ export default function LogPage({ data }) {
         ref={tableInstance}
         page_size={20}
         itemPerPage={[10, 20, 50, 100]}
-        keyword={inputDebounceValue}
+        keyword={searchDebounce}
         showInfo
-        filteredLength={filteredLength}
       />
     </>
   );

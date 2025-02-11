@@ -10,7 +10,7 @@ import Button from '@/components/systems/Button';
 import LabeledInput from '@/components/systems/LabeledInput';
 import TextArea from '@/components/systems/TextArea';
 
-export default function AddAuthorPage() {
+export default function AddPage() {
   const { updateToast, pushToast, dismissToast } = useToast();
   const [createItem, setCreateItem] = useState({
     name: '',

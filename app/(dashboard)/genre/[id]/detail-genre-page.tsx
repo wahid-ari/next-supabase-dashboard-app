@@ -12,7 +12,7 @@ import ReactTable from '@/components/systems/ReactTable';
 
 export default function DetailGenrePage({ data }) {
   const [inputDebounce, setInputDebounce] = useState('');
-  const debouncedValue = useDebounce(inputDebounce, 500);
+  const debouncedValue = useDebounce(inputDebounce, 300);
 
   const column = useMemo(
     () => [

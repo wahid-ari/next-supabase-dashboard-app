@@ -3,54 +3,41 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { EyeIcon, EyeOffIcon } from 'lucide-react';
-import { signIn } from 'next-auth/react';
 
 import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Heading from '@/components/systems/Heading';
 
-export default function LoginPage() {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl');
-  const [form, setForm] = useState({ username: '', password: '' });
-  const formFilled = form.username !== '' && form.password !== '';
+export default function RegisterPage() {
+  const [form, setForm] = useState({ name: '', username: '', password: '', confirm_password: '' });
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { updateToast, pushToast, dismissToast } = useToast();
+  const router = useRouter();
 
-  const handleChange = (e: any) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  async function handleSubmit(e: any) {
+  async function handleRegister(e: any) {
     e.preventDefault();
     setLoading(true);
     const toastId = pushToast({
-      message: 'Login...',
+      message: 'Registering...',
       isLoading: true,
     });
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/login`, form);
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_ROUTE}/api/register`, form);
       if (res.status == 200) {
-        // NextAuth
-        const { id, username, name, type, token } = res.data;
-        signIn('credentials', {
-          id,
-          username,
-          name,
-          type,
-          token,
-          callbackUrl: callbackUrl || '/dashboard',
-        });
         updateToast({
           toastId,
-          message: 'Success Login',
+          message: 'Success Register',
           isError: false,
         });
+        setTimeout(() => {
+          router.push('/login');
+        }, 1000);
       }
     } catch (error) {
       console.error(error);
@@ -108,15 +95,31 @@ export default function LoginPage() {
             src='/icon.png'
             width={100}
             height={100}
-            className='mx-auto mb-16 hidden sm:block'
+            className='mx-auto mb-4 hidden sm:block'
             unoptimized
           />
 
-          <Heading h1 className='mb-6 font-semibold !text-neutral-800'>
-            Login
+          <Heading h1 className='mb-4 font-semibold !text-neutral-800'>
+            Register
           </Heading>
 
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleRegister}>
+            <div className='mb-5'>
+              <label className='block text-sm text-neutral-800' htmlFor='name'>
+                Name
+              </label>
+              <input
+                type='text'
+                name='name'
+                placeholder='Name'
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
+                autoComplete='off'
+                required
+              />
+            </div>
+
             <div className='mb-5'>
               <label className='block text-sm text-neutral-800' htmlFor='username'>
                 Username
@@ -126,7 +129,7 @@ export default function LoginPage() {
                 name='username'
                 placeholder='Username'
                 value={form.username}
-                onChange={handleChange}
+                onChange={(e) => setForm({ ...form, username: e.target.value })}
                 className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                 autoComplete='off'
                 required
@@ -143,7 +146,7 @@ export default function LoginPage() {
                   name='password'
                   placeholder='Password'
                   value={form.password}
-                  onChange={handleChange}
+                  onChange={(e) => setForm({ ...form, password: e.target.value })}
                   className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
                   autoComplete='off'
                   required
@@ -163,7 +166,37 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <Button type='submit' className='w-full !text-base' disabled={!formFilled || loading}>
+            <div className='mb-5'>
+              <label className='block text-sm text-neutral-800' htmlFor='confirm-password'>
+                Confirm Password
+              </label>
+              <div className='relative mb-4 flex items-center'>
+                <input
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  name='confirm-password'
+                  placeholder='Confirm Password'
+                  value={form.confirm_password}
+                  onChange={(e) => setForm({ ...form, confirm_password: e.target.value })}
+                  className='mt-2 w-full rounded-md border border-neutral-300 bg-white px-4 py-[0.6rem] text-sm font-medium outline-none ring-neutral-300 transition-all focus:border-sky-600 focus:ring-1 focus:ring-sky-500 dark:bg-white dark:text-neutral-800'
+                  autoComplete='off'
+                  required
+                />
+                <button
+                  type='button'
+                  aria-label='show confirm password'
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className='absolute right-0.5 z-10 mr-0.5 mt-2 rounded-md border-neutral-300 p-1.5 outline-none ring-neutral-300 backdrop-blur-lg focus:border-sky-600 focus:ring-1 focus:ring-sky-500'
+                >
+                  {showConfirmPassword ? (
+                    <EyeIcon className='h-5 w-5 text-neutral-600' />
+                  ) : (
+                    <EyeOffIcon className='h-5 w-5 text-neutral-600' />
+                  )}
+                </button>
+              </div>
+            </div>
+
+            <Button type='submit' className='w-full !text-base' disabled={loading}>
               {loading ? 'Logging in...' : 'Login'}
             </Button>
           </form>
@@ -171,10 +204,10 @@ export default function LoginPage() {
           <p className='mt-4 text-center font-normal dark:text-neutral-800'>
             Have an account?{' '}
             <Link
-              href='/register'
+              href='/login'
               className='rounded font-medium text-sky-600 transition-all duration-300 hover:text-sky-500 hover:underline focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500'
             >
-              Register
+              Login
             </Link>
           </p>
 

@@ -184,6 +184,11 @@ export default function Page() {
             </Link>
           </span>
           <span className='mb-3 block underline'>
+            <Link className={tocClass} href='#input-debounce-package'>
+              Input (use-debounce Package)
+            </Link>
+          </span>
+          <span className='mb-3 block underline'>
             <Link className={tocClass} href='#input-debounce'>
               InputDebounce
             </Link>
@@ -389,17 +394,7 @@ export default function Page() {
       <Wrapper
         id='reacttable'
         name='React Table'
-        props={[
-          'columns',
-          'data',
-          'page_size',
-          'bordered',
-          'noHover',
-          'itemPerPage',
-          'keyword',
-          'showInfo',
-          'filteredLength',
-        ]}
+        props={['columns', 'data', 'page_size', 'bordered', 'noHover', 'itemPerPage', 'keyword', 'showInfo']}
         noProps
         noWrap
       >

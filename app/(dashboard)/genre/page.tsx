@@ -37,6 +37,7 @@ async function getData() {
   return res.json();
 }
 
+// This page secured through the middleware in root folder
 export default async function Page() {
   const data = await getData();
   return <GenrePage data={data} />;

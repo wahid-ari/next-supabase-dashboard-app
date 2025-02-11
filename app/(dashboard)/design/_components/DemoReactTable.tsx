@@ -149,10 +149,6 @@ export default function DemoReactTable() {
   const tableInstance = useRef<any>(null);
   const [inputDebounceValues, setInputDebounceValues] = useState('');
   const tableInstances = useRef<any>(null);
-  const [filteredLength, setFilteredLength] = useState(0);
-  useEffect(() => {
-    setFilteredLength(tableInstances?.current?.rows?.length);
-  }, [inputDebounceValues]);
 
   return (
     <>
@@ -187,7 +183,6 @@ export default function DemoReactTable() {
           itemPerPage={[10, 20, 50, 100]}
           keyword={inputDebounceValues}
           showInfo
-          filteredLength={filteredLength}
         />
       ) : null}
     </>

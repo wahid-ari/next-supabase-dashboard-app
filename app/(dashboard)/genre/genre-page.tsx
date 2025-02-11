@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { PlusIcon } from 'lucide-react';
+import { useDebounce } from 'use-debounce';
 
 import useToast from '@/hooks/use-hot-toast';
 
 import Button from '@/components/systems/Button';
 import Dialog from '@/components/systems/Dialog';
-import InputDebounce from '@/components/systems/InputDebounce';
+import Input from '@/components/systems/Input';
+import Label from '@/components/systems/Label';
 import LabeledInput from '@/components/systems/LabeledInput';
 import TableSimple from '@/components/systems/TableSimple';
 import Title from '@/components/systems/Title';
@@ -24,13 +26,14 @@ export default function GenrePage({ data }: { data: any }) {
   const [name, setName] = useState('');
   const [editItem, setEditItem] = useState({ id: null, name: '' });
   const [deleteItem, setDeleteItem] = useState({ id: null, name: '' });
-  const [inputDebounceValue, setInputDebounceValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [searchDebounce] = useDebounce(search, 300);
 
   const filteredData =
-    inputDebounceValue === ''
+    searchDebounce === ''
       ? data
       : data.filter((item: any) =>
-          item.name.toLowerCase().replace(/\s+/g, '').includes(inputDebounceValue.toLowerCase().replace(/\s+/g, '')),
+          item.name.toLowerCase().replace(/\s+/g, '').includes(searchDebounce.toLowerCase().replace(/\s+/g, '')),
         );
 
   async function handleCreate() {
@@ -141,14 +144,8 @@ export default function GenrePage({ data }: { data: any }) {
         </Button.success>
       </div>
 
-      <InputDebounce
-        label='Search'
-        id='inputdebounce'
-        name='inputdebounce'
-        placeholder='Search'
-        value={inputDebounceValue}
-        onChange={(value) => setInputDebounceValue(value)}
-      />
+      <Label>Search</Label>
+      <Input name='search' placeholder='Search' onChange={(e) => setSearch(e.target.value)} />
 
       <Dialog
         title='Create Genre'

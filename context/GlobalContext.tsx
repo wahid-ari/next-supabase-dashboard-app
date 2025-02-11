@@ -21,12 +21,14 @@ export function GlobalProvider({ children }: { children: ReactNode }) {
   const [showNav, setShowNav] = useState(false);
   const [token, setToken] = useState(null);
   async function getSessionToken() {
-    const session: any = await getSession();
-    if (session) setToken(session?.token);
+    const mySession: any = await getSession();
+    if (mySession) setToken(mySession?.token);
   }
 
   useEffect(() => {
-    getSessionToken();
+    if (!token) {
+      getSessionToken();
+    }
   }, []);
 
   // can be set up here, or in page file like in pages/data.js

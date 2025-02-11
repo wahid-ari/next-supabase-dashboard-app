@@ -6,10 +6,7 @@ import { z } from 'zod';
 import { supabase } from '@/libs/supabase';
 
 const schema = z.object({
-  username: z
-    .string()
-    .min(1, { message: 'Username is required' })
-    .regex(/^[A-Za-z]+$/, { message: 'Username must be alphabet without space' }),
+  username: z.string().min(1, { message: 'Username is required' }),
   password: z.string().min(1, { message: 'Password is required' }),
 });
 
@@ -35,22 +32,11 @@ const schema = z.object({
 export async function POST(request: NextRequest) {
   // Get Request Body, Extract the body of the request
   const { username, password } = await request.json();
-  // if (!username) {
-  //   return NextResponse.json({ message: 'Username required' }, { status: 422 });
-  // } else if (!password) {
-  //   return NextResponse.json({ message: 'Password required' }, { status: 422 });
-  // }
   const isValid = schema.safeParse({ username, password });
-  // TODO Docs https://github.com/colinhacks/zod/issues/1190#issuecomment-1171607138
-  if (isValid.success == false) {
-    return NextResponse.json({ message: isValid.error.issues }, { status: 422 });
+  if (!isValid.success) {
+    return NextResponse.json({ message: isValid?.error?.issues }, { status: 422 });
   } else {
-    const { data, error } = await supabase
-      .from('book_users')
-      .select(`*`)
-      .eq('username', username.toLowerCase())
-      .limit(1)
-      .single();
+    const { data, error } = await supabase.from('book_users').select(`*`).eq('username', username).limit(1).single();
     if (error) {
       return NextResponse.json({ message: 'User not found' }, { status: 422 });
     }

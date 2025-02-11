@@ -4,11 +4,11 @@ import { getServerSession } from 'next-auth';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-import LoginPage from './login-page';
+import RegisterPage from './register-page';
 
 export const metadata: Metadata = {
-  title: 'Login - Next.js App Router',
-  description: 'Login Page',
+  title: 'Register - Next.js App Router',
+  description: 'Register Page',
 };
 
 export default async function Page() {
@@ -16,5 +16,5 @@ export default async function Page() {
   if (session) {
     redirect('/dashboard');
   }
-  return <LoginPage />;
+  return <RegisterPage />;
 }

@@ -1,12 +1,25 @@
-import { redirect } from 'next/navigation';
-import { getServerSession } from 'next-auth';
+'use client';
 
-import { authOptions } from '@/libs/auth';
+import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
-export default async function Layout({ children }: { children: React.ReactNode }) {
-  const session = await getServerSession(authOptions);
-  if (!session) {
-    redirect('/login');
+import LoadingDots from '@/components/systems/LoadingDots';
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push('/login');
+    },
+  });
+
+  if (status === 'loading') {
+    return (
+      <div className='flex min-h-screen flex-col items-center justify-center'>
+        <LoadingDots medium />
+      </div>
+    );
   }
 
   return <>{children}</>;
