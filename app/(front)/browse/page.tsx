@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import type { Metadata } from 'next';
 
 import { siteConfig } from '@/config/site';
@@ -35,7 +36,11 @@ export default function Page() {
     <>
       <Title>Browse</Title>
 
-      <BrowsePage />
+      {/* TODO Docs https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout */}
+      {/* https://github.com/vercel/next.js/discussions/61654 */}
+      <Suspense>
+        <BrowsePage />
+      </Suspense>
     </>
   );
 }
