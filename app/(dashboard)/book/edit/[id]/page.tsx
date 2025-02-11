@@ -69,7 +69,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Title>Edit {book?.title}</Title>
+      <Title className='mb-6'>Edit {book?.title}</Title>
       <EditBookPage id={params.id} book={book} author={author} genre={genre} />
     </>
   );

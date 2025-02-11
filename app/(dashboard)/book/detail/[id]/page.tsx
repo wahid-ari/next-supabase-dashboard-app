@@ -52,7 +52,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Title>{data?.title}</Title>
+      <Title className='mb-6'>{data?.title}</Title>
 
       <div className='gap-6 sm:flex'>
         {data?.image ? (

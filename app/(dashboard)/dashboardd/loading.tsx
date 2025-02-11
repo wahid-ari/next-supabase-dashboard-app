@@ -61,6 +61,24 @@ export default function Loading() {
           </Shimmer>
         </div>
       </div>
+
+      <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
+        <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
+          <Text.medium>Total Book by Genre</Text.medium>
+        </div>
+        <div className='p-3'>
+          <Shimmer className='!h-[400px] w-full' />
+        </div>
+      </div>
+
+      <div className='rounded-md border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
+        <div className='bg-neutral-100/80 p-3 dark:bg-[#1F1F1F]'>
+          <Text.medium>Total Book by Author</Text.medium>
+        </div>
+        <div className='p-3'>
+          <Shimmer className='!h-[400px] w-full' />
+        </div>
+      </div>
     </>
   );
 }

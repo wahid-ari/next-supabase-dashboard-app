@@ -54,7 +54,7 @@ export default async function Page() {
 
   return (
     <>
-      <Title>Create Book</Title>
+      <Title className='mb-6'>Create Book</Title>
 
       <AddBookPage authors={author} genres={genre} />
     </>

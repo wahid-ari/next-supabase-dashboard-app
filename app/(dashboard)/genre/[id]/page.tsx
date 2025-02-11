@@ -49,7 +49,7 @@ export default async function Page({ params }) {
 
   return (
     <>
-      <Title>{data?.name}</Title>
+      <Title>{data?.name} Books</Title>
       <DetailGenrePage data={data} />
     </>
   );

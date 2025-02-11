@@ -4,7 +4,7 @@ import Title from '@/components/systems/Title';
 export default function Loading() {
   return (
     <>
-      <Title>Edit Book</Title>
+      <Title className='mb-6'>Edit Book</Title>
       <div className='grid grid-cols-1 gap-x-8 md:grid-cols-2'>
         <div>
           {[...Array(4).keys()].map((_, i) => (
