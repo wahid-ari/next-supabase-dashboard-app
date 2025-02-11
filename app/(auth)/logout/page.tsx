@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 
-import LoadingDots from '@/components/systems/LoadingDots';
+import { authOptions } from '@/libs/auth';
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import LoadingDots from '@/components/systems/LoadingDots';
 
 import LogoutPage from './logout-page';
 
