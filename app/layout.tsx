@@ -83,6 +83,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               style: {
                 maxWidth: 380,
                 padding: '2px 4px',
+                wordBreak: 'break-all',
               },
             }}
           />

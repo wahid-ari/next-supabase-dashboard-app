@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
-  // TODO Docs https://nextjs.org/docs/app/building-your-application/routing/route-handlers#cors
   // TODO Docs https://github.com/vercel/next.js/discussions/47933
   return NextResponse.json(
     { message: 'Success GET' },

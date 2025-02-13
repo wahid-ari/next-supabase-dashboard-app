@@ -1,7 +1,7 @@
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
-// TODO DOCS moving this to app/api/auth/[...nextauth]/route can cause error
+// TODO Docs moving this to app/api/auth/[...nextauth]/route can cause error
 // https://github.com/nextauthjs/next-auth/issues/10845
 // https://stackoverflow.com/questions/78876478/route-src-app-api-auth-nextauth-route-ts-does-not-match-the-required-type
 export const authOptions: NextAuthOptions = {

@@ -3,7 +3,6 @@ import { supabase } from '@/libs/supabase';
 const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 
 // TODO Docs https://kentcdodds.com/blog/rss.xml
-// TODO Docs https://stackoverflow.com/questions/2784183/what-does-cdata-in-xml-mean
 
 export const dynamic = 'force-dynamic';
 

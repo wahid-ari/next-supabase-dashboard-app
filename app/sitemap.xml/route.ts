@@ -5,11 +5,8 @@ const BASE_URL = `${process.env.NEXT_PUBLIC_API_ROUTE}`;
 const timeElapsed = Date.now();
 const today = new Date(timeElapsed);
 
-// TODO Docs https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
 // TODO Docs https://nextjs.org/docs/app/building-your-application/routing/route-handlers#non-ui-responses
-// TODO Docs https://claritydev.net/blog/nextjs-dynamic-sitemap-pages-app-directory
-// TODO Docs https://kentcdodds.com/sitemap.xml
-// TODO Docs https://slickplan.com/blog/xml-sitemap-priority-changefreq
+// https://kentcdodds.com/sitemap.xml
 
 export const dynamic = 'force-dynamic';
 
