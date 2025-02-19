@@ -9,26 +9,26 @@ import Title from '@/components/systems/Title';
 import DashboardPage from './dashboard-page';
 
 export const metadata: Metadata = {
-  title: 'Dashboard',
-  description: 'Dashboard Page',
+  title: 'Dashboardd',
+  description: 'Dashboardd Page',
   alternates: {
-    canonical: `${siteConfig.url}/dashboard`,
+    canonical: `${siteConfig.url}/dashboardd`,
   },
   openGraph: {
-    title: 'Dashboard',
-    description: 'Dashboard Page',
-    url: `${siteConfig.url}/dashboard`,
+    title: 'Dashboardd',
+    description: 'Dashboardd Page',
+    url: `${siteConfig.url}/dashboardd`,
     images: [
       {
-        url: `${siteConfig.url}/api/og?title=Dashboard`,
+        url: `${siteConfig.url}/api/og?title=Dashboardd`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Dashboard',
-    description: 'Dashboard Page',
-    images: [`${siteConfig.url}/api/og?title=Dashboard`],
+    title: 'Dashboardd',
+    description: 'Dashboardd Page',
+    images: [`${siteConfig.url}/api/og?title=Dashboardd`],
   },
 };
 
@@ -87,16 +87,18 @@ async function getStatisticBookByGenre() {
 }
 
 export default async function Page() {
-  // TODO Docs https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#parallel-data-fetching
   const totalDashboard = await getTotalDashboard();
-  // Initiate both requests in parallel
-  // const totalDashboardData = await getTotalDashboard();
   // const totalAuthor = await getTotalAuthor();
   // const totalBook = await getTotalBook();
   // const totalGenre = await getTotalGenre();
   const statisticBookByAuthor = await getStatisticBookByAuthor();
   const statisticBookByGenre = await getStatisticBookByGenre();
-  // Wait for the promises to resolve
+  // TODO Docs https://nextjs.org/docs/app/building-your-application/data-fetching/patterns#parallel-data-fetching
+  // const totalDashboardData = getTotalDashboard();
+  // const statisticBookByAuthorData = getStatisticBookByAuthor();
+  // const statisticBookByGenreData = getStatisticBookByGenre();
+  // // Initiate both requests in parallel
+  // // Wait for the promises to resolve
   // const [totalDashboard, statisticBookByAuthor, statisticBookByGenre] = await Promise.all([
   //   totalDashboardData,
   //   statisticBookByAuthorData,
@@ -105,7 +107,7 @@ export default async function Page() {
 
   return (
     <>
-      <Title>Dashboard</Title>
+      <Title>Dashboardd</Title>
 
       <div className='mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3'>
         {/* <Card

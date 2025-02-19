@@ -54,7 +54,7 @@ export async function GET(req: NextRequest): Promise<Response | ImageResponse> {
           </h1>
 
           <p tw='absolute text-white m-0 bottom-[50px] left-[65px] font-medium text-xl tracking-normal'>
-            Find books you&apos;ll love, and keep track of the books you want to read.
+            Next.js App Router
           </p>
         </div>
       ),

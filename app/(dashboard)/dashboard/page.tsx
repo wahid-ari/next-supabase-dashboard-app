@@ -7,8 +7,8 @@ import Title from '@/components/systems/Title';
 import DashboardPage from './dashboard-page';
 
 export const metadata: Metadata = {
-  title: 'Dashboardd',
-  description: 'Dashboardd Page',
+  title: 'Dashboard',
+  description: 'Dashboard Page',
   alternates: {
     canonical: `${siteConfig.url}/dashboard`,
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 export default async function Page() {
   return (
     <>
-      <Title>Dashboardd</Title>
+      <Title>Dashboard</Title>
 
       <DashboardPage />
     </>

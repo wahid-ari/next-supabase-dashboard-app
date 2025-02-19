@@ -5,7 +5,7 @@ import Title from '@/components/systems/Title';
 export default function Loading() {
   return (
     <>
-      <Title>Dashboard</Title>
+      <Title>Dashboardd</Title>
 
       <div className='mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3'>
         {[...Array(3).keys()].map((e, i) => (
