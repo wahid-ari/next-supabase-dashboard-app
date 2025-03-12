@@ -37,6 +37,7 @@ export default function Akun({ className, ...props }: Props) {
                 'text-neutral-600 hover:text-neutral-900',
                 'dark:text-neutral-300 dark:hover:text-neutral-100',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                'text-nowrap',
               )}
             >
               {session?.name || 'Menu'}
